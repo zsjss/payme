@@ -43,7 +43,12 @@
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="/">421</a>
+                    <a class="brand" href="/z">421</a>
+                    <ul class="nav pull-right">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li><a href="{% url 'signin' %}">SignIn</a></li>
+                        <li><a href="{% url 'signup' %}">SignUp</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
