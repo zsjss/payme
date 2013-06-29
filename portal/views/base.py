@@ -5,11 +5,11 @@ The basic view logic here.
 For example: signin, signup, homepage , etc.
 """
 
-import functools
 import logging
+import functools
 
 #from django import http
-from . import render
+from . import utils
 from portal import forms
 from portal import models
 
@@ -30,15 +30,11 @@ def check_authentication(func):
     return _check_authentication
 
 
-def _set_session(req, username):
-    req.session['username'] = username
-
-
 def signin(req):
     """登陆"""
     if req.method == 'GET':
         form = forms.SignInForm()
-        return render('sign_in.html', {'form': form})
+        return utils.render('sign_in.html', {'form': form})
     elif req.method == 'POST':
         form = forms.SignInForm(req.POST)
         if form.is_valid():
@@ -46,35 +42,39 @@ def signin(req):
             user = models.User.objects.filter(username=data['username'])[0]
             if user.password == data['password']:
                 LOG.debug('%s login success.' % user)
-                _set_session(req, user.username)
+                utils.set_session(req, user.username)
                 return portal(req)
             else:
                 LOG.debug("%s login failed." % user)
-                return render('sign_in.html',
+                return utils.render('sign_in.html',
                                 {'errors': 'Username or password wrong',
                                  'form': form})
         else:
-            return render('sign_in.html', {'form': form})
+            return utils.render('sign_in.html', {'form': form})
 
 
 def signup(req):
     """注册"""
     if req.method == 'GET':
         form = forms.SignUpForm()
-        return render('sign_up.html', {'form': form})
+        return utils.render('sign_up.html', {'form': form})
     elif req.method == 'POST':
         form = forms.SignUpForm(req.POST)
         if form.is_valid():
             data = form.cleaned_data
             user = models.User(**data)
             user.save()
-            return render('portal.html', {})
+            return utils.render('portal.html', {})
         else:
-            return render('sign_up.html', {'form': form})
+            return utils.render('sign_up.html', {'form': form})
 
 
 def portal(req):
-    return render('portal.html', {})
+    user = utils.get_user_obj(req)
+    houses = user.house_set.all()
+    orders = user.order_set.all()
+    return utils.render('portal.html', {'houses': houses,
+                                        'orders': orders})
 
 
 @check_authentication
