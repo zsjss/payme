@@ -38,13 +38,13 @@ def signin(req):
         form = forms.SignInForm(req.POST)
         if form.is_valid():
             data = form.cleaned_data
-            user = models.User.objects.filter(username=data['username'])[0]
-            if user.password == data['password']:
-                LOG.debug('%s login success.' % user)
-                utils.set_session(req, user.username)
+            users = models.User.objects.filter(username=data['username'])
+            if users and users[0].password == data['password']:
+                LOG.debug('%s login success.' % users)
+                utils.set_session(req, users[0].username)
                 return portal(req)
             else:
-                LOG.debug("%s login failed." % user)
+                LOG.debug("%s login failed." % users)
                 return utils.render('sign_in.html',
                                 {'errors': 'Username or password wrong',
                                  'form': form})
