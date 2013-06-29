@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+The basic view logic here.
+
+For example: signin, signup, homepage , etc.
+"""
 
 import functools
 

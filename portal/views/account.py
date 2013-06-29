@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+The account views are here.
+"""
 
 from portal.views.base import check_authentication
 

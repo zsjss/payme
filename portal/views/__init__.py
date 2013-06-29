@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+Some helper function
+"""
 
 from django.shortcuts import render_to_response
 

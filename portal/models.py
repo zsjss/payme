@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+"""
+Database models are defined here.
+
+Currently relationship is shown below:
+
+User:1 ---- House:*
+House:1 ---- Order:*
+"""
 
 from django.db import models
 from django.contrib import admin

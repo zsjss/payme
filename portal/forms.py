@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+All the forms located here.
+"""
 
 from django import forms
 from django.core.exceptions import ValidationError

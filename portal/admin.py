@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+The module just registry models and related admin object.
+"""
 
 from django.contrib import admin
 import models
