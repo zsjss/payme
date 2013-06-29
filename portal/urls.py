@@ -7,8 +7,8 @@ urlpatterns = patterns('portal.views.base',
     url(r'^$', 'portal', name='portal'),
     url(r'^signin/', 'signin', name='signin'),
     url(r'^signup/', 'signup', name='signup'),
-    url(r'^pay/', 'pay', name='pay'),
-    url(r'^receive/', 'receive', name='receive'),
+    url(r'^payrent/', 'payrent', name='payrent'),
+    url(r'^chargerent/', 'chargerent', name='chargerent'),
 )
 
 urlpatterns += patterns('portal.views.account',

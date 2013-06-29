@@ -78,10 +78,10 @@ def portal(req):
 
 
 @check_authentication
-def receive(req):
+def chargerent(req):
     pass
 
 
 @check_authentication
-def pay(req):
+def payrent(req):
     pass
