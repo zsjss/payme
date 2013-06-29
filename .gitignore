@@ -2,3 +2,4 @@
 .ropeproject/
 .venv
 *.pyc
+payme/db.sqlite
