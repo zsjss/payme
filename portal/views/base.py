@@ -8,10 +8,9 @@ For example: signin, signup, homepage , etc.
 import logging
 import functools
 
-#from django import http
-from . import utils
 from portal import forms
 from portal import models
+from portal.views import utils
 
 LOG = logging.getLogger(__name__)
 
@@ -25,7 +24,7 @@ def check_authentication(func):
         if not username:
             return signin(req)
         else:
-            func(req)
+            return func(req)
 
     return _check_authentication
 
