@@ -2,24 +2,20 @@
 
 {% block content %}
 <div class='container'>
+    <h1>Sign In</h1>
+    <span class="text-error">{{ errors }}</span>
     <form action="" method="post">
-        {% csrf_token %}
         <div class="field">
-            {{ form.username.errors }}
-            <label for="id_subject">用户名:</label>
+            <label for="id_subject">username:</label>
             {{ form.username }}
+            {{ form.username.errors }}
         </div>
         <div class="field">
-            {{ form.password.errors }}
             <label for="id_password">password:</label>
             {{ form.password }}
+            {{ form.password.errors }}
         </div>
-        <div class="field">
-            {{ form.email.errors }}
-            <label for="id_email">Your e-mail address:</label>
-            {{ form.email }}
-        </div>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Sign In">
     </form>
 </div>
 {% endblock %}
