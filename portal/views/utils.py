@@ -17,6 +17,10 @@ def set_session(req, username):
     req.session['username'] = username
 
 
+def unset_session(req, username):
+    del req.session['username']
+
+
 def get_user_obj(req):
     """Since the method is invoked after check_authentication(),
     so I assume 'username' always in session.

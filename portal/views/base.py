@@ -66,6 +66,7 @@ class SignUp(generic.FormView):
 signup = SignUp.as_view()
 
 
+@check_authentication
 def portal(req):
     user = utils.get_user_obj(req)
     houses = user.house_set.all()
@@ -93,3 +94,10 @@ chargerent = check_authentication(ChargeRent.as_view())
 @check_authentication
 def payrent(req):
     pass
+
+
+@check_authentication
+def logout(req):
+    username = req.session['username']
+    utils.unset_session(req, username)
+    return portal(req)
