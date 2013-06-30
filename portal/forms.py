@@ -30,3 +30,35 @@ class SignUpForm(forms.Form):
 class SignInForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+
+
+class ChargeRentForm(forms.Form):
+    house_type = forms.ChoiceField(choices=[
+        ('1', '1 room'),
+        ('2', '2 room'),
+        ('3', '3 room'),
+        ('4', '>=4 room')
+    ])
+
+    house_decoration = forms.ChoiceField(choices=[
+        ('1', 'no'),
+        ('2', 'basic'),
+        ('3', 'medium'),
+        ('4', 'high'),
+    ])
+
+    house_size = forms.CharField()
+
+    location_province = forms.CharField()
+    location_city = forms.CharField()
+    location_zone = forms.CharField()
+    location_area = forms.CharField()
+    location_building = forms.CharField()
+
+    owner_name = forms.CharField()
+    owner_real_id = forms.CharField()
+
+    bank_name = forms.CharField()
+    bank_card_id = forms.CharField()
+    bank_location_province = forms.CharField()
+    bank_location_city = forms.CharField()

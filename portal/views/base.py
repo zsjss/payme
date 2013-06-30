@@ -21,7 +21,7 @@ def check_authentication(func):
     """The decorator will check username existed in session. If it is continue.
     """
     @functools.wraps(func)
-    def _check_authentication(req):
+    def _check_authentication(req, **kwargs):
         username = req.session.get('username')
         if not username:
             return signin(req)
@@ -74,9 +74,20 @@ def portal(req):
                                         'orders': orders})
 
 
-@check_authentication
-def chargerent(req):
-    pass
+class ChargeRent(generic.FormView):
+    form_class = forms.ChargeRentForm
+    template_name = 'portal/charge_rent.html'
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        me = utils.get_user_obj(self.request)
+        house = models.House(owner=me,
+                             house_name=data['location_area'],
+                             house_size=int(data['house_size']))
+        house.save()
+        return portal(self.request)
+
+chargerent = check_authentication(ChargeRent.as_view())
 
 
 @check_authentication
