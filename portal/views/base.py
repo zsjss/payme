@@ -8,6 +8,8 @@ For example: signin, signup, homepage , etc.
 import logging
 import functools
 
+from django.views import generic
+
 from portal import forms
 from portal import models
 from portal.views import utils
@@ -29,43 +31,39 @@ def check_authentication(func):
     return _check_authentication
 
 
-def signin(req):
-    """登陆"""
-    if req.method == 'GET':
-        form = forms.SignInForm()
-        return utils.render('sign_in.html', {'form': form})
-    elif req.method == 'POST':
-        form = forms.SignInForm(req.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            users = models.User.objects.filter(username=data['username'])
-            if users and users[0].password == data['password']:
-                LOG.debug('%s login success.' % users)
-                utils.set_session(req, users[0].username)
-                return portal(req)
-            else:
-                LOG.debug("%s login failed." % users)
-                return utils.render('sign_in.html',
-                                {'errors': 'Username or password wrong',
+class SignIn(generic.FormView):
+
+    form_class = forms.SignInForm
+    template_name = 'portal/sign_in.html'
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        users = models.User.objects.filter(username=data['username'])
+        if users and users[0].password == data['password']:
+            LOG.debug('%s login success.' % users)
+            utils.set_session(self.request, users[0].username)
+            return portal(self.request)
+        else:
+            LOG.debug("%s login failed." % users)
+            return utils.render('sign_in.html',
+                                {'errors': 'Username or password is wrong',
                                  'form': form})
-        else:
-            return utils.render('sign_in.html', {'form': form})
+
+signin = SignIn.as_view()
 
 
-def signup(req):
-    """注册"""
-    if req.method == 'GET':
-        form = forms.SignUpForm()
-        return utils.render('sign_up.html', {'form': form})
-    elif req.method == 'POST':
-        form = forms.SignUpForm(req.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            user = models.User(**data)
-            user.save()
-            return utils.render('portal.html', {})
-        else:
-            return utils.render('sign_up.html', {'form': form})
+class SignUp(generic.FormView):
+
+    template_name = 'portal/sign_up.html'
+    form_class = forms.SignUpForm
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        user = models.User(**data)
+        user.save()
+        return utils.render('portal.html', {})
+
+signup = SignUp.as_view()
 
 
 def portal(req):
