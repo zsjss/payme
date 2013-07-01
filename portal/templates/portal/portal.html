@@ -2,26 +2,26 @@
 
 {% block content %}
 <div class='container'>
-    <div>
-        <h1>payrent</h1>
-        <ul>
-        {% for order in orders %}
-            <li>{{ order }}</li>
-        {% empty %}
-            <li> ^0^ </li>
-        {% endfor %}
-        </ul>
-    </div>
+  <div>
+    <h1>payrent</h1>
+    <ul>
+      {% for order in orders %}
+      <li>{{ order }}</li>
+      {% empty %}
+      <li> ^0^ </li>
+      {% endfor %}
+    </ul>
+  </div>
 
-    <div>
-        <h1>houses</h1>
-        <ul>
-        {% for house in houses %}
-            <li>{{ house }}</li>
-        {% empty %}
-            <li> ^0^ </li>
-        {% endfor %}
-        </ul>
-    </div>
+  <div>
+    <h1>houses</h1>
+    <ul>
+      {% for house in houses %}
+      <li>{{ house }}</li>
+      {% empty %}
+      <li> ^0^ </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 {% endblock %}
