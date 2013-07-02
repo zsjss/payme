@@ -8,6 +8,7 @@ For example: signin, signup, homepage , etc.
 import logging
 import functools
 
+from django.shortcuts import redirect
 from django.views import generic
 
 from portal import forms
@@ -86,11 +87,6 @@ class ChargeRent(generic.FormView):
         return portal(self.request)
 
 chargerent = check_authentication(ChargeRent.as_view())
-
-
-@check_authentication
-def payrent(req):
-    pass
 
 
 @check_authentication
