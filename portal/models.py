@@ -146,3 +146,22 @@ class RenterOption(Model):
 
     def __unicode__(self):
         return self.id
+
+
+class Message(Model):
+    """User messages. A User will have many message to him"""
+    owner = ForeignKey(User)
+    content = CharField.CharField(255)
+    created_at = DateTimeField(auto_now=True)
+    is_readed = BooleanField()
+
+
+class BankCard(Model):
+    """A user will have many bank card."""
+    owner = ForeignKey(User)
+    bank_name = CharField(max_length=50)
+    card_user_name = CharField(max_length=255)
+    card_no = CharField(max_length=50)
+    card_loc = CharField(max_length=255)
+
+    deleted = BooleanField()
