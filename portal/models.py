@@ -10,8 +10,11 @@ from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
 
 
-################################
-class User(Model):
+class BaseModel(object):
+    pass
+
+
+class User(Model, BaseModel):
     username = CharField(max_length=255, db_index=True, unique=True)
     password = CharField(max_length=255)
     phone = CharField(max_length=20, db_index=True)
@@ -23,16 +26,13 @@ class User(Model):
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
 
-    def __unicode__(self):
-        return self.username
-
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username']
 
 
 ##################################
-class LandlordRentProfile(Model):
+class LandlordRentProfile(Model, BaseModel):
     """A user who is landlord can have many rent."""
     landlord = ForeignKey(User)
 
@@ -56,11 +56,8 @@ class LandlordRentProfile(Model):
     payee_bank_province = CharField(max_length=50)
     payee_bank_city = CharField(max_length=50)
 
-    def __unicode__(self):
-        return self.id
 
-
-class LandlordRenterInfo(Model):
+class LandlordRenterInfo(Model, BaseModel):
     """A Landlord can have many renter. Each renter pay difference expense."""
     rent = ForeignKey(LandlordRentProfile)
     renter = ForeignKey(User)
@@ -86,11 +83,8 @@ class LandlordRenterInfo(Model):
     state = CharField(max_length=2, choices=[(1, 1), (2, 2), (3, 3),
                                              (4, 4), (5, 5)])
 
-    def __unicode__(self):
-        return self.id
 
-
-class RenterRentProfile(Model):
+class RenterRentProfile(Model, BaseModel):
     """A renter can rent many house."""
     renter = ForeignKey(User)
 
@@ -121,11 +115,8 @@ class RenterRentProfile(Model):
     payee_bank_city = CharField(max_length=50)
     payee_phone = CharField(max_length=30)
 
-    def __unicode__(self):
-        return self.id
 
-
-class RenterOption(Model):
+class RenterOption(Model, BaseModel):
     """A RenterRentProfile can only have one RenterOption"""
     rent_profile = OneToOneField(RenterRentProfile)
 
@@ -144,19 +135,18 @@ class RenterOption(Model):
     state = CharField(max_length=2, choices=[(1, 1), (2, 2), (3, 3),
                                              (4, 4), (5, 5)])
 
-    def __unicode__(self):
-        return self.id
+    confirmed = BooleanField()
 
 
-class Message(Model):
+class Message(Model, BaseModel):
     """User messages. A User will have many message to him"""
     owner = ForeignKey(User)
-    content = CharField.CharField(255)
+    content = CharField(max_length=255)
     created_at = DateTimeField(auto_now=True)
     is_readed = BooleanField()
 
 
-class BankCard(Model):
+class BankCard(Model, BaseModel):
     """A user will have many bank card."""
     owner = ForeignKey(User)
     bank_name = CharField(max_length=50)
