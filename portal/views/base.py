@@ -69,10 +69,7 @@ signup = SignUp.as_view()
 @check_authentication
 def portal(req):
     user = utils.get_user_obj(req)
-    houses = user.house_set.all()
-    orders = user.order_set.all()
-    return utils.render('portal.html', {'houses': houses,
-                                        'orders': orders})
+    return utils.render('portal.html', {})
 
 
 class ChargeRent(generic.FormView):
