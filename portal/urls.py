@@ -8,8 +8,28 @@ urlpatterns = patterns('portal.views.base',
     url(r'^signin/', 'signin', name='signin'),
     url(r'^signup/', 'signup', name='signup'),
     url(r'^logout/', 'logout', name='logout'),
-    url(r'^payrent/', 'payrent', name='payrent'),
-    url(r'^chargerent/', 'chargerent', name='chargerent'),
+)
+
+urlpatterns += patterns('portal.views.charge_rent',
+    url(r'^chargerent/$',
+                    'charge_rent_create', name='charge_rent_create'),
+    url(r'^chargerent/(\w+)/$',
+                    'charge_rent_update', name='charge_rent_update'),
+    url(r'^chargerent/(\w+)/addrenter/$',
+                    'charge_renter_add', name='charge_renter_add'),
+    url(r'^chargerent/(\w+)/addrenter/(\w+)/confirm$',
+                    'charge_renter_confirm', name='charge_renter_confirm'),
+)
+
+urlpatterns += patterns('portal.views.pay_rent',
+    url(r'^payrent/$',
+                'pay_rent_profile_create', name='pay_rent_profile_create'),
+    url(r'^payrent/(\w+)$',
+                'pay_rent_profile_update', name='pay_rent_profile_update'),
+    url(r'^payrent/(\w+)/option',
+                'pay_rent_option_create', name='pay_rent_option_create'),
+    url(r'^payrent/(\w+)/optionedit',
+                'pay_rent_option_update', name='pay_rent_option_update'),
 )
 
 urlpatterns += patterns('portal.views.account',
