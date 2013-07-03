@@ -2,42 +2,40 @@
 
 from django.conf.urls import patterns, url
 
+from portal.views import base
+from portal.views import charge_rent
+from portal.views import pay_rent
+from portal.views import account
 
-urlpatterns = patterns('portal.views.base',
-    url(r'^$', 'portal', name='portal'),
-    url(r'^signin/', 'signin', name='signin'),
-    url(r'^signup/', 'signup', name='signup'),
-    url(r'^logout/', 'logout', name='logout'),
+
+urlpatterns = patterns('',
+    url(r'^$', base.portal),
+    url(r'^signin/', base.signin),
+    url(r'^signup/', base.signup),
+    url(r'^logout/', base.logout),
 )
 
-urlpatterns += patterns('portal.views.charge_rent',
-    url(r'^chargerent/$',
-                    'charge_rent_create', name='charge_rent_create'),
-    url(r'^chargerent/(\w+)/$',
-                    'charge_rent_update', name='charge_rent_update'),
-    url(r'^chargerent/(\w+)/addrenter/$',
-                    'charge_renter_add', name='charge_renter_add'),
+urlpatterns += patterns('',
+    url(r'^chargerent/$', charge_rent.charge_rent_create),
+    url(r'^chargerent/(\w+)/$', charge_rent.charge_rent_update),
+    url(r'^chargerent/(\w+)/addrenter/$', charge_rent.charge_renter_add),
     url(r'^chargerent/(\w+)/addrenter/(\w+)/confirm$',
-                    'charge_renter_confirm', name='charge_renter_confirm'),
+                                        charge_rent.charge_renter_confirm)
 )
 
-urlpatterns += patterns('portal.views.pay_rent',
-    url(r'^payrent/$',
-                'pay_rent_profile_create', name='pay_rent_profile_create'),
-    url(r'^payrent/(\w+)$',
-                'pay_rent_profile_update', name='pay_rent_profile_update'),
-    url(r'^payrent/(\w+)/option',
-                'pay_rent_option_create', name='pay_rent_option_create'),
-    url(r'^payrent/(\w+)/optionedit',
-                'pay_rent_option_update', name='pay_rent_option_update'),
+urlpatterns += patterns('',
+    url(r'^payrent/$', pay_rent.pay_rent_profile_create),
+    url(r'^payrent/(\w+)$', pay_rent.pay_rent_profile_update),
+    url(r'^payrent/(\w+)/option', pay_rent.pay_rent_option_create),
+    url(r'^payrent/(\w+)/optionedit', pay_rent.pay_rent_option_update),
 )
 
-urlpatterns += patterns('portal.views.account',
-    url(r'^account/$', 'home', name='home'),
-    url(r'^account/payments/$', 'payments', name='account_payments'),
-    url(r'^account/messges/$', 'messges', name='account_messges'),
-    url(r'^account/safe/$', 'safe', name='account_safe'),
-    url(r'^account/info/$', 'info', name='account_info'),
-    url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
-    url(r'^account/vip/$', 'vip', name='account_vip'),
+urlpatterns += patterns('',
+    url(r'^account/$', account.home),
+    url(r'^account/payments/$', account.payments),
+    url(r'^account/messges/$', account.messges),
+    url(r'^account/safe/$', account.safe),
+    url(r'^account/info/$', account.info),
+    url(r'^account/cardmanage/$', account.cardmanage),
+    url(r'^account/vip/$', account.vip),
 )
