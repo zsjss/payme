@@ -4,60 +4,45 @@
     <title>421 forever </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="{% static 'portal/css/bootstrap.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'portal/css/style.css' %}" rel="stylesheet" media="screen">
+    <link href="{% static 'portal/css/layout.css' %}" rel="stylesheet" media="screen">
     <script type="text/javascript" src="{% static 'portal/js/jquery-1.9.1.js' %}"></script>
     <script type="text/javascript" src="{% static 'portal/js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'portal/js/stupidtable.min.js' %}"></script>
-    <style type="text/css">
-      html, body {
-        height: 100%;
-        width: 100%;
-      }
-
-      div .center{
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
-      div .shadow{
-        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, .01);
-        -moz-box-shadow: 0 0 15px rgba(0,0,0,.01);
-        box-shadow: 0 0 15px rgba(0, 0, 0, .01);
-      }
-
-      .wrapper{
-        margin-top:41px; 
-      }
-
-      .smallfont, .timestamp{
-        font-size: 13px; 
-      }
-
-      th[data-sort]{
-        cursor:pointer;
-      }
-    </style>
     {% block head %}
     {% endblock %}
   </head>
   <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/z">421</a>
+          <a class="brand" href="{% url 'portal' %}">ZuFangBao</a>
+          <ul class="nav">
+            <li class="active"> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+          </ul> <!-- nav -->
+
           <ul class="nav pull-right">
             <li><a href="{% url 'charge_rent_create' %}">收房租</a></li>
             <li><a href="{% url 'pay_rent_profile_create' %}">付房租</a></li>
-            <li><a href="{% url 'portal' %}">Home</a></li>
             <li><a href="{% url 'signin' %}">SignIn</a></li>
             <li><a href="{% url 'signup' %}">SignUp</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
           </ul>
         </div>
       </div>
-    </div>
-    <div class="wrapper">
-      {% block content %}
-      {% endblock %}
-    </div>
+    </div> <!-- navbar -->
+
+    <div class="header">
+      <div class="container">
+        <h1>LOGO</h1>
+      </div>
+    </div> <!-- header -->
+    <hr/>
+
+    {% block content %}
+    {% endblock %}
   </body>
 </html>

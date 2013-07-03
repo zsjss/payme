@@ -1,0 +1,63 @@
+{% extends "portal/_base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rents</h3>
+        <li>
+          <a class="selected" href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a href="#">messages</a>
+        </li>
+        <li>
+          <a href="#">Bank cards</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Girls' Generation</h3>
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> Name </th>
+                <th> Email </th>
+                <th> Phone </th>
+                <th> Action </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> 1 </td>
+                <td> hehe </td>
+                <td> hehe </td>
+                <td> hehe </td>
+                <td> <a class="btn btn-small">delete</a> </td>
+              </tr>
+              <tr>
+                <td> 2 </td>
+                <td> hehe </td>
+                <td> hehe </td>
+                <td> hehe </td>
+                <td> <a class="btn btn-small btn-danger">delete</a> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> <!-- graybox -->
+</div> <!-- container -->
+{% endblock %}

@@ -1,0 +1,64 @@
+.header {
+  padding:60px 0 20px;
+}
+
+/*
+ * Inspired by github.com
+ */
+.graybox {
+  background: whiteSmoke;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+.graybox-inner {
+  border-radius: 2px;
+  border: 1px solid #CCC;
+  margin: 0px;
+}
+
+.graybox-inner table {
+  margin-bottom: 0; 
+}
+
+.graybox-inner h3{
+  font-size: 14px;
+  margin: 0px;
+  padding-left: 10px;
+  background-image: -moz-linear-gradient(#FAFAFA, #E0E0E0);
+  background-image: -webkit-linear-gradient(#FAFAFA, #E0E0E0);
+  background-image: linear-gradient(#FAFAFA, #E0E0E0);
+  text-shadow: 0 1px 0 white;
+  border-bottom: 1px solid #CCC;
+}
+.graybox-inner li {
+  border-bottom: 1px solid #EEE;
+  border-top: 1px solid #F8F8F8;
+}
+.graybox-inner li a {
+  padding: 8px 10px 8px 8px; 
+  text-shadow: 0 1px 0 white;
+  border-left: 2px solid #FAFAFB;
+}
+.graybox-inner li a.selected {
+  background: #fff;
+  border-left: 2px solid #d26911;
+  font-weight: bold;
+  color: #222;
+  cursor: default;
+  box-shadow: inset 0 0px 1px rgba(0,0,0,0.1);
+}
+
+
+.formbox {
+  max-width: 800px;
+  margin: 10px auto; 
+  padding: 20px 30px 30px;
+  border: 1px solid #E5E5E5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
+}
