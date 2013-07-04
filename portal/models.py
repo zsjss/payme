@@ -15,6 +15,10 @@ class BaseModel(object):
     def as_dict(self):
         return model_to_dict(self)
 
+    def update_from_dict(self, new_fields):
+        for key, value in new_fields.items():
+            setattr(self, key, value)
+
 
 class User(Model, BaseModel):
     username = CharField(max_length=255, db_index=True, unique=True)
