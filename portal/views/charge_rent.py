@@ -2,8 +2,9 @@
 All logic about charge rent.
 """
 from django.views import generic
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 
+from portal import models
 from portal import forms
 from portal.views import utils
 from portal.views.base import require_auth
@@ -20,8 +21,20 @@ class ChargeRentCreateView(generic.FormView):
 charge_rent_create = require_auth(ChargeRentCreateView.as_view())
 
 
-def charge_rent_update(request, profile_id):
-    pass
+class ChargeRentUpdateView(generic.FormView):
+
+    form_class = forms.ChargeRentForm
+    template_name = 'portal/charge/create.html'
+
+    def get_initial(self):
+        rent_id = self.args[0]
+        assert rent_id
+        x = get_object_or_404(models.LandlordRentProfile, pk=rent_id)
+        return x.as_dict()
+
+    def form_valid(self, form):
+        pass
+charge_rent_update = require_auth(ChargeRentUpdateView.as_view())
 
 
 class ChargeRentCreateView(generic.FormView):
