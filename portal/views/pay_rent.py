@@ -2,7 +2,7 @@
 All logic about pay rent.
 """
 from portal.views import utils
-from portal.views.base import check_authentication
+from portal.views.base import require_auth
 
 
 def pay_rent_profile_create(request):

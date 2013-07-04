@@ -18,18 +18,18 @@ from portal.views import utils
 LOG = logging.getLogger(__name__)
 
 
-def check_authentication(func):
+def require_auth(func):
     """The decorator will check username existed in session. If it is continue.
     """
     @functools.wraps(func)
-    def _check_authentication(request, *args, **kwargs):
+    def _require_auth(request, *args, **kwargs):
         username = request.session.get('username')
         if not username:
             return signin(request, *args, **kwargs)
         else:
             return func(request, *args, **kwargs)
 
-    return _check_authentication
+    return _require_auth
 
 
 class SignIn(generic.FormView):
@@ -67,7 +67,7 @@ class SignUp(generic.FormView):
 signup = SignUp.as_view()
 
 
-@check_authentication
+@require_auth
 def portal(request):
     user = utils.get_user_obj(request)
     return utils.render('portal.html', {})
@@ -86,10 +86,10 @@ class ChargeRent(generic.FormView):
         house.save()
         return portal(self.request)
 
-chargerent = check_authentication(ChargeRent.as_view())
+chargerent = require_auth(ChargeRent.as_view())
 
 
-@check_authentication
+@require_auth
 def logout(request):
     username = request.session['username']
     utils.unset_session(request, username)

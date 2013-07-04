@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 
 from portal import forms
 from portal.views import utils
-from portal.views.base import check_authentication
+from portal.views.base import require_auth
 
 
 class ChargeRentCreateView(generic.FormView):
@@ -17,7 +17,7 @@ class ChargeRentCreateView(generic.FormView):
     def form_valid(self, form):
         return redirect('charge_renter_add', 'hehe')
 
-charge_rent_create = check_authentication(ChargeRentCreateView.as_view())
+charge_rent_create = require_auth(ChargeRentCreateView.as_view())
 
 
 def charge_rent_update(request, profile_id):
@@ -34,7 +34,7 @@ class ChargeRentCreateView(generic.FormView):
         assert rent_id
         return redirect('charge_renter_confirm', 'hehe', 'haha')
 
-charge_renter_add = check_authentication(ChargeRentCreateView.as_view())
+charge_renter_add = require_auth(ChargeRentCreateView.as_view())
 
 
 def charge_renter_confirm(request, profile_id, renter_info_id):

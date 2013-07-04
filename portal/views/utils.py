@@ -22,7 +22,7 @@ def unset_session(request, username):
 
 
 def get_user_obj(request):
-    """Since the method is invoked after check_authentication(),
+    """Since the method is invoked after require_auth(),
     so I assume 'username' always in session.
     """
     username = request.session.get('username')

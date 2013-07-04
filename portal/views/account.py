@@ -4,39 +4,39 @@ The account views are here.
 """
 
 from portal.views import utils
-from portal.views.base import check_authentication
+from portal.views.base import require_auth
 
 
-@check_authentication
+@require_auth
 def home(request):
     return utils.render('account_home.html', {})
 
 
-@check_authentication
+@require_auth
 def vip(request):
     return utils.render('vip.html', {})
 
 
-@check_authentication
+@require_auth
 def cardmanage(request):
     pass
 
 
-@check_authentication
+@require_auth
 def info(request):
     pass
 
 
-@check_authentication
+@require_auth
 def safe(request):
     pass
 
 
-@check_authentication
+@require_auth
 def messges(request):
     pass
 
 
-@check_authentication
+@require_auth
 def payments(request):
     pass
