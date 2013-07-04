@@ -62,3 +62,10 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
 }
+
+.formbox .control-group label{
+  float: left;
+  width: 160px;
+  padding-top: 5px;
+  text-align: right;
+}

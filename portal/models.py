@@ -37,10 +37,10 @@ class LandlordRentProfile(Model, BaseModel):
     landlord = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[(1, 'house'), (2, 'shop')])
+                                 choices=[('1', 'house'), ('2', 'shop')])
     room_count = CharField(max_length=2,
-                                  choices=[(1, '1'), (2, '2'),
-                                          (3, '3'), (4, '>=4')])
+                                  choices=[('1', '1'), ('2', '2'),
+                                          ('3', '3'), ('4', '>=4')])
     deck = CharField(max_length=2)
     acreage = IntegerField()
     loc_province = CharField(max_length=50)
@@ -64,16 +64,16 @@ class LandlordRenterInfo(Model, BaseModel):
 
     renter_name = CharField(max_length=255)
     rent_expense = IntegerField()
-    rent_monthsn = IntegerField()
+    rent_months = IntegerField()
     rent_begin_date = DateField()
     rent_pay_model = CharField(max_length=2, choices=[
-        (1, 'one month'), (2, 'three month'),
-        (4, 'six month'), (8, 'twenty month')])
+        ('1', 'one month'), ('2', 'three month'),
+        ('4', 'six month'), ('8', 'twenty month')])
     pay_months = IntegerField()
     pay_begin_date = DateField()
     deposit = IntegerField()
     arrive_type = CharField(max_length=2, choices=[
-        (1, 'next day'), (2, 'two hours')])
+        ('1', 'next day'), ('2', 'two hours')])
     i_pay_it = BooleanField()
 
     service_expense = IntegerField()

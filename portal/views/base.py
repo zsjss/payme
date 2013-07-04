@@ -22,12 +22,12 @@ def check_authentication(func):
     """The decorator will check username existed in session. If it is continue.
     """
     @functools.wraps(func)
-    def _check_authentication(req, **kwargs):
+    def _check_authentication(req, *args, **kwargs):
         username = req.session.get('username')
         if not username:
-            return signin(req)
+            return signin(req, *args, **kwargs)
         else:
-            return func(req)
+            return func(req, *args, **kwargs)
 
     return _check_authentication
 

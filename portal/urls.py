@@ -19,6 +19,8 @@ urlpatterns += patterns('portal.views.charge_rent',
                     'charge_renter_add', name='charge_renter_add'),
     url(r'^chargerent/(\w+)/addrenter/(\w+)/confirm$',
                     'charge_renter_confirm', name='charge_renter_confirm'),
+    url(r'^chargerent/(\w+)/addrenter/(\w+)/done$',
+                    'charge_renter_done', name='charge_renter_done'),
 )
 
 urlpatterns += patterns('portal.views.pay_rent',
