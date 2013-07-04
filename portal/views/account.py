@@ -8,35 +8,35 @@ from portal.views.base import check_authentication
 
 
 @check_authentication
-def home(req):
+def home(request):
     return utils.render('account_home.html', {})
 
 
 @check_authentication
-def vip(req):
+def vip(request):
     return utils.render('vip.html', {})
 
 
 @check_authentication
-def cardmanage(req):
+def cardmanage(request):
     pass
 
 
 @check_authentication
-def info(req):
+def info(request):
     pass
 
 
 @check_authentication
-def safe(req):
+def safe(request):
     pass
 
 
 @check_authentication
-def messges(req):
+def messges(request):
     pass
 
 
 @check_authentication
-def payments(req):
+def payments(request):
     pass

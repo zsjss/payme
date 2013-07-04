@@ -20,7 +20,7 @@ class ChargeRentCreateView(generic.FormView):
 charge_rent_create = check_authentication(ChargeRentCreateView.as_view())
 
 
-def charge_rent_update(req, profile_id):
+def charge_rent_update(request, profile_id):
     pass
 
 
@@ -37,11 +37,11 @@ class ChargeRentCreateView(generic.FormView):
 charge_renter_add = check_authentication(ChargeRentCreateView.as_view())
 
 
-def charge_renter_confirm(req, profile_id, renter_info_id):
+def charge_renter_confirm(request, profile_id, renter_info_id):
     return utils.render('charge/renter_confirm.html',
                         {'rent_id': profile_id,
                          'renter_id': renter_info_id})
 
 
-def charge_renter_done(req, profile_id, renter_info_id):
+def charge_renter_done(request, profile_id, renter_info_id):
     return utils.render('charge/renter_finish.html', {})

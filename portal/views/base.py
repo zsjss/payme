@@ -22,12 +22,12 @@ def check_authentication(func):
     """The decorator will check username existed in session. If it is continue.
     """
     @functools.wraps(func)
-    def _check_authentication(req, *args, **kwargs):
-        username = req.session.get('username')
+    def _check_authentication(request, *args, **kwargs):
+        username = request.session.get('username')
         if not username:
-            return signin(req, *args, **kwargs)
+            return signin(request, *args, **kwargs)
         else:
-            return func(req, *args, **kwargs)
+            return func(request, *args, **kwargs)
 
     return _check_authentication
 
@@ -68,8 +68,8 @@ signup = SignUp.as_view()
 
 
 @check_authentication
-def portal(req):
-    user = utils.get_user_obj(req)
+def portal(request):
+    user = utils.get_user_obj(request)
     return utils.render('portal.html', {})
 
 
@@ -90,7 +90,7 @@ chargerent = check_authentication(ChargeRent.as_view())
 
 
 @check_authentication
-def logout(req):
-    username = req.session['username']
-    utils.unset_session(req, username)
-    return portal(req)
+def logout(request):
+    username = request.session['username']
+    utils.unset_session(request, username)
+    return portal(request)

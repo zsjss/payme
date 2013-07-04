@@ -13,17 +13,17 @@ def render(template_name, payment):
                               payment)
 
 
-def set_session(req, username):
-    req.session['username'] = username
+def set_session(request, username):
+    request.session['username'] = username
 
 
-def unset_session(req, username):
-    del req.session['username']
+def unset_session(request, username):
+    del request.session['username']
 
 
-def get_user_obj(req):
+def get_user_obj(request):
     """Since the method is invoked after check_authentication(),
     so I assume 'username' always in session.
     """
-    username = req.session.get('username')
+    username = request.session.get('username')
     return models.User.objects.filter(username=username)[0]
