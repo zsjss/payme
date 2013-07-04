@@ -2,6 +2,7 @@
 """
 Database models are defined here.
 """
+from django.forms.models import model_to_dict
 
 from django.db.models import Model
 from django.db.models import IntegerField, CharField, DateTimeField
@@ -11,7 +12,8 @@ from django.contrib import admin
 
 
 class BaseModel(object):
-    pass
+    def as_dict(self):
+        return model_to_dict(self)
 
 
 class User(Model, BaseModel):
