@@ -42,7 +42,7 @@ class LandlordRentProfile(Model, BaseModel):
     """A user who is landlord can have many rent."""
     landlord = ForeignKey(User)
 
-    rent_type = CharField(max_length=2,
+    rent_type = CharField(_('rent_type'), max_length=2,
                                  choices=[('1', _('house')), ('2', _('shop'))])
     room_count = CharField(max_length=2,
                                   choices=[('1', '1'), ('2', '2'),
