@@ -3,12 +3,12 @@
 Database models are defined here.
 """
 from django.forms.models import model_to_dict
-
 from django.db.models import Model
 from django.db.models import IntegerField, CharField, DateTimeField
 from django.db.models import DateField, EmailField, BooleanField
 from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
 
 
 class BaseModel(object):
@@ -43,7 +43,7 @@ class LandlordRentProfile(Model, BaseModel):
     landlord = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[('1', 'house'), ('2', 'shop')])
+                                 choices=[('1', _('house')), ('2', _('shop'))])
     room_count = CharField(max_length=2,
                                   choices=[('1', '1'), ('2', '2'),
                                           ('3', '3'), ('4', '>=4')])

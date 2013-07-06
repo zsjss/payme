@@ -3,3 +3,4 @@
 .venv
 *.pyc
 payme/db.sqlite
+*.mo
