@@ -5,6 +5,8 @@ The account views are here.
 
 from portal.views import utils
 from portal.views.base import require_auth
+from portal.models import User
+from portal.models import Message, BankCard
 
 
 @require_auth
@@ -19,7 +21,11 @@ def vip(request):
 
 @require_auth
 def cardmanage(request):
-    pass
+    user = utils.get_user_obj(request)
+    #user_id = user.id
+    #cards = BankCard.objects.filter(owner_id = user_id)
+    cards = user.bankcard_set.all()
+    return utils.render('bankcards.html',{'cards': cards})
 
 
 @require_auth
@@ -34,7 +40,11 @@ def safe(request):
 
 @require_auth
 def messges(request):
-    pass
+    user = utils.get_user_obj(request)
+    #user_id = user.id
+    #message = Message.objects.filter(owner_id = user_id)
+    message = user.message_set.all()
+    return utils.render('account_messages.html',{'message': message})
 
 
 @require_auth

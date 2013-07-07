@@ -1,0 +1,74 @@
+{% extends "portal/_base_account.html" %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rent</h3>
+        <li>
+          <a  href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a  href="#">messages</a>
+        </li>
+        <li>
+          <a class="selected" href="{% url 'account_cardmamage' %}">Bank cards</a>
+        </li>
+        <li>
+          <a href="#">info</a>
+        </li>
+      </ul>
+    </div>
+           
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Bank Cards</h3>
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> BankName </th>
+                <th> BankUserName </th>
+                <th> BankNumber </th>
+                <th> BankLocation </th>
+                <th> Opteration </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% if cards %}
+                {% for card in cards %}
+                    
+              <tr>
+                
+                <td> {{ card.id}} </td>
+                <td> {{ card.bank_name }} </td>
+                <td> {{ card.card_user_name }}</td>
+                <td> {{ card.card_no }}</td>
+                <td> {{ card.card_loc }}</td>
+                
+                
+                <td> <a class="btn btn-small">delete</a></td>
+              </tr>
+              
+               {% endfor %}
+               {% endif %}
+            </tbody>
+          </table>
+        </div>
+        
+        
+        
+    </div>
+    </div>
+</div>
+{% endblock %}
