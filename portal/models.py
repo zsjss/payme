@@ -62,6 +62,8 @@ class LandlordRentProfile(Model, BaseModel):
     payee_bank_province = CharField(max_length=50)
     payee_bank_city = CharField(max_length=50)
 
+    created_at = DateTimeField(auto_now=True)
+
 
 class LandlordRenterInfo(Model, BaseModel):
     """A Landlord can have many renter. Each renter pay difference expense."""
