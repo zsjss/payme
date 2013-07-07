@@ -2,6 +2,8 @@
 """
 Database models are defined here.
 """
+from uuid import uuid4
+
 from django.forms.models import model_to_dict
 from django.db.models import Model
 from django.db.models import IntegerField, CharField, DateTimeField
@@ -100,7 +102,6 @@ class LandlordRentProfile(Model, BaseModel):
         return total
 
 
-
 class LandlordRenterInfo(Model, BaseModel):
     """A Landlord can have many renter. Each renter pay difference expense."""
     rent = ForeignKey(LandlordRentProfile)
@@ -125,6 +126,7 @@ class LandlordRenterInfo(Model, BaseModel):
     created_at = DateTimeField(auto_now=True)
 
     state = CharField(max_length=2, choices=STATES.items())
+    uuid = CharField(max_length=36, default=uuid4)
 
     def canceled(self):
         return self.state == '5'
@@ -165,6 +167,8 @@ class RenterRentProfile(Model, BaseModel):
     payee_phone = CharField(max_length=30)
 
     created_at = DateTimeField(auto_now=True)
+
+    uuid = CharField(max_length=36, default=uuid4)
 
 
 class RenterOption(Model, BaseModel):
