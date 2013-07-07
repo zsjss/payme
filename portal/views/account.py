@@ -21,7 +21,11 @@ def vip(request):
 
 @require_auth
 def cardmanage(request):
-    pass
+    username = request.session.get('username')
+    user = User.objects.filter(username = username)
+    user_id = user[0].id
+    cards = BankCard.objects.filter(owner_id = user_id)
+    return utils.render('bankcards.html',{'cards': cards})
 
 
 @require_auth
