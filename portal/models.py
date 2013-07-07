@@ -64,6 +64,11 @@ class LandlordRentProfile(Model, BaseModel):
 
     created_at = DateTimeField(auto_now=True)
 
+    def pretty_name(self):
+        """Return a beatifull name like: cellname|1 room| hight| 123m2"""
+        return '|'.join(self.loc_cell, self.room_count,
+                        self.deck, self.acreage)
+
 
 class LandlordRenterInfo(Model, BaseModel):
     """A Landlord can have many renter. Each renter pay difference expense."""
