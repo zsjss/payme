@@ -93,8 +93,10 @@ class LandlordRenterInfo(Model, BaseModel):
     total_expense = IntegerField()
     created_at = DateTimeField(auto_now=True)
 
-    state = CharField(max_length=2, choices=[(1, 1), (2, 2), (3, 3),
-                                             (4, 4), (5, 5)])
+    state = CharField(max_length=2, choices=[('1', 'NoPay'), ('2', 'Verify'),
+                                             ('3', 'VerifyPassed'),
+                                             ('4', 'VerifyFailed'),
+                                             ('5', 'Canceled')])
 
 
 class RenterRentProfile(Model, BaseModel):
