@@ -45,4 +45,3 @@ class UrlTestCase(TestCase):
             self.assertEqual(200, resp.status_code,
                              '%s != %s, path: %s, %s' %
                              (200, resp.status_code, url, resp.content))
-

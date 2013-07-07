@@ -1,0 +1,109 @@
+{% extends "portal/_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <div class="orangebox">
+    <div class="orangebox-inner">
+      <p>{% trans 'order number' %}: {{ renter.uuid }}  </p>
+      <p>{% trans 'state' %}: {{renter.state_str }} </p>
+      <p>
+        <a class="btn" href="{% url 'pay_rent_payit' renter.uuid %}">{% trans 'pay it' %}</a>
+        <a class="btn" href="{% url 'pay_rent_cancel' renter.uuid %}">{% trans 'cancel' %}</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="graybox">
+    <div class="graybox-inner">
+      <h3>{% trans 'Order Info' %}</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{% trans 'Name' %}</th>
+            <th>{% trans 'Payee' %}</th>
+            <th>{% trans 'total expense' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ renter.rent.pretty_name }}, {{ renter.pay_months }}{% trans 'months' %}</td>
+            <td>{{ renter.rent.payee_name }}, {{renter.rent.payee_bank_card }}</td>
+            <td>{{ renter.total_expense }} {% trans 'Yuan' %}</td>
+          </tr>
+          <tr>
+            <th>{% trans 'detail' %}</th>
+            <td colspan="2">
+              {% trans 'pay' %}{{ renter.pay_months }} {% trans 'months rent'%}|
+              {% trans 'total expense'%} {{ renter.total_expense }} |
+              {{ renter.pay_begin_date }} {% trans 'to' %} {{ renter.pay_end_date }}  |
+              {% trans 'deposit' %}: {{ renter.deposit }} |
+              {% trans 'service expense' %}: {{ renter.service_expense }}
+            </td>
+          </tr>
+          <tr>
+            <th>{% trans 'Created at' %}</th>
+            <td>{{ renter.created_at }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="graybox">
+    <div class="graybox-inner">
+      <h3>{% trans 'House info' %}</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>{% trans 'month expense' %}</th>
+          <td>{{ renter.rent_expense }}</td>
+
+          <th>{% trans 'landlord deposit' %}</th>
+          <td>{{ renter.deposit }}</td>
+        </tr>
+        <tr>
+          <th>{% trans 'room count' %}</th>
+          <td>{{ renter.rent.room_count }}</td>
+          <th>{% trans 'deck' %}</th>
+          <td>{{ renter.rent.deck }}</td>
+        </tr>
+        <tr>
+          <th>{% trans 'payment type' %}</th>
+          <td>{{ renter.rent_pay_model }}</td>
+          <td colspan="2"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="graybox">
+    <div class="graybox-inner">
+      <h3>{% trans 'Payee info' %}</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>{% trans 'landlord name' %}</th>
+          <td>{{ renter.rent.landlord.username }}</td>
+        </tr>
+        <tr>
+          <th>{% trans 'bank location' %}</th>
+          <td>{{ renter.rent.payee_bank_province }} {{ renter.rent.payee_bank_city }}</td>
+        </tr>
+        <tr>
+          <th>{% trans 'bank name' %}</th>
+          <td>{{ renter.rent.payee_bank}}</td>
+        </tr>
+        <tr>
+          <th>{% trans 'bank card' %}</th>
+          <td>{{ renter.rent.payee_bank_card }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="center">
+    <a class="btn btn-primary btn-big" href="{% url 'account_payrent_list' %}">{% trans 'Back to list' %}</a>
+  </div>
+  <hr />
+</div>
+
+{% endblock %}

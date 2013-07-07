@@ -30,9 +30,17 @@ def account_chargeent_list(request):
 @require_auth
 def account_payrent_list(request):
     user = utils.get_user_obj(request)
-    pay_rents = user.renterrentprofile_set.all()
+
+    renters = []
+    passive_renters = user.landlordrenterinfo_set.all()
+    active_renters = user.renterrentprofile_set.all()
+
+    renters.extend(passive_renters)
+    renters.extend(active_renters)
+    renters.sort(key=lambda x: x.created_at)
+    renters.reverse()
     return utils.render('account/payrentlist.html',
-                        {'pay_rents': pay_rents})
+                        {'renters': renters})
 
 
 @require_auth

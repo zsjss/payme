@@ -2,6 +2,7 @@
 """
 Database models are defined here.
 """
+import datetime
 from uuid import uuid4
 
 from django.forms.models import model_to_dict
@@ -133,6 +134,9 @@ class LandlordRenterInfo(Model, BaseModel):
 
     def state_str(self):
         return STATES[self.state]
+
+    def pay_end_date(self):
+        return self.pay_begin_date + datetime.timedelta(3 * 365 / 12)
 
 
 class RenterRentProfile(Model, BaseModel):

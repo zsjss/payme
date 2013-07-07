@@ -36,6 +36,12 @@ urlpatterns += patterns('portal.views.pay_rent',
                 'pay_rent_option_create', name='pay_rent_option_create'),
     url(r'^payrent/(\w+)/optionedit/',
                 'pay_rent_option_update', name='pay_rent_option_update'),
+    url(r'^payrent/(.+)/onlinepay/',
+                'pay_rent_payit', name='pay_rent_payit'),
+    url(r'^payrent/(.+)/detail/',
+                'pay_rent_detail', name='pay_rent_detail'),
+    url(r'^payrent/(.+)/cancel/',
+                'pay_rent_cancel', name='pay_rent_cancel'),
 )
 
 urlpatterns += patterns('portal.views.account',
