@@ -1,0 +1,69 @@
+{% extends "portal/_base_account.html" %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rent</h3>
+        <li>
+          <a  href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a class="selected" href="{% url 'account_messges' %}">messages</a>
+        </li>
+        <li>
+          <a href="#">Bank cards</a>
+        </li>
+        <li>
+          <a href="#">info</a>
+        </li>
+      </ul>
+    </div>
+           
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Message</h3>
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> Content </th>
+                <th> Time </th>
+                <th>  </th>
+                <th> Operation </th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% if message %}
+                {% for m in message %}
+                    
+              <tr>
+                
+                <td> {{ m.id }} </td>
+                <td> {{ m.content }} </td>
+                <td> {{ m.created_at }}</td>
+                <td>  </td>
+                <td> <a class="btn btn-small">delete</a></td>
+              </tr>
+              
+               {% endfor %}
+               {% endif %}
+            </tbody>
+          </table>
+        </div>
+        
+        
+        
+    </div>
+    </div>
+</div>
+{% endblock %}
