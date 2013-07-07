@@ -21,10 +21,10 @@ def vip(request):
 
 @require_auth
 def cardmanage(request):
-    username = request.session.get('username')
-    user = User.objects.filter(username = username)
-    user_id = user[0].id
-    cards = BankCard.objects.filter(owner_id = user_id)
+    user = utils.get_user_obj(request)
+    #user_id = user.id
+    #cards = BankCard.objects.filter(owner_id = user_id)
+    cards = user.bankcard_set.all()
     return utils.render('bankcards.html',{'cards': cards})
 
 
@@ -40,10 +40,10 @@ def safe(request):
 
 @require_auth
 def messges(request):
-    username = request.session.get('username')
-    user = User.objects.filter(username = username)
-    user_id = user[0].id
-    message = Message.objects.filter(owner_id = user_id)
+    user = utils.get_user_obj(request)
+    #user_id = user.id
+    #message = Message.objects.filter(owner_id = user_id)
+    message = user.message_set.all()
     return utils.render('account_messages.html',{'message': message})
 
 
