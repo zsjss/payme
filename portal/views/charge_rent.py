@@ -41,12 +41,15 @@ class ChargeRentUpdateView(generic.FormView):
         x = get_object_or_404(models.LandlordRentProfile, pk=rent_id)
         x.update_from_dict(form.cleaned_data)
         x.save()
-        return redirect('portal')
+        return redirect('charge_rent_detail', x.id)
 
 charge_rent_update = require_auth(ChargeRentUpdateView.as_view())
 
 
-class ChargeRentCreateView(generic.FormView):
+class ChargeRenterCreateView(generic.FormView):
+    """
+    :rent_id: charge rent profile id.
+    """
 
     form_class = forms.ChargeRenterForm
     template_name = 'portal/charge/renter_add.html'
@@ -54,19 +57,43 @@ class ChargeRentCreateView(generic.FormView):
     def form_valid(self, form):
         rent_id = self.args[0]
         assert rent_id
-        #TODO: save renter info into databse.
-        return redirect('charge_renter_confirm', 'hehe', 'haha')
+        rent = get_object_or_404(models.LandlordRentProfile, pk=rent_id)
 
-charge_renter_add = require_auth(ChargeRentCreateView.as_view())
+        renter = models.LandlordRenterInfo(**form.cleaned_data)
+        renter.rent = rent
+        #TODO: Calucate service expense
+        renter.service_expense = 0
+        renter.total_expense = renter.rent_months * renter.rent_expense
+        renter.state = '0'
+        renter.save()
+        return redirect('charge_renter_confirm', rent.id, renter.id)
+
+charge_renter_add = require_auth(ChargeRenterCreateView.as_view())
 
 
-def charge_renter_confirm(request, profile_id, renter_info_id):
-    #TODO:
+def charge_rent_detail(request, profile_id):
+    rent = get_object_or_404(models.LandlordRentProfile, pk=profile_id)
+    return utils.render('charge/detail.html', {'rent': rent})
+
+
+def charge_renter_confirm(request, rent_id, renter_id):
+    renter = get_object_or_404(models.LandlordRenterInfo,
+                               pk=renter_id, rent_id=rent_id)
     return utils.render('charge/renter_confirm.html',
-                        {'rent_id': profile_id,
-                         'renter_id': renter_info_id})
+                        {'renter': renter})
 
 
-def charge_renter_done(request, profile_id, renter_info_id):
-    #TODO:
+def charge_renter_done(request, rent_id, renter_id):
+    renter = get_object_or_404(models.LandlordRenterInfo,
+                               pk=renter_id, rent_id=rent_id)
+    renter.state = '1'
+    renter.save()
     return utils.render('charge/renter_finish.html', {})
+
+
+def charge_renter_cancel(request, rent_id, renter_id):
+    renter = get_object_or_404(models.LandlordRenterInfo,
+                               pk=renter_id, rent_id=rent_id)
+    renter.state = '5'
+    renter.save()
+    return redirect('charge_rent_detail', rent_id)

@@ -1,19 +1,20 @@
 {% extends "portal/_base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
   <div class="row">
     <div class="span2 graybox" id="sidebar">
       <ul class="nav graybox-inner">
-        <h3>My rents</h3>
+          <h3>{% trans 'My rents' %}</h3>
         <li>
-          <a class="selected" href="#">home</a>
+            <a class="selected" href="#">{% trans 'Mine' %}</a>
         </li>
         <li>
-          <a href="#">pay order</a>
+            <a href="{% url 'account_payrent_list' %}">{% trans 'pay rent list' %}</a>
         </li>
         <li>
-          <a href="#">charge order</a>
+            <a href="{% url 'account_chargerent_list' %}">{% trans 'charge rent list' %}</a>
         </li>
         <li>
           <a href="#">messages</a>
@@ -22,11 +23,12 @@
           <a href="#">Bank cards</a>
         </li>
       </ul>
-    </div>
+  </div> <!-- sidebar -->
 
     <div class="span10" id="content">
       <div class="graybox">
         <div class="graybox-inner">
+          {% block main %}
           <h3>Girls' Generation</h3>
           <table cellspacing="0" class="table table-striped">
             <thead>
@@ -55,6 +57,7 @@
               </tr>
             </tbody>
           </table>
+          {% endblock %}
         </div>
       </div>
     </div>

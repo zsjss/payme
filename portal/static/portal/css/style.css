@@ -73,3 +73,14 @@
 .formbox h2{
   padding-left: 80px;
 }
+
+.orangebox {
+  background-color: #FFFFEE;
+  border: 1px solid #FFD0A8;
+  margin-bottom: 20px;
+}
+
+.orangebox-inner{
+  border: 1px solid #FFF0A8;
+  padding: 15px;
+}

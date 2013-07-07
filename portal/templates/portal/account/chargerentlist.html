@@ -1,0 +1,32 @@
+{% extends 'portal/account/_base.html' %}
+{% load i18n %}
+
+{% block main %}
+<h3> {% trans 'Charge Rents' %} </h3>
+<table cellspacing="0" class="table table-striped">
+  <thead>
+    <tr>
+      <th> {% trans 'Create Time' %} </th>
+      <th> {% trans 'Description' %} </th>
+      <th> {% trans 'Renter Pay State' %} </th>
+      <th> {% trans 'Actions' %} </th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for rent in charge_rents %}
+    <tr>
+      <td> {{ rent.created_at }} </td>
+      <td> {{ rent.pretty_name }} </td>
+      <td> {% trans 'total' %}{{ rent.renter_count }}| {% trans 'Paied' %} {{ rent.renter_paied_count }}</td>
+      <td> <a class="" href="{% url 'charge_rent_detail' rent.id %}">{% trans 'Detail' %}</a> </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4">
+        {% trans 'No records' %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

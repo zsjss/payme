@@ -1,0 +1,70 @@
+{% extends "portal/_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <div class="orangebox">
+    <div class="orangebox-inner">
+      <p>
+        {% trans 'house info' %} {{ rent.pretty_name }}
+      </p>
+      <p>
+        {% trans 'Total renter' %}: {{ rent.renter_count }}
+      </p>
+      <p>
+        {% trans 'total expense' %}: {{ rent.total_expense }}
+      </p>
+      <p>
+        {% trans 'Pay to' %}: {{ rent.payee_name }} ({{ rent.landlord.phone }})
+      </p>
+      <p>
+        {% trans 'Bank' %}: {{rent.payee_bank}} {{rent.payee_bank_card}}
+      </p>
+
+      <p>
+        <a class="btn btn-primary" href="{% url 'charge_rent_update' rent.id %}">{% trans 'Edit rent' %}</a>
+        <a class="btn btn-primary" href="{% url 'charge_renter_add' rent.id %}">{% trans 'add renter' %}</a>
+      </p>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="graybox">
+    <div class="graybox-inner">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th> {% trans 'created at' %} </th>
+            <th> {% trans 'renter name' %} </th>
+            <th> {% trans 'payment info' %} </th>
+            <th> {% trans 'total expense' %} </th>
+            <th> {% trans 'state' %}</th>
+            <th> {% trans 'action' %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for renter in rent.landlordrenterinfo_set.all %}
+          <tr>
+            <td> {{ renter.created_at }} </td>
+            <td> {{ renter.renter_name }} </td>
+            <td> {{ renter.pay_months}}{% trans 'month' %}, {{ renter.pay_begin_date }} </td>
+            <td> {{ renter.total_expense }} </td>
+            <td> {{ renter.state_str }} </td>
+            {% if renter.canceled %}
+            <td> - </td>
+            {% else %}
+            <td> <a href="{% url 'charge_renter_cancel' rent.id renter.id %}">{% trans 'cancel' %}</a> </td>
+            {% endif %}
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6">{% trans 'No record' %}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

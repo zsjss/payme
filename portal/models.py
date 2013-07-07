@@ -11,6 +11,16 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 
 
+STATES = dict((
+    ('0', _('NoConfirm')),
+    ('1', _('NoPay')),
+    ('2', _('Verify')),
+    ('3', _('VerifyPassed')),
+    ('4', _('VerifyFailed')),
+    ('5', _('Canceled'))
+))
+
+
 class BaseModel(object):
     def as_dict(self):
         return model_to_dict(self)
@@ -31,6 +41,11 @@ class User(Model, BaseModel):
     avater = CharField(max_length=255)
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
+
+    created_at = DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.username
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -66,8 +81,24 @@ class LandlordRentProfile(Model, BaseModel):
 
     def pretty_name(self):
         """Return a beatifull name like: cellname|1 room| hight| 123m2"""
-        return '|'.join(self.loc_cell, self.room_count,
-                        self.deck, self.acreage)
+        return '|'.join([str(self.loc_cell), str(self.room_count),
+                        str(self.deck), str(self.acreage)])
+
+    def uncanceled_renters(self):
+        return self.landlordrenterinfo_set.filter(state__lt=5)
+
+    def renter_count(self):
+        return self.uncanceled_renters().count()
+
+    def renter_paied_count(self):
+        return self.landlordrenterinfo_set.filter(state__gt=2).count()
+
+    def total_expense(self):
+        total = 0
+        for renter in self.uncanceled_renters():
+            total += renter.total_expense
+        return total
+
 
 
 class LandlordRenterInfo(Model, BaseModel):
@@ -76,15 +107,15 @@ class LandlordRenterInfo(Model, BaseModel):
     renter = ForeignKey(User)
 
     renter_name = CharField(max_length=255)
-    rent_expense = IntegerField()
-    rent_months = IntegerField()
+    rent_expense = IntegerField(help_text=_('yuan/month'))
+    rent_months = IntegerField(help_text=_('months'))
     rent_begin_date = DateField()
     rent_pay_model = CharField(max_length=2, choices=[
         ('1', 'one month'), ('2', 'three month'),
         ('4', 'six month'), ('8', 'twenty month')])
     pay_months = IntegerField()
     pay_begin_date = DateField()
-    deposit = IntegerField()
+    deposit = IntegerField(help_text=_('Yuan'))
     arrive_type = CharField(max_length=2, choices=[
         ('1', 'next day'), ('2', 'two hours')])
     i_pay_it = BooleanField()
@@ -93,10 +124,13 @@ class LandlordRenterInfo(Model, BaseModel):
     total_expense = IntegerField()
     created_at = DateTimeField(auto_now=True)
 
-    state = CharField(max_length=2, choices=[('1', 'NoPay'), ('2', 'Verify'),
-                                             ('3', 'VerifyPassed'),
-                                             ('4', 'VerifyFailed'),
-                                             ('5', 'Canceled')])
+    state = CharField(max_length=2, choices=STATES.items())
+
+    def canceled(self):
+        return self.state == '5'
+
+    def state_str(self):
+        return STATES[self.state]
 
 
 class RenterRentProfile(Model, BaseModel):
@@ -130,6 +164,8 @@ class RenterRentProfile(Model, BaseModel):
     payee_bank_city = CharField(max_length=50)
     payee_phone = CharField(max_length=30)
 
+    created_at = DateTimeField(auto_now=True)
+
 
 class RenterOption(Model, BaseModel):
     """A RenterRentProfile can only have one RenterOption"""
@@ -147,8 +183,7 @@ class RenterOption(Model, BaseModel):
     service_expense = IntegerField()
     created_at = DateTimeField(auto_now=True)
 
-    state = CharField(max_length=2, choices=[(1, 1), (2, 2), (3, 3),
-                                             (4, 4), (5, 5)])
+    state = CharField(max_length=2, choices=STATES.items())
 
     confirmed = BooleanField()
 
@@ -170,3 +205,5 @@ class BankCard(Model, BaseModel):
     card_loc = CharField(max_length=255)
 
     deleted = BooleanField()
+
+    created_at = DateTimeField(auto_now=True)

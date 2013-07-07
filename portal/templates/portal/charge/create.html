@@ -1,4 +1,5 @@
 {% extends "portal/_base.html" %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
@@ -8,7 +9,7 @@
       {% include "portal/common/_form_fields.html" %}
       <div class="controls-group">
         <div class="controls">
-          <input class="btn btn-primary" type="submit" value="Next"></input>
+            <input class="btn btn-primary" type="submit" value="{% trans 'OK' %}"></input>
         </div>
       </div>
     </div>

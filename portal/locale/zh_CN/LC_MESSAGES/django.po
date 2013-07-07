@@ -36,12 +36,12 @@ msgstr "租房包"
 
 #: templates/portal/_base.html:27
 msgid "charge rent"
-msgstr "交钱"
+msgstr "收房租"
 
 #: templates/portal/_base.html:28
 #, fuzzy
 msgid "pay rent"
-msgstr "付钱"
+msgstr "付房租"
 
 #: templates/portal/_base.html:29
 msgid "SignIn"
