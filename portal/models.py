@@ -53,6 +53,20 @@ class User(Model, BaseModel):
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username']
+    
+    
+    
+class Merchant(Model, BaseModel):
+    username = CharField(max_length=255, db_index=True, unique=True)
+    password = CharField(max_length=255)
+    real_name = CharField(max_length=255)
+    phone = CharField(max_length=20, db_index=True)
+    email = EmailField()
+    
+    
+
+class MerchantAdmin(admin.ModelAdmin):
+    list_display = ['username']
 
 
 ##################################
