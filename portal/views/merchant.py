@@ -14,6 +14,7 @@ from django.views import generic
 from portal import forms
 from portal import models
 from portal.views import utils
+from portal.views.base import require_auth
 
 LOG = logging.getLogger(__name__)
 
@@ -29,7 +30,7 @@ class MerchSignIn(generic.FormView):
         if users and users[0].password == data['password']:
             LOG.debug('%s login success.' % users)
             utils.set_session(self.request, users[0].username)
-            return utils.render('merchant/m_base.html', {})
+            return utils.render('merchant/house.html', {})
         else:
             LOG.debug('%s login failed.' % users)
             return utils.render('merchant/m_sign_in.html',
@@ -48,6 +49,24 @@ class MerchSignUp(generic.FormView):
         data = form.cleaned_data
         user = models.Merchant(**data)
         user.save()
-        return utils.render('merchant/m_base.html', {})
+        return utils.render('merchant/house.html', {})
     
 merchsignup = MerchSignUp.as_view()
+
+
+class AddHouse(generic.FormView):
+    
+    template_name = 'portal/merchant/addhouse.html'
+    form_class = forms.AddHouseForm
+    
+    def form_valid(self, form):
+        data = form.cleaned_data
+        house = models.House(**data)
+        house.save()
+        return utils.render('merchant/house.html', {})
+
+addhouse = AddHouse.as_view()
+    
+
+
+

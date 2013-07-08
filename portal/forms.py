@@ -54,3 +54,11 @@ class ChargeRenterForm(forms.ModelForm):
         model = models.LandlordRenterInfo
         exclude = ('rent', 'service_expense', 'total_expense',
                    'state')
+        
+        
+        
+class AddHouseForm(forms.ModelForm):
+    class Meta:
+        model = models.House
+    
+

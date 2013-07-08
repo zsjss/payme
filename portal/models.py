@@ -109,7 +109,7 @@ class RenterRentProfile(Model, BaseModel):
     renter = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[(1, 'house'), (2, 'shop')])
+                                 choices=[(1, '押金house'), (2, 'shop')])
     room_count = CharField(max_length=2,
                                   choices=[(1, '1'), (2, '2'),
                                           (3, '3'), (4, '>=4')])
@@ -175,3 +175,28 @@ class BankCard(Model, BaseModel):
     card_loc = CharField(max_length=255)
 
     deleted = BooleanField()
+    
+    
+####################################
+class House(Model, BaseModel):
+    """Merchant have many houses to renter"""
+    landlord = CharField(max_length=255)
+    landphone = CharField(max_length=20)
+    house_type = CharField(max_length=255)
+    house_address = CharField(max_length=255)
+    house_square = CharField(max_length=255)
+    house_decoration = CharField(max_length=255)
+    house_apartment = CharField(max_length=255)
+    house_twords = CharField(max_length=20)
+    house_floor = CharField(max_length=255)
+    house_year = CharField(max_length=255)
+    house_set = CharField(max_length=255)
+    house_money = CharField(max_length=255)
+    pay_type = CharField(max_length=255)
+    house_deposit = CharField(max_length=255)
+    rent_time = CharField(max_length=255)
+    
+    
+    
+
+
