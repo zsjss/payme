@@ -25,7 +25,7 @@ def cardmanage(request):
     #user_id = user.id
     #cards = BankCard.objects.filter(owner_id = user_id)
     cards = user.bankcard_set.all()
-    return utils.render('bankcards.html',{'cards': cards})
+    return utils.render('account/bankcards.html',{'cards': cards})
 
 
 @require_auth
@@ -39,12 +39,12 @@ def safe(request):
 
 
 @require_auth
-def messges(request):
+def messages(request):
     user = utils.get_user_obj(request)
     #user_id = user.id
     #message = Message.objects.filter(owner_id = user_id)
     message = user.message_set.all()
-    return utils.render('account_messages.html',{'message': message})
+    return utils.render('account/account_messages.html',{'message': message})
 
 
 @require_auth

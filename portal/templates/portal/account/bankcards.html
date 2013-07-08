@@ -1,4 +1,5 @@
 {% extends "portal/_base_account.html" %}
+{% load i18n %}
 
 {% block content %} 
 <div class="container">
@@ -16,10 +17,10 @@
           <a href="#">charge order</a>
         </li>
         <li>
-          <a class="selected" href="{% url 'account_messges' %}">messages</a>
+          <a  href="#">messages</a>
         </li>
         <li>
-          <a href="#">Bank cards</a>
+          <a class="selected" href="{% url 'account_cardmamage' %}">{% trans 'Bank cards' %}</a>
         </li>
         <li>
           <a href="#">info</a>
@@ -30,28 +31,33 @@
     <div class="span10" id="content">
       <div class="graybox">
         <div class="graybox-inner">
-          <h3>Message</h3>
+          <h3>Bank Cards</h3>
           <table cellspacing="0" class="table table-striped">
             <thead>
               <tr>
                 <th> # </th>
-                <th> Content </th>
-                <th> Time </th>
-                <th>  </th>
-                <th> Operation </th>
+                <th> BankName </th>
+                <th> BankUserName </th>
+                <th> BankNumber </th>
+                <th> BankLocation </th>
+                <th> Opteration </th>
+                
               </tr>
             </thead>
             <tbody>
                 
-                {% if message %}
-                {% for m in message %}
+                {% if cards %}
+                {% for card in cards %}
                     
               <tr>
                 
-                <td> {{ m.id }} </td>
-                <td> {{ m.content }} </td>
-                <td> {{ m.created_at }}</td>
-                <td>  </td>
+                <td> {{ card.id}} </td>
+                <td> {{ card.bank_name }} </td>
+                <td> {{ card.card_user_name }}</td>
+                <td> {{ card.card_no }}</td>
+                <td> {{ card.card_loc }}</td>
+                
+                
                 <td> <a class="btn btn-small">delete</a></td>
               </tr>
               
