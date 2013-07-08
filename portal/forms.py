@@ -27,12 +27,21 @@ class SignUpForm(forms.Form):
     location_city = forms.CharField()
     phone = forms.CharField()
     email = forms.EmailField()
+    
+    
+class MerchSignUpForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    real_name = forms.CharField()
+    phone = forms.CharField()
+    email = forms.EmailField()
+
 
 
 class SignInForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
-
+    
 
 class ChargeRentForm(forms.ModelForm):
     class Meta:

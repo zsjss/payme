@@ -17,18 +17,16 @@
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="{% url 'portal' %}">ZuFangBao</a>
+          <a class="brand" href="#">ZuFangBao Merchant</a>
           <ul class="nav">
-            <li class="active"> <a href="#">nothing</a> </li>
-            <li> <a href="{% url 'merchant_signin' %}">{% trans 'Merchant' %}</a> </li>
+            <li > <a href="{% url 'signin' %}">{% trans 'Personal_login'%}</a> </li>
+            <li class="active"> <a href="#">{% trans 'Merchant' %}</a> </li>
           </ul> <!-- nav -->
 
           <ul class="nav pull-right">
-            <li><a href="{% url 'charge_rent_create' %}">{% trans 'charge rent' %}</a></li>
-            <li><a href="{% url 'pay_rent_profile_create' %}">{% trans 'pay rent' %}</a></li>
-            <li><a href="{% url 'signin' %}">{% trans 'SignIn' %}</a></li>
-            <li><a href="{% url 'signup' %}">{% trans 'SignUp' %}</a></li>
-            <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+            <li><a href="{% url 'merchant_signin' %}">{% trans 'M_SignIn' %}</a></li>
+            <li><a href="{% url 'merchant_signup' %}">{% trans 'M_SignUp' %}</a></li>
+            <li><a href="{% url 'logout' %}">{% trans 'M_Logout' %}</a></li>
           </ul>
         </div>
       </div>
