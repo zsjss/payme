@@ -7,9 +7,7 @@ urlpatterns = patterns('portal.views.base',
     url(r'^$', 'portal', name='portal'),
     url(r'^signin/', 'signin', name='signin'),
     url(r'^signup/', 'signup', name='signup'),
-    url(r'^logout/', 'logout', name='logout'),
-    url(r'^merchant/signup', 'merchsignup', name='merchant_signup'),
-    url(r'^merchant/signin', 'merchsignin', name='merchant_signin'),
+    url(r'^logout/', 'logout', name='logout'),   
 )
 
 urlpatterns += patterns('portal.views.charge_rent',
@@ -43,6 +41,10 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/safe/$', 'safe', name='account_safe'),
     url(r'^account/info/$', 'info', name='account_info'),
     url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
-    url(r'^account/vip/$', 'vip', name='account_vip'),
-    
+    url(r'^account/vip/$', 'vip', name='account_vip'),  
+)
+
+urlpatterns += patterns('portal.views.merchant',
+    url(r'^merchant/signup/', 'merchsignup', name='merchant_signup'),
+    url(r'^merchant/signin/', 'merchsignin', name='merchant_signin'),
 )

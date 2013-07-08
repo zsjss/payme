@@ -53,27 +53,6 @@ class SignIn(generic.FormView):
 signin = SignIn.as_view()
 
 
-class MerchSignIn(generic.FormView):
-    
-    form_class = forms.SignInForm
-    template_name = 'portal/merchant/m_sign_in.html'
-    
-    def form_valid(self, form):
-        data = form.cleaned_data
-        users = models.Merchant.objects.filter(username=data['username'])
-        if users and users[0].password == data['password']:
-            LOG.debug('%s login success.' % users)
-            utils.set_session(self.request, users[0].username)
-            return utils.render('merchant/m_base.html', {})
-        else:
-            LOG.debug('%s login failed.' % users)
-            return utils.render('merchant/m_sign_in.html',
-                                {'error': 'Username or password is wrong!',
-                                 'form':form})
-    
-merchsignin = MerchSignIn.as_view()
-
-
 class SignUp(generic.FormView):
 
     template_name = 'portal/sign_up.html'
@@ -86,19 +65,6 @@ class SignUp(generic.FormView):
         return utils.render('portal.html', {})
 
 signup = SignUp.as_view()
-
-
-class MerchSignUp(generic.FormView):
-    template_name = 'portal/merchant/m_sign_up.html'
-    form_class = forms.MerchSignUpForm
-    
-    def form_valid(self, form):
-        data = form.cleaned_data
-        user = models.Merchant(**data)
-        user.save()
-        return utils.render('merchant/m_base.html', {})
-    
-merchsignup = MerchSignUp.as_view()
 
 
 @require_auth
