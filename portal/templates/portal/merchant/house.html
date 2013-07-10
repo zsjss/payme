@@ -8,21 +8,73 @@
       <ul class="nav graybox-inner">
         <h3>My rent</h3>
         <li>
-          <a  href="#">home</a>
+          <a  href="#"></a>
         </li>
         <li>
-          <a href="#">order manager</a>
+          <a class="selected" href="{% url 'merchant_housemanage' %}">{% trans 'HousesManage'%}</a>
         </li>
         
         <li>
-          <a class="selected" href="{% url 'merchant_addhouse' %}">{% trans 'Add House' %}</a>
+          <a  href="{% url 'merchant_addhouse' %}">{% trans 'Add House' %}</a>
         </li>
         <li>
-          <a href="#">info</a>
+          <a href="#"></a>
         </li>
       </ul>
     </div>
 
+
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>HouseManage</h3>
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> CreatedTime </th>
+                <th> HouseInfo </th>
+                <th>      </th>
+                <th>      </th>
+                <th> Landlord</th>
+                <th>      </th>
+                <th>      </th>
+                <th> RenterInfo </th>
+                <th>      </th>
+                <th>      </th>
+                <th> Operation </th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% if house %}
+                {% for h in house %}
+                    
+              <tr>
+                
+                <td> {{ h.id }} </td>
+                <td> {{ h.created_at }} </td>
+                <td> {{ h.house_type }},{{ h.house_address }},{{ h.house_square }}</td>
+                <td>      </td>
+                <td>      </td>
+                <td> {{ h.landlord }}</td>
+                <td>      </td>
+                <td>      </td>
+                <td> {{ h.house_money}},{{ h.rent_time }}</td>
+                <td>      </td>
+                <td>      </td>
+                <td> <a class="btn btn-small">delete</a></td>
+              </tr>
+              
+               {% endfor %}
+               {% endif %}
+            </tbody>
+          </table>
+        </div>
+        
+        
+        
+    </div>
     
   </div>
 </div>

@@ -19,6 +19,20 @@ from portal.views.base import require_auth
 LOG = logging.getLogger(__name__)
 
 
+def mer_require_auth(func):
+    """The decorator will check username existed in session. If it is continue.
+    """
+    @functools.wraps(func)
+    def _mer_require_auth(request, *args, **kwargs):
+        username = request.session.get('username')
+        if not username:
+            return merchsignin(request, *args, **kwargs)
+        else:
+            return func(request, *args, **kwargs)
+
+    return _mer_require_auth
+
+
 class MerchSignIn(generic.FormView):
     
     form_class = forms.SignInForm
@@ -60,13 +74,23 @@ class AddHouse(generic.FormView):
     form_class = forms.AddHouseForm
     
     def form_valid(self, form):
-        data = form.cleaned_data
-        house = models.House(**data)
-        house.save()
-        return utils.render('merchant/house.html', {})
+        merchant = utils.get_merchant_obj(self.request)
+        form.instance.owner = merchant
+        form.save()
+        return housemanage(self.request)
 
 addhouse = AddHouse.as_view()
+
+
+@mer_require_auth
+def housemanage(request):
+    merchant = utils.get_merchant_obj(request)
+    #merchant_id = merchant.id
+    #house = models.House.objects.filter(owner_id=merchant_id)
+    house = merchant.house_set.all()
+    return utils.render('merchant/house.html', {'house':house})
     
 
+    
 
 

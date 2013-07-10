@@ -180,6 +180,7 @@ class BankCard(Model, BaseModel):
 ####################################
 class House(Model, BaseModel):
     """Merchant have many houses to renter"""
+    owner = ForeignKey(Merchant)
     landlord = CharField(max_length=255)
     landphone = CharField(max_length=20)
     house_type = CharField(max_length=255)
@@ -195,6 +196,7 @@ class House(Model, BaseModel):
     pay_type = CharField(max_length=255)
     house_deposit = CharField(max_length=255)
     rent_time = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
     
     
     

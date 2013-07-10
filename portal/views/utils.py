@@ -27,3 +27,11 @@ def get_user_obj(request):
     """
     username = request.session.get('username')
     return models.User.objects.filter(username=username)[0]
+
+
+def get_merchant_obj(request):
+    """Since the method is invoked after require_auth(),
+    so I assume 'merchant' always in session.
+    """
+    username = request.session.get('username')
+    return models.Merchant.objects.filter(username=username)[0]

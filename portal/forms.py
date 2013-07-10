@@ -60,5 +60,6 @@ class ChargeRenterForm(forms.ModelForm):
 class AddHouseForm(forms.ModelForm):
     class Meta:
         model = models.House
+        exclude = ('owner',)
     
 
