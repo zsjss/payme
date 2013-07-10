@@ -89,6 +89,14 @@ def housemanage(request):
     #house = models.House.objects.filter(owner_id=merchant_id)
     house = merchant.house_set.all()
     return utils.render('merchant/house.html', {'house':house})
+
+
+@mer_require_auth
+def merlogout(request):
+    username = request.session['username']
+    utils.unset_session(request, username)
+    return merchsignin(request)
+
     
 
     

@@ -49,4 +49,5 @@ urlpatterns += patterns('portal.views.merchant',
     url(r'^merchant/signin/', 'merchsignin', name='merchant_signin'),
     url(r'^merchant/housemanage/', 'housemanage', name='merchant_housemanage'),
     url(r'^merchant/addhouse/', 'addhouse', name='merchant_addhouse'),
+    url(r'^merchant/logout/', 'merlogout', name='merchant_logout'),
 )
