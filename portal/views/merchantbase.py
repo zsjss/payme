@@ -44,7 +44,7 @@ class MerchSignIn(generic.FormView):
         if users and users[0].password == data['password']:
             LOG.debug('%s login success.' % users)
             utils.set_session(self.request, users[0].username)
-            return utils.render('merchant/house.html', {})
+            return utils.render('merchant/home.html', {'welcome': 'Welcome'})
         else:
             LOG.debug('%s login failed.' % users)
             return utils.render('merchant/m_sign_in.html',
@@ -63,32 +63,9 @@ class MerchSignUp(generic.FormView):
         data = form.cleaned_data
         user = models.Merchant(**data)
         user.save()
-        return utils.render('merchant/house.html', {})
+        return utils.render('merchant/home.html', {'welcome': 'Welcome'})
     
 merchsignup = MerchSignUp.as_view()
-
-
-class AddHouse(generic.FormView):
-    
-    template_name = 'portal/merchant/addhouse.html'
-    form_class = forms.AddHouseForm
-    
-    def form_valid(self, form):
-        merchant = utils.get_merchant_obj(self.request)
-        form.instance.owner = merchant
-        form.save()
-        return housemanage(self.request)
-
-addhouse = AddHouse.as_view()
-
-
-@mer_require_auth
-def housemanage(request):
-    merchant = utils.get_merchant_obj(request)
-    #merchant_id = merchant.id
-    #house = models.House.objects.filter(owner_id=merchant_id)
-    house = merchant.house_set.all()
-    return utils.render('merchant/house.html', {'house':house})
 
 
 @mer_require_auth

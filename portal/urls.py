@@ -44,10 +44,25 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/vip/$', 'vip', name='account_vip'),  
 )
 
-urlpatterns += patterns('portal.views.merchant',
+urlpatterns += patterns('portal.views.merchantbase',
     url(r'^merchant/signup/', 'merchsignup', name='merchant_signup'),
     url(r'^merchant/signin/', 'merchsignin', name='merchant_signin'),
-    url(r'^merchant/housemanage/', 'housemanage', name='merchant_housemanage'),
-    url(r'^merchant/addhouse/', 'addhouse', name='merchant_addhouse'),
     url(r'^merchant/logout/', 'merlogout', name='merchant_logout'),
 )
+
+urlpatterns += patterns('portal.views.merchantaccount',
+    url(r'^merchant/home/', 'merchanthome', name='merchant_home'),
+    url(r'^merchant/ordermanage/', 'ordermanage', name='merchant_ordermanage'),
+    url(r'^merchant/housemanage/', 'housemanage', name='merchant_housemanage'),
+    url(r'^merchant/addhouse/', 'addhouse', name='merchant_addhouse'),
+    url(r'^merchant/account/', 'merchantaccount', name='merchant_account'),
+    url(r'^merchant/confirm/', 'merchantconfirm', name='merchant_confirm'),
+)
+
+
+
+
+
+
+
+
