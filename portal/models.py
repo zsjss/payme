@@ -198,6 +198,17 @@ class House(Model, BaseModel):
     rent_time = CharField(max_length=255)
     created_at = DateTimeField(auto_now=True)
     
+
+class RentalAccount(Model, BaseModel):
+    """Merchant have many rental accounts"""
+    owner = ForeignKey(Merchant)
+    account_type = CharField(max_length=255)
+    account_name = CharField(max_length=255)
+    rentalbank_name = CharField(max_length=255)
+    rentalbank_num = CharField(max_length=255)
+    account_address = CharField(max_length=255)
+
+    
     
     
 

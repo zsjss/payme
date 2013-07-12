@@ -81,5 +81,26 @@ def merchantconfirm(request):
     pass
 
 
+@mer_require_auth
+def rentalaccount(request):
+    merchant = utils.get_merchant_obj(request)
+    rentalaccount = merchant.rentalaccount_set.all()
+    return utils.render('merchant/rentalaccount.html', {'rentalaccount': rentalaccount})
+
+
+class AddRentalAccount(generic.FormView):
+    
+    template_name = 'portal/merchant/addrentalaccount.html'
+    form_class = forms.AddRentalAccountForm
+    
+    def form_valid(self, form):
+        merchant = utils.get_merchant_obj(self.request)
+        form.instance.owner = merchant
+        form.save()
+        return rentalaccount(self.request)
+    
+addrentalaccount = AddRentalAccount.as_view()
+
+
 
 

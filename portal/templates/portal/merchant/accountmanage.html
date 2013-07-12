@@ -11,17 +11,17 @@
           <a  href="#"></a>
         </li>
         <li>
-          <a class="selected" href="{% url 'merchant_account' %}">{% trans 'AccountHome' %}</a>
+          <a  href="{% url 'merchant_home' %}">{% trans 'AccountHome' %}</a>
         </li>
         
         <li>
-          <a  href="#">{% trans 'AccountInfo' %}</a>
+          <a  class="selected" href="{% url 'merchant_account' %}">{% trans 'AccountInfo' %}</a>
         </li>
         <li>
           <a  href="#">{% trans 'AccountMoney' %}</a>
         </li>
         <li>
-          <a  href="#">{% trans 'RenterAccount' %}</a>
+          <a  href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
         </li>
         <li>
           <a  href="#">{% trans 'MessageCenter' %}</a>

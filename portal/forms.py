@@ -67,6 +67,13 @@ class ChangePasswordForm(forms.Form):
     oldpassword = forms.CharField()
     newpassword = forms.CharField()
     newpassagain = forms.CharField()
+    
+    
+class AddRentalAccountForm(forms.ModelForm):
+     class Meta:
+        model = models.RentalAccount
+        exclude = ('owner',)
+
 
     
 
