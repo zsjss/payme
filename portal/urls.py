@@ -57,6 +57,7 @@ urlpatterns += patterns('portal.views.merchantaccount',
     url(r'^merchant/addhouse/', 'addhouse', name='merchant_addhouse'),
     url(r'^merchant/account/', 'merchantaccount', name='merchant_account'),
     url(r'^merchant/confirm/', 'merchantconfirm', name='merchant_confirm'),
+    url(r'^merchant/changepassword/', 'changepassword', name='changepassword'),
 )
 
 

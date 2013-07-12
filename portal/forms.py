@@ -61,5 +61,12 @@ class AddHouseForm(forms.ModelForm):
     class Meta:
         model = models.House
         exclude = ('owner',)
+        
+        
+class ChangePasswordForm(forms.Form):
+    oldpassword = forms.CharField()
+    newpassword = forms.CharField()
+    newpassagain = forms.CharField()
+
     
 
