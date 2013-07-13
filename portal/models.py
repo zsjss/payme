@@ -207,6 +207,18 @@ class RentalAccount(Model, BaseModel):
     rentalbank_name = CharField(max_length=255)
     rentalbank_num = CharField(max_length=255)
     account_address = CharField(max_length=255)
+    
+    
+class AccountMoney(Model, BaseModel):
+    """Merchant have the money to afford the order service charge"""
+    owner = ForeignKey(Merchant)
+    totalmoney = IntegerField()
+    in_out_money = CharField(max_length=255)
+    operation_name = CharField(max_length=255)
+    pay_type = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
+    
+
 
     
     

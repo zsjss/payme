@@ -1,0 +1,44 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <div class="formbox">
+    <form class="form-horizontal" action="" method="post">
+      <h2>Add Rental Account</h2>
+      <hr/>
+      <span class="text-error">{{ errors }}</span>
+
+      <div class="control-group">
+        <label class="control-label">{% trans 'Input Money:' %}</label>
+        <div class="controls">
+          {{ form.in_out_money }}
+          {{ form.in_out_money.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">{% trans 'OperationName:' %}</label>
+        <div class="controls">
+          {{ form.operation_name}}
+          {{ form.operation_name.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">{% trans 'Paytype:' %}</label>
+        <div class="controls">
+          {{ form.pay_type }}
+          {{ form.pay_type.errors }}
+        </div>
+      </div>
+  
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+  </div> <!-- formbox -->
+</div> <!-- container -->
+{% endblock %}
