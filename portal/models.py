@@ -4,7 +4,7 @@ Database models are defined here.
 """
 from django.forms.models import model_to_dict
 from django.db.models import Model
-from django.db.models import IntegerField, CharField, DateTimeField
+from django.db.models import IntegerField, CharField, DateTimeField, FloatField
 from django.db.models import DateField, EmailField, BooleanField
 from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
@@ -212,11 +212,12 @@ class RentalAccount(Model, BaseModel):
 class AccountMoney(Model, BaseModel):
     """Merchant have the money to afford the order service charge"""
     owner = ForeignKey(Merchant)
-    totalmoney = IntegerField()
-    in_out_money = CharField(max_length=255)
+    in_out_money = FloatField()
     operation_name = CharField(max_length=255)
     pay_type = CharField(max_length=255)
     created_at = DateTimeField(auto_now=True)
+
+
     
 
 

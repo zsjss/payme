@@ -75,10 +75,11 @@ class AddRentalAccountForm(forms.ModelForm):
         exclude = ('owner',)
         
         
-class AddAccountMoneyForm(forms.Form):
-    in_out_money = forms.CharField()
-    operation_name = forms.CharField()
-    pay_type = forms.CharField()
+class AddAccountMoneyForm(forms.ModelForm):
+    class Meta:
+        model = models.AccountMoney
+        exclude = ('owner','created_at')
+    
     
 
 

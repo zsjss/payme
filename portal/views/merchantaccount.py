@@ -106,7 +106,12 @@ addrentalaccount = AddRentalAccount.as_view()
 def accountmoney(request):
     merchant = utils.get_merchant_obj(request)
     money = merchant.accountmoney_set.all()
-    return utils.render('merchant/accountmoney.html', {'money': money})
+    #totalmoney = models.TotalMoney.objects.filter(owner_id=merchant.id)
+    totalmoney = 0.0
+    for m in money:
+        totalmoney += m.in_out_money
+    return utils.render('merchant/accountmoney.html', {'totalmoney': totalmoney,
+                                                       'money': money})
 
 
 class AddAccountMoney(generic.FormView):
@@ -115,13 +120,8 @@ class AddAccountMoney(generic.FormView):
     
     def form_valid(self, form):
         merchant = utils.get_merchant_obj(self.request)
-        money = models.AccountMoney.objects.filter(owner_id = merchant.id)
-        data = form.cleaned_data
-        money[0].totalmoney += int(data['in_out_money'])
-        money[0].in_out_money = data['in_out_money']
-        money[0].operation_name = data['operation_name']
-        money[0].pay_type = data['pay_type']
-        money[0].save()
+        form.instance.owner = merchant
+        form.save()
         return accountmoney(self.request)
 
 addaccountmoney = AddAccountMoney.as_view()

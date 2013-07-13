@@ -37,16 +37,19 @@
       <div class="graybox">
         <div class="graybox-inner">
           <h3>Account Money</h3>
-          
-          <h4>Total Money: {{ money.totalmoney }} <a href="{% url 'addaccountmoney' %}">{% trans 'Add Money' %}</a></h4>
-          
+ 
+      <div class="control-group">
+        <label class="control-label">Total Money:{{ totalmoney }}  yuan</label>
+        <label class="control-label"><a href="{% url 'addaccountmoney' %}">{% trans 'Add Money' %}</a></label>
+      </div>
+
           <table cellspacing="0" class="table table-striped">
             <thead>
               <tr>
                 <th> # </th>
                 <th> Time </th>
                 <th> OperationName </th>
-                <th> MoneyIn_Or_out </th>
+                <th> Money_In_Or_out </th>
                 <th> Operation </th>
               </tr>
             </thead>
