@@ -218,7 +218,12 @@ class AccountMoney(Model, BaseModel):
     created_at = DateTimeField(auto_now=True)
 
 
-    
+class MerhantMessage(Model, BaseModel):
+    """Merchant messages. A Merchant will have many message to him"""
+    owner = ForeignKey(Merchant)
+    content = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
+    is_readed = BooleanField()
 
 
     

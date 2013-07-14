@@ -18,13 +18,13 @@
           <a  href="{% url 'merchant_account' %}">{% trans 'AccountInfo' %}</a>
         </li>
         <li>
-          <a  href="#">{% trans 'AccountMoney' %}</a>
+          <a  href="{% url 'account_money' %}">{% trans 'AccountMoney' %}</a>
         </li>
         <li>
-          <a class="selected" href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
+          <a  href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
         </li>
         <li>
-          <a  href="{% url 'merchant_message' %}">{% trans 'MessageCenter' %}</a>
+          <a  class="selected" href="{% url 'merchant_message' %}">{% trans 'MessageCenter' %}</a>
         </li>
         <li>
           <a href="#"></a>
@@ -36,40 +36,41 @@
     <div class="span10" id="content">
       <div class="graybox">
         <div class="graybox-inner">
-          <h3>Rental Account Manage</h3>
-          
-          <h4>Rental Account <a href="{% url 'addrentalaccount' %}">{% trans 'Add Rental Account' %}</a></h4>
-          
+          <h3>Message Center</h3>
+ 
+      <div class="control-group">
+        <label class="control-label"></label>
+        <label class="control-label"></label>
+      </div>
+
           <table cellspacing="0" class="table table-striped">
             <thead>
               <tr>
                 <th> # </th>
-                <th> RealName </th>
-                <th> BankName </th>
-                <th> BankNumber </th>
+                <th> Content </th>
+                <th> Time </th>
+                <th>  </th>
                 <th> Operation </th>
               </tr>
             </thead>
             <tbody>
                 
-                {% if rentalaccount %}
-                {% for r in rentalaccount %}
+                {% if message %}
+                {% for m in message %}
                     
               <tr>
                 
-                <td> {{ r.id }} </td>
-                <td> {{ r.account_name }} </td>
-                <td> {{ r.rentalbank_name }} </td>
-                <td> {{ r.rentalbank_num }} </td>
+                <td> {{ m.id }} </td>
+                <td> {{ m.content }} </td>
+                <td> {{ m.created_at }}</td>
+                <td>  </td>
                 <td> <a class="btn btn-small">delete</a></td>
               </tr>
               
                {% endfor %}
                {% endif %}
             </tbody>
-          </table>
-          
-          
+          </table>  
         </div>
         
         

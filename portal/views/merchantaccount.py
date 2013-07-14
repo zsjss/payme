@@ -127,5 +127,10 @@ class AddAccountMoney(generic.FormView):
 addaccountmoney = AddAccountMoney.as_view()
 
 
+@mer_require_auth
+def merchantmessage(request):
+    merchant = utils.get_merchant_obj(request)
+    message = merchant.merhantmessage_set.all()
+    return utils.render('merchant/merchantmessage.html',{'message': message})
 
 
