@@ -25,6 +25,8 @@ class User(Model, BaseModel):
     avater = CharField(max_length=255)
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
+    #front_image = ImageField(upload_to='upload')
+    #back_image = ImageField(upload_to='upload')
 
 
 class UserAdmin(admin.ModelAdmin):

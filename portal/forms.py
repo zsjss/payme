@@ -62,3 +62,22 @@ class ChargeRentForm(forms.Form):
     bank_card_id = forms.CharField()
     bank_location_province = forms.CharField()
     bank_location_city = forms.CharField()
+	
+
+class PasswordModifyForm(forms.Form):
+    password = forms.CharField()
+    new_password = forms.CharField()
+    confirm_new_password = forms.CharField()
+	
+
+class PhoneModifyForm(forms.Form):
+    phone = forms.CharField()
+    verification_code = forms.CharField()
+	
+
+class MailboxBindingForm(forms.Form):
+    email = forms.EmailField()
+    
+class NameCertificationForm(forms.Form):
+    real_name = forms.CharField()
+    real_id = forms.CharField(validators=[valid_fixed_length])
