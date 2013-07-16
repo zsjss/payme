@@ -1,0 +1,110 @@
+
+</body>
+</html>
+
+
+<html>
+  <head>
+    <title>421 forever </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/portal/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/static/portal/css/style.css" rel="stylesheet" media="screen">
+    <link href="/static/portal/css/layout.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="/static/portal/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/static/portal/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/portal/js/stupidtable.min.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/z/">ZuFangBao</a>
+          <ul class="nav">
+            <li class="active"> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+          </ul> <!-- nav -->
+
+          <ul class="nav pull-right">
+            <li><a href="/z/chargerent/">收房租</a></li>
+            <li><a href="/z/payrent/">付房租</a></li>
+            <li><a href="/z/signin/">SignIn</a></li>
+            <li><a href="/z/signup/">SignUp</a></li>
+            <li><a href="/z/logout/">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- navbar -->
+
+    <div class="header">
+      <div class="container">
+        <h1>LOGO</h1>
+      </div>
+    </div> <!-- header -->
+    <hr/>
+
+    
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rents</h3>
+        <li>
+          <a class="selected" href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a href="#">messages</a>
+        </li>
+        <li>
+          <a href="#">Bank cards</a>
+        </li>
+		<li>
+          <a href="/z/account/info/">Personal inforsmation</a>
+        </li>
+		<li>
+          <a href="/z/account/safe/">Security certificate</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+  <div class="formbox">
+    <form class="form-horizontal" action="" method="post">
+      <h3>Phone Modify</h3>
+      <span class="text-error">{{ errors }}</span>
+
+      <div class="control-group">
+        <label class="control-label">新手机号:</label>
+        <div class="controls">
+          {{ form.phone }}
+          {{ form.phone.errors }}
+	
+      </div>
+      
+        <div class="control-group">
+        <label class="control-label">验证码:</label>
+        <div class="controls">
+          {{ form.verification_code }}
+          {{ form.verification_code.errors }}
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+  </div> <!-- formbox -->
+</div> <!-- container -->
+
+  </body>
+</html>
