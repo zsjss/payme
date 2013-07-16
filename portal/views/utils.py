@@ -7,6 +7,8 @@ from django.shortcuts import render_to_response
 
 from portal import models
 
+import smtplib 
+from email.mime.text import MIMEText
 
 def render(template_name, payment):
     return render_to_response('portal/%s' % template_name,
@@ -26,4 +28,20 @@ def get_user_obj(req):
     so I assume 'username' always in session.
     """
     username = req.session.get('username')
+    print username
     return models.User.objects.filter(username=username)[0]
+
+def send_mail(receiver):
+    
+    sender = 'smartbrandnew@163.com' #'server'
+    subject = 'activation mail'
+    smtpserver = 'smtp.163.com'
+    username = 'smartbrandnew'
+    password = 'cqmd53603114'
+    msg = MIMEText('click here to active ' + '<a href="http://www.baidu.com">http://www.baidu.com</a>','html','utf-8') 
+    msg['Subject'] = subject
+    smtp = smtplib.SMTP()
+    smtp.connect('smtp.163.com')
+    smtp.login(username, password)
+    smtp.sendmail(sender, receiver, msg.as_string())
+    smtp.quit()
