@@ -11,6 +11,8 @@ from portal.views import utils
 from django.views import generic
 from portal import forms
 from portal import models
+from portal.alipay import alipay
+import random
 
 LOG = logging.getLogger(__name__)
 
@@ -120,9 +122,15 @@ class AddAccountMoney(generic.FormView):
     
     def form_valid(self, form):
         merchant = utils.get_merchant_obj(self.request)
-        form.instance.owner = merchant
-        form.save()
-        return accountmoney(self.request)
+        #form.instance.owner = merchant
+        #form.save()
+        #return accountmoney(self.request)
+        data = form.cleaned_data
+        tn = random.uniform(1,100)
+        if alipay.create_direct_pay_by_user(tn, data['pay_type'], data['operation_name'], data['in_out_money']):
+            form.instance.owner = merchant
+            form.save()
+        return utils.render('merchant/paysuccess.html', {})
 
 addaccountmoney = AddAccountMoney.as_view()
 
