@@ -13,6 +13,7 @@ from portal import forms
 from portal import models
 from portal.alipay import alipay
 import random
+import ImageFile
 
 LOG = logging.getLogger(__name__)
 
@@ -80,9 +81,22 @@ changepassword = ChangePassword.as_view()
 
 @mer_require_auth
 def merchantconfirm(request):
-    pass
+    return utils.render('merchant/accountconfirm.html', {})
 
 
+class AccountConfirm(generic.FormView):
+    template_name = 'portal/merchant/sendinfo.html'
+    form_class = forms.ImageUploadForm
+    
+    def form_valid(self, form):
+        data = form.cleaned_data
+        img = models.pic(model_pic=data['image'])
+        img.save()
+        return merchantconfirm(self.request)
+      
+accountconfirm = AccountConfirm.as_view()
+
+        
 @mer_require_auth
 def rentalaccount(request):
     merchant = utils.get_merchant_obj(request)

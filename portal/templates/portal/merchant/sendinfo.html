@@ -1,0 +1,39 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="span10" id="content">
+ <div class="graybox">
+    <div class="graybox-inner">
+        <h3>send the information</h3>
+   
+    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+      
+      <hr/>
+      <span class="text-error">{{ error }}</span>
+
+      <div class="control-group">
+        <label class="control-label">{% trans 'RealName Picture face' %}</label>
+        <div class="controls">
+         {{ form.image }}
+         {{ form.image.error }}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">{% trans 'RealName Picture oppsite' %}</label>
+        <div class="controls">
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+
+  </div>
+ </div>
+</div>
+
+{% endblock %}

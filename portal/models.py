@@ -5,7 +5,7 @@ Database models are defined here.
 from django.forms.models import model_to_dict
 from django.db.models import Model
 from django.db.models import IntegerField, CharField, DateTimeField, FloatField
-from django.db.models import DateField, EmailField, BooleanField
+from django.db.models import DateField, EmailField, BooleanField, ImageField
 from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
@@ -224,6 +224,19 @@ class MerhantMessage(Model, BaseModel):
     content = CharField(max_length=255)
     created_at = DateTimeField(auto_now=True)
     is_readed = BooleanField()
+    
+
+class MerchantPicture(Model, BaseModel):
+    """merchant confirm"""
+    owner = ForeignKey(Merchant)
+    pic1 = ImageField(upload_to='savephoto')
+    pic2 = ImageField(upload_to='savephoto')
+    
+    
+class pic(Model, BaseModel):
+    model_pic = ImageField(upload_to = 'savephoto/', default = 'savephoto/None/no-img.jpg')
+
+
 
 
     

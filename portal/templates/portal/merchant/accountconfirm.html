@@ -1,0 +1,59 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>Account Confirm</h3>
+        <li>
+          <a  href="#"></a>
+        </li>
+        <li>
+          <a  href="{% url 'account_confirm' %}">{% trans 'Account Confirm' %}</a>
+        </li>
+        
+        <li>
+          <a  href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+    
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>send the information</h3>
+   
+    <form class="form-horizontal" action="" method="post">
+      
+      <hr/>
+      <span class="text-error"></span>
+
+      <div class="control-group">
+        <label class="control-label">Username:</label>
+        <div class="controls">
+         
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Password:</label>
+        <div class="controls">
+        </div>
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}
