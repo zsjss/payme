@@ -5,7 +5,7 @@ Database models are defined here.
 
 from django.db.models import Model
 from django.db.models import IntegerField, CharField, DateTimeField
-from django.db.models import DateField, EmailField, BooleanField
+from django.db.models import DateField, EmailField, BooleanField, ImageField
 from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
 
@@ -25,8 +25,13 @@ class User(Model, BaseModel):
     avater = CharField(max_length=255)
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
-    #front_image = ImageField(upload_to='upload')
-    #back_image = ImageField(upload_to='upload')
+    front_image = ImageField(upload_to='upload')
+    back_image = ImageField(upload_to='upload')
+    problem_one = CharField(max_length=255)
+    problem_two = CharField(max_length=255)
+    problem_three = CharField(max_length=255)
+    
+
 
 
 class UserAdmin(admin.ModelAdmin):

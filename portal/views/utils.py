@@ -31,14 +31,14 @@ def get_user_obj(req):
     print username
     return models.User.objects.filter(username=username)[0]
 
-def send_mail(receiver):
+def send_mail(receiver, content):
     
     sender = 'smartbrandnew@163.com' #'server'
     subject = 'activation mail'
     smtpserver = 'smtp.163.com'
     username = 'smartbrandnew'
     password = 'cqmd53603114'
-    msg = MIMEText('click here to active ' + '<a href="http://www.baidu.com">http://www.baidu.com</a>','html','utf-8') 
+    msg = MIMEText(content,'html','utf-8') 
     msg['Subject'] = subject
     smtp = smtplib.SMTP()
     smtp.connect('smtp.163.com')

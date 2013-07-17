@@ -52,14 +52,15 @@ def info(req):
                          'email': user[0].email})	    
     
 
-@check_authentication
+'''@check_authentication
 def security_problem(req):
     usernam = req.session.get('username')
     user = models.User.objects.filter(username=usernam)
     return utils.render('security_problem.html',
-                        {'username': user[0].username})
+                        {'username': user[0].username})'''
 
-@check_authentication    
+@check_authentication
+
 def safe(req):
     usernam = req.session.get('username')
     user = models.User.objects.filter(username=usernam)
@@ -68,13 +69,6 @@ def safe(req):
                         {'local_time': local_time,
 	                     'phone': user[0].phone})
   
-  
-'''@check_authentication
-def name_certificate(req):
-    usernam = req.session.get('username')
-    user = models.User.objects.filter(username=usernam)
-    return utils.render('name_certificate.html',
-                {'username':user[0].username})	'''									
 
 
 class NameCertification(generic.FormView):
@@ -150,7 +144,8 @@ class MailboxModify(generic.FormView):
 	    user = utils.get_user_obj(self.request)
             data = form.cleaned_data
 	    if user and data['email']:
-		utils.send_mail(data['email'])
+		content = 'click here to active ' + '<a href="http://www.baidu.com">http://www.baidu.com</a>'
+		utils.send_mail(data['email'],content)
                 user.email = data['email']
 	        user.save()
 		return safe(self.request)
@@ -164,7 +159,31 @@ class MailboxModify(generic.FormView):
 mailboxbinding = MailboxModify.as_view()
 
 
+class SecurityProblem(generic.FormView):
+    
+    form_class = forms.SecurityProblemForm
+    template_name = 'portal/security_problem.html'
+    
+    def form_valid(self, form):
+	    user = utils.get_user_obj(self.request)
+            data = form.cleaned_data
+	    if user and data['problem_one'] and data['problem_two'] and data['problem_three']:
+                user.problem_one = data['problem_one']
+		user.problem_two = data['problem_two']
+		user.problem_three = data['problem_three']
+	        user.save()
+		return safe(self.request)
+	    else:
+            #LOG.debug("%s failed." % user)
+                return utils.render('security_problem.html',
+                                {'errors': 'failed',
+                                 'form': form})
 
+
+security_problem = SecurityProblem.as_view()
+
+
+@check_authentication
 def messges(req):
     pass
 

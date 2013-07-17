@@ -81,3 +81,8 @@ class MailboxBindingForm(forms.Form):
 class NameCertificationForm(forms.Form):
     real_name = forms.CharField()
     real_id = forms.CharField(validators=[valid_fixed_length])
+    
+class SecurityProblemForm(forms.Form):
+    problem_one = forms.CharField()
+    problem_two = forms.CharField()
+    problem_three = forms.CharField()
