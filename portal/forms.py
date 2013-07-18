@@ -43,6 +43,10 @@ class SignInForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     
 
+class VipForm(forms.Form):
+    text = forms.CharField()
+    
+
 class ChargeRentForm(forms.ModelForm):
     class Meta:
         model = models.LandlordRentProfile
@@ -81,10 +85,10 @@ class AddAccountMoneyForm(forms.ModelForm):
         exclude = ('owner','created_at')
         
         
-class AddMerchantPictureForm(forms.ModelForm):
-    class Meta:
-        model = models.MerchantPicture
-        exclude = ('owner',)
+#class AddMerchantPictureForm(forms.ModelForm):
+    #class Meta:
+        #model = models.MerchantPicture
+        #exclude = ('owner',)
         
         
 class ImageUploadForm(forms.Form):

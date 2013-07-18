@@ -41,7 +41,8 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/safe/$', 'safe', name='account_safe'),
     url(r'^account/info/$', 'info', name='account_info'),
     url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
-    url(r'^account/vip/$', 'vip', name='account_vip'),  
+    url(r'^account/vip/$', 'vip', name='account_vip'),
+    url(r'^account/vipconfirm/$', 'vipconfirm', name='account_vip_confirm'),  
 )
 
 urlpatterns += patterns('portal.views.merchantbase',

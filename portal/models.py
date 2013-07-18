@@ -31,6 +31,7 @@ class User(Model, BaseModel):
     avater = CharField(max_length=255)
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
+    is_vip = BooleanField()
 
 
 class UserAdmin(admin.ModelAdmin):
@@ -49,6 +50,14 @@ class Merchant(Model, BaseModel):
 
 class MerchantAdmin(admin.ModelAdmin):
     list_display = ['username']
+    
+    
+class Vip(Model, BaseModel):
+    text = CharField(max_length=255)
+    
+    
+class VipAdmin(admin.ModelAdmin):
+    list_display = ['text']
 
 
 ##################################
@@ -176,7 +185,7 @@ class BankCard(Model, BaseModel):
 
     deleted = BooleanField()
     
-    
+     
 ####################################
 class House(Model, BaseModel):
     """Merchant have many houses to renter"""
@@ -226,15 +235,15 @@ class MerhantMessage(Model, BaseModel):
     is_readed = BooleanField()
     
 
-class MerchantPicture(Model, BaseModel):
-    """merchant confirm"""
-    owner = ForeignKey(Merchant)
-    pic1 = ImageField(upload_to='savephoto')
-    pic2 = ImageField(upload_to='savephoto')
+#class MerchantPicture(Model, BaseModel):
+    #"""merchant confirm"""
+   # owner = ForeignKey(Merchant)
+   # pic1 = ImageField(upload_to='savephoto')
+    #pic2 = ImageField(upload_to='savephoto')
     
     
-class pic(Model, BaseModel):
-    model_pic = ImageField(upload_to = 'savephoto/', default = 'savephoto/None/no-img.jpg')
+#class pic(Model, BaseModel):
+    #model_pic = ImageField(upload_to = 'savephoto/', default = 'savephoto/None/no-img.jpg')
 
 
 
