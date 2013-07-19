@@ -234,16 +234,22 @@ class MerhantMessage(Model, BaseModel):
     created_at = DateTimeField(auto_now=True)
     is_readed = BooleanField()
     
+  
+class MerchantConfirm(Model, BaseModel):
+    """ Confirm Information need two pic,real name, real num"""
+    owner = ForeignKey(Merchant)
+    real_name = CharField(max_length=255)
+    real_num = CharField(max_length=255)
+    pic_face = ImageField(upload_to='savephoto/')
+    pic_oppo = ImageField(upload_to='savephoto/')
+    state = BooleanField()
+    
+    
+class MechantConfirmAdmin(admin.ModelAdmin):
+    list_display = ['owner']
 
-#class MerchantPicture(Model, BaseModel):
-    #"""merchant confirm"""
-   # owner = ForeignKey(Merchant)
-   # pic1 = ImageField(upload_to='savephoto')
-    #pic2 = ImageField(upload_to='savephoto')
     
-    
-#class pic(Model, BaseModel):
-    #model_pic = ImageField(upload_to = 'savephoto/', default = 'savephoto/None/no-img.jpg')
+
 
 
 

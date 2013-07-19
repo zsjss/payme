@@ -20,40 +20,27 @@
       </ul>
     </div>
 
+ <div class="container">
+   <div class="formbox">
     
-    <div class="span10" id="content">
-      <div class="graybox">
-        <div class="graybox-inner">
-          <h3>send the information</h3>
-   
-    <form class="form-horizontal" action="" method="post">
+    {% if confirm.state == True %}
       
-      <hr/>
-      <span class="text-error"></span>
-
-      <div class="control-group">
-        <label class="control-label">Username:</label>
-        <div class="controls">
-         
-        </div>
+      <div>
+        <label>You have confirmed!!!</label>
       </div>
-
-      <div class="control-group">
-        <label class="control-label">Password:</label>
-        <div class="controls">
-        </div>
+      
+    {% else %}
+      
+       <div>
+        <label>You have to confirmed !!!  If you have send information,please to wait for confirm!</label>
+        <a  href="{% url 'account_confirm' %}">{% trans 'Go to confirm!' %}</a>
       </div>
-      <div class="controls-group">
-        <div class="controls">
-          <input class="btn btn-primary" type="submit"></input>
-        </div>
-      </div>
-    </form>
-
-        </div>
-      </div>
-    </div>
+    {% endif %}
     
+  </div> <!-- formbox -->
+</div> <!-- container -->
+    
+       
   </div>
 </div>
 {% endblock %}

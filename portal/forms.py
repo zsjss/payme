@@ -85,15 +85,10 @@ class AddAccountMoneyForm(forms.ModelForm):
         exclude = ('owner','created_at')
         
         
-#class AddMerchantPictureForm(forms.ModelForm):
-    #class Meta:
-        #model = models.MerchantPicture
-        #exclude = ('owner',)
-        
-        
-class ImageUploadForm(forms.Form):
-    """Image upload form."""
-    image = forms.ImageField()
+class MerchantConfirmForm(forms.ModelForm):
+    class Meta:
+        model = models.MerchantConfirm
+        exclude = ('owner','state')
     
 
     

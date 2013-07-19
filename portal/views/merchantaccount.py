@@ -81,17 +81,22 @@ changepassword = ChangePassword.as_view()
 
 @mer_require_auth
 def merchantconfirm(request):
-    return utils.render('merchant/accountconfirm.html', {})
+    merchant = utils.get_merchant_obj(request)
+    confirm = models.MerchantConfirm.objects.filter(owner_id=merchant.id)[0]
+    return utils.render('merchant/accountconfirm.html',
+                            {'confirm': confirm})
+
+        
 
 
 class AccountConfirm(generic.FormView):
     template_name = 'portal/merchant/sendinfo.html'
-    form_class = forms.ImageUploadForm
+    form_class = forms.MerchantConfirmForm
     
     def form_valid(self, form):
-        data = form.cleaned_data
-        img = models.pic(model_pic=data['image'])
-        img.save()
+        merchant = utils.get_merchant_obj(self.request)
+        form.instance.owner = merchant
+        form.save()
         return merchantconfirm(self.request)
       
 accountconfirm = AccountConfirm.as_view()
