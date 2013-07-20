@@ -1,0 +1,46 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>Account Confirm</h3>
+        <li>
+          <a  href="#"></a>
+        </li>
+        <li>
+          <a  href="{% url 'account_confirm' %}">{% trans 'Account Confirm' %}</a>
+        </li>
+        
+        <li>
+          <a  href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+ <div class="container">
+   <div class="formbox">
+    
+    {% if confirm.state == True %}
+      
+      <div>
+        <label>You have confirmed!!!</label>
+      </div>
+      
+    {% else %}
+      
+       <div>
+        <label>You have to confirmed !!!  If you have send information,please to wait for confirm!</label>
+        <a  href="{% url 'account_confirm' %}">{% trans 'Go to confirm!' %}</a>
+      </div>
+    {% endif %}
+    
+  </div> <!-- formbox -->
+</div> <!-- container -->
+    
+       
+  </div>
+</div>
+{% endblock %}

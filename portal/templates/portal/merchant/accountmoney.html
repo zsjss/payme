@@ -1,0 +1,85 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rent</h3>
+        <li>
+          <a  href="#"></a>
+        </li>
+        <li>
+          <a  href="{% url 'merchant_home' %}">{% trans 'AccountHome' %}</a>
+        </li>
+        
+        <li>
+          <a  href="{% url 'merchant_account' %}">{% trans 'AccountInfo' %}</a>
+        </li>
+        <li>
+          <a class="selected" href="{% url 'account_money' %}">{% trans 'AccountMoney' %}</a>
+        </li>
+        <li>
+          <a  href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
+        </li>
+        <li>
+          <a  href="#">{% trans 'MessageCenter' %}</a>
+        </li>
+        <li>
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Account Money</h3>
+ 
+      <div class="control-group">
+        <label class="control-label">Total Money:{{ totalmoney }}  yuan</label>
+        <label class="control-label"><a href="{% url 'addaccountmoney' %}">{% trans 'Add Money' %}</a></label>
+      </div>
+
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> Time </th>
+                <th> OperationName </th>
+                <th> Money_In_Or_out </th>
+                <th> Operation </th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% if money %}
+                {% for m in money %}
+                  
+                
+              <tr>
+                
+                <td> {{ m.id }} </td>
+                <td> {{ m.created_at }} </td>
+                <td> {{ m.operation_name }} </td>
+                <td> {{ m.in_out_money }} </td>
+                <td> <a class="btn btn-small">delete</a></td>
+              </tr>
+              
+               {% endfor %}
+               {% endif %}
+            </tbody>
+          </table>
+          
+          
+        </div>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

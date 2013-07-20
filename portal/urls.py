@@ -7,7 +7,7 @@ urlpatterns = patterns('portal.views.base',
     url(r'^/$', 'portal', name='portal'),
     url(r'^signin/', 'signin', name='signin'),
     url(r'^signup/', 'signup', name='signup'),
-    url(r'^logout/', 'logout', name='logout'),
+    url(r'^logout/', 'logout', name='logout'),   
 )
 
 urlpatterns += patterns('portal.views.charge_rent',
@@ -56,4 +56,35 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/info/$', 'info', name='account_info'),
     url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
     url(r'^account/vip/$', 'vip', name='account_vip'),
+    url(r'^account/vipconfirm/$', 'vipconfirm', name='account_vip_confirm'),  
 )
+
+urlpatterns += patterns('portal.views.merchantbase',
+    url(r'^merchant/signup/', 'merchsignup', name='merchant_signup'),
+    url(r'^merchant/signin/', 'merchsignin', name='merchant_signin'),
+    url(r'^merchant/logout/', 'merlogout', name='merchant_logout'),
+)
+
+urlpatterns += patterns('portal.views.merchantaccount',
+    url(r'^merchant/home/', 'merchanthome', name='merchant_home'),
+    url(r'^merchant/ordermanage/', 'ordermanage', name='merchant_ordermanage'),
+    url(r'^merchant/housemanage/', 'housemanage', name='merchant_housemanage'),
+    url(r'^merchant/addhouse/', 'addhouse', name='merchant_addhouse'),
+    url(r'^merchant/account/', 'merchantaccount', name='merchant_account'),
+    url(r'^merchant/confirm/', 'merchantconfirm', name='merchant_confirm'),
+    url(r'^merchant/changepassword/', 'changepassword', name='changepassword'),
+    url(r'^merchant/rentalaccount/', 'rentalaccount', name='rentalaccount'),
+    url(r'^merchant/addrentalaccount/', 'addrentalaccount', name='addrentalaccount'),
+    url(r'^merchant/money/', 'accountmoney', name='account_money'),
+    url(r'^merchant/addmoney/', 'addaccountmoney', name='addaccountmoney'),
+    url(r'^merchant/message/', 'merchantmessage', name='merchant_message'),
+    url(r'^merchant/accountconfirm/', 'accountconfirm', name='account_confirm'),
+)
+
+
+
+
+
+
+
+

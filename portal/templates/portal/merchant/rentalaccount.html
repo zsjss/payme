@@ -1,0 +1,81 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rent</h3>
+        <li>
+          <a  href="#"></a>
+        </li>
+        <li>
+          <a  href="{% url 'merchant_home' %}">{% trans 'AccountHome' %}</a>
+        </li>
+        
+        <li>
+          <a  href="{% url 'merchant_account' %}">{% trans 'AccountInfo' %}</a>
+        </li>
+        <li>
+          <a  href="#">{% trans 'AccountMoney' %}</a>
+        </li>
+        <li>
+          <a class="selected" href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
+        </li>
+        <li>
+          <a  href="{% url 'merchant_message' %}">{% trans 'MessageCenter' %}</a>
+        </li>
+        <li>
+          <a href="#"></a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Rental Account Manage</h3>
+          
+          <h4>Rental Account <a href="{% url 'addrentalaccount' %}">{% trans 'Add Rental Account' %}</a></h4>
+          
+          <table cellspacing="0" class="table table-striped">
+            <thead>
+              <tr>
+                <th> # </th>
+                <th> RealName </th>
+                <th> BankName </th>
+                <th> BankNumber </th>
+                <th> Operation </th>
+              </tr>
+            </thead>
+            <tbody>
+                
+                {% if rentalaccount %}
+                {% for r in rentalaccount %}
+                    
+              <tr>
+                
+                <td> {{ r.id }} </td>
+                <td> {{ r.account_name }} </td>
+                <td> {{ r.rentalbank_name }} </td>
+                <td> {{ r.rentalbank_num }} </td>
+                <td> <a class="btn btn-small">delete</a></td>
+              </tr>
+              
+               {% endfor %}
+               {% endif %}
+            </tbody>
+          </table>
+          
+          
+        </div>
+        
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+{% endblock %}

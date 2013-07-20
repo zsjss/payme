@@ -7,8 +7,8 @@ from uuid import uuid4
 
 from django.forms.models import model_to_dict
 from django.db.models import Model
-from django.db.models import IntegerField, CharField, DateTimeField
-from django.db.models import DateField, EmailField, BooleanField
+from django.db.models import IntegerField, CharField, DateTimeField, FloatField
+from django.db.models import DateField, EmailField, BooleanField, ImageField
 from django.db.models import ForeignKey, OneToOneField
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
@@ -44,6 +44,7 @@ class User(Model, BaseModel):
     avater = CharField(max_length=255)
     location_province = CharField(max_length=255)
     location_city = CharField(max_length=255)
+    is_vip = BooleanField()
 
     created_at = DateTimeField(auto_now=True)
 
@@ -53,20 +54,28 @@ class User(Model, BaseModel):
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ['username']
-    
-    
-    
+
+
+
 class Merchant(Model, BaseModel):
     username = CharField(max_length=255, db_index=True, unique=True)
     password = CharField(max_length=255)
     real_name = CharField(max_length=255)
     phone = CharField(max_length=20, db_index=True)
     email = EmailField()
-    
-    
+
+
 
 class MerchantAdmin(admin.ModelAdmin):
     list_display = ['username']
+
+
+class Vip(Model, BaseModel):
+    text = CharField(max_length=255)
+
+
+class VipAdmin(admin.ModelAdmin):
+    list_display = ['text']
 
 
 ##################################
@@ -158,7 +167,7 @@ class RenterRentProfile(Model, BaseModel):
     renter = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[(1, 'house'), (2, 'shop')])
+                                 choices=[(1, '押金house'), (2, 'shop')])
     room_count = CharField(max_length=2,
                                   choices=[(1, '1'), (2, '2'),
                                           (3, '3'), (4, '>=4')])
@@ -229,3 +238,66 @@ class BankCard(Model, BaseModel):
     deleted = BooleanField()
 
     created_at = DateTimeField(auto_now=True)
+
+
+####################################
+class House(Model, BaseModel):
+    """Merchant have many houses to renter"""
+    owner = ForeignKey(Merchant)
+    landlord = CharField(max_length=255)
+    landphone = CharField(max_length=20)
+    house_type = CharField(max_length=255)
+    house_address = CharField(max_length=255)
+    house_square = CharField(max_length=255)
+    house_decoration = CharField(max_length=255)
+    house_apartment = CharField(max_length=255)
+    house_twords = CharField(max_length=20)
+    house_floor = CharField(max_length=255)
+    house_year = CharField(max_length=255)
+    house_set = CharField(max_length=255)
+    house_money = CharField(max_length=255)
+    pay_type = CharField(max_length=255)
+    house_deposit = CharField(max_length=255)
+    rent_time = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
+
+
+class RentalAccount(Model, BaseModel):
+    """Merchant have many rental accounts"""
+    owner = ForeignKey(Merchant)
+    account_type = CharField(max_length=255)
+    account_name = CharField(max_length=255)
+    rentalbank_name = CharField(max_length=255)
+    rentalbank_num = CharField(max_length=255)
+    account_address = CharField(max_length=255)
+
+
+class AccountMoney(Model, BaseModel):
+    """Merchant have the money to afford the order service charge"""
+    owner = ForeignKey(Merchant)
+    in_out_money = FloatField()
+    operation_name = CharField(max_length=255)
+    pay_type = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
+
+
+class MerhantMessage(Model, BaseModel):
+    """Merchant messages. A Merchant will have many message to him"""
+    owner = ForeignKey(Merchant)
+    content = CharField(max_length=255)
+    created_at = DateTimeField(auto_now=True)
+    is_readed = BooleanField()
+
+
+class MerchantConfirm(Model, BaseModel):
+    """ Confirm Information need two pic,real name, real num"""
+    owner = ForeignKey(Merchant)
+    real_name = CharField(max_length=255)
+    real_num = CharField(max_length=255)
+    pic_face = ImageField(upload_to='savephoto/')
+    pic_oppo = ImageField(upload_to='savephoto/')
+    state = BooleanField()
+
+
+class MechantConfirmAdmin(admin.ModelAdmin):
+    list_display = ['owner']

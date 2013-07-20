@@ -1,4 +1,4 @@
-{% extends "portal/_base_account.html" %}
+{% extends "portal/merchant/m_base.html" %}
 {% load i18n %}
 
 {% block content %} 
@@ -8,35 +8,45 @@
       <ul class="nav graybox-inner">
         <h3>My rent</h3>
         <li>
-          <a  href="#">home</a>
+          <a  href="#"></a>
         </li>
         <li>
-          <a href="#">pay order</a>
+          <a  href="{% url 'merchant_home' %}">{% trans 'AccountHome' %}</a>
+        </li>
+        
+        <li>
+          <a  href="{% url 'merchant_account' %}">{% trans 'AccountInfo' %}</a>
         </li>
         <li>
-          <a href="#">charge order</a>
+          <a  href="{% url 'account_money' %}">{% trans 'AccountMoney' %}</a>
         </li>
         <li>
-          <a class="selected" href="{% url 'account_messages' %}">{% trans 'messages' %}</a>
+          <a  href="{% url 'rentalaccount' %}">{% trans 'RentalAccount' %}</a>
         </li>
         <li>
-          <a href="#">Bank cards</a>
+          <a  class="selected" href="{% url 'merchant_message' %}">{% trans 'MessageCenter' %}</a>
         </li>
         <li>
-          <a href="#">info</a>
+          <a href="#"></a>
         </li>
       </ul>
     </div>
-           
+
+
     <div class="span10" id="content">
       <div class="graybox">
         <div class="graybox-inner">
-          <h3>Message</h3>
+          <h3>Message Center</h3>
+ 
+      <div class="control-group">
+        <label class="control-label"></label>
+        <label class="control-label"></label>
+      </div>
+
           <table cellspacing="0" class="table table-striped">
             <thead>
               <tr>
                 <th> # </th>
-                <th> ## </th>
                 <th> Content </th>
                 <th> Time </th>
                 <th>  </th>
@@ -50,8 +60,7 @@
                     
               <tr>
                 
-                <td> {{ i++ }}</td>
-                <td> {{ m.is_readed }} </td>
+                <td> {{ m.id }} </td>
                 <td> {{ m.content }} </td>
                 <td> {{ m.created_at }}</td>
                 <td>  </td>
@@ -61,12 +70,13 @@
                {% endfor %}
                {% endif %}
             </tbody>
-          </table>
+          </table>  
         </div>
         
         
-        
+      </div>
     </div>
-    </div>
+    
+  </div>
 </div>
 {% endblock %}

@@ -1,0 +1,141 @@
+{% extends "portal/merchant/m_base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <div class="formbox">
+    <form class="form-horizontal" action="" method="post">
+      <h2>Add House</h2>
+      <hr/>
+      <span class="text-error">{{ errors }}</span>
+
+      <div class="control-group">
+        <label class="control-label">Landlord:</label>
+        <div class="controls">
+          {{ form.landlord }}
+          {{ form.landlord.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Landphone:</label>
+        <div class="controls">
+          {{ form.landphone }}
+          {{ form.landphone.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseType:</label>
+        <div class="controls">
+          {{ form.house_type }}
+          {{ form.house_type.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseAddress:</label>
+        <div class="controls">
+          {{ form.house_address }}
+          {{ form.house_address.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseSquare:</label>
+        <div class="controls">
+          {{ form.house_square }}
+          {{ form.house_square.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseDecoration:</label>
+        <div class="controls">
+          {{ form.house_decoration }}
+          {{ form.house_decoration.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseApartment:</label>
+        <div class="controls">
+          {{ form.house_apartment }}
+          {{ form.house_apartment.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseTwords:</label>
+        <div class="controls">
+          {{ form.house_twords }}
+          {{ form.house_twords.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseFloor:</label>
+        <div class="controls">
+          {{ form.house_floor }} 
+          {{ form.house_floor.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseYear:</label>
+        <div class="controls">
+          {{ form.house_year }}
+          {{ form.house_year.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseSet:</label>
+        <div class="controls">
+          {{ form.house_set }}
+          {{ form.house_set.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">RentMoney:</label>
+        <div class="controls">
+          {{ form.house_money }} yuan/month
+          {{ form.house_money.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">PayType:</label>
+        <div class="controls">
+          {{ form.pay_type }}
+          {{ form.pay_type.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">HouseDeposit:</label>
+        <div class="controls">
+          {{ form.house_deposit }}
+          {{ form.house_deposit.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">RentTime:</label>
+        <div class="controls">
+          {{ form.rent_time }}
+          {{ form.rent_time.errors }}
+        </div>
+      </div>
+
+      
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+  </div> <!-- formbox -->
+</div> <!-- container -->
+{% endblock %}
