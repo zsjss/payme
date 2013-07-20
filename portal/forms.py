@@ -27,8 +27,8 @@ class SignUpForm(forms.Form):
     location_city = forms.CharField()
     phone = forms.CharField()
     email = forms.EmailField()
-    
-    
+
+
 class MerchSignUpForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -41,11 +41,11 @@ class MerchSignUpForm(forms.Form):
 class SignInForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
-    
+
 
 class VipForm(forms.Form):
     text = forms.CharField()
-    
+
 
 class ChargeRentForm(forms.ModelForm):
     class Meta:
@@ -57,44 +57,49 @@ class ChargeRenterForm(forms.ModelForm):
     class Meta:
         model = models.LandlordRenterInfo
         exclude = ('rent', 'service_expense', 'total_expense',
-                   'state')
-        
-        
-        
+                   'state', 'uuid')
+
+
+class PayRentCreateForm(forms.ModelForm):
+    class Meta:
+        model = models.RenterRentProfile
+        exclude = ('renter',)
+
+
 class AddHouseForm(forms.ModelForm):
     class Meta:
         model = models.House
         exclude = ('owner',)
-        
-        
+
+
 class ChangePasswordForm(forms.Form):
     oldpassword = forms.CharField()
     newpassword = forms.CharField()
     newpassagain = forms.CharField()
-    
-    
+
+
 class AddRentalAccountForm(forms.ModelForm):
      class Meta:
         model = models.RentalAccount
         exclude = ('owner',)
-        
-        
+
+
 class AddAccountMoneyForm(forms.ModelForm):
     class Meta:
         model = models.AccountMoney
         exclude = ('owner','created_at')
-        
-        
+
+
 class MerchantConfirmForm(forms.ModelForm):
     class Meta:
         model = models.MerchantConfirm
         exclude = ('owner','state')
-    
-
-    
-    
 
 
 
-    
+
+
+
+
+
 

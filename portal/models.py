@@ -167,7 +167,7 @@ class RenterRentProfile(Model, BaseModel):
     renter = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[(1, '押金house'), (2, 'shop')])
+                                 choices=[(1, 'house'), (2, 'shop')])
     room_count = CharField(max_length=2,
                                   choices=[(1, '1'), (2, '2'),
                                           (3, '3'), (4, '>=4')])

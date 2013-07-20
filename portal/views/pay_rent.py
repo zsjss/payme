@@ -2,15 +2,26 @@
 All logic about pay rent.
 """
 from django import http
+from django.views import generic
 from django.shortcuts import redirect, get_object_or_404
 
 from portal import models
+from portal import forms
 from portal.views import utils
 from portal.views.base import require_auth
 
 
-def pay_rent_profile_create(request):
-    pass
+class PayRentCreateView(generic.FormView):
+
+    form_class = forms.ChargeRentForm
+    template_name = 'portal/payrent/create.html'
+
+    def form_valid(self, form):
+        user = utils.get_user_obj(self.request)
+        form.instance.renter = user
+        form.save()
+        return redirect('charge_renter_add', form.instance.pk)
+pay_rent_profile_create = require_auth(PayRentCreateView.as_view())
 
 
 def pay_rent_profile_update(request, profile_id):
