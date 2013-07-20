@@ -30,6 +30,12 @@ ROOM_COUNTS = [('1', _('1 rooms')), ('2', _('2 rooms')),
 
 ARRIVE_TYPES = [('1', _('next day')), ('2', _('two hours'))]
 
+DECKS = [('1', _('lowest')),
+         ('2', _('basic')),
+         ('3', _('normal')),
+         ('4', _('higest')),
+         ]
+
 
 class BaseModel(object):
     def as_dict(self):
@@ -91,7 +97,7 @@ class LandlordRentProfile(Model, BaseModel):
 
     rent_type = CharField(_('rent_type'), max_length=2, choices=RENT_TYPES)
     room_count = CharField(_('room count'), max_length=2, choices=ROOM_COUNTS)
-    deck = CharField(_('deck'), max_length=2)
+    deck = CharField(_('deck'), max_length=2, choices=DECKS)
     acreage = IntegerField(_('acreage'))
     loc_province = CharField(_('loc province'), max_length=50)
     loc_city = CharField(_('loc city'), max_length=50)
@@ -171,7 +177,7 @@ class RenterRentProfile(Model, BaseModel):
 
     rent_type = CharField(_('rent type'), max_length=2, choices=RENT_TYPES)
     room_count = CharField(_('room count'), max_length=2, choices=ROOM_COUNTS)
-    deck = CharField(_('deck'), max_length=2)
+    deck = CharField(_('deck'), max_length=2, choices=DECKS)
     acreage = IntegerField(_('acreage'))
 
     rent_expense = IntegerField(_('rent expense'))
