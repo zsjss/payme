@@ -7,7 +7,7 @@ urlpatterns = patterns('portal.views.base',
     url(r'^/$', 'portal', name='portal'),
     url(r'^signin/', 'signin', name='signin'),
     url(r'^signup/', 'signup', name='signup'),
-    url(r'^logout/', 'logout', name='logout'),   
+    url(r'^logout/', 'logout', name='logout'),
 )
 
 urlpatterns += patterns('portal.views.charge_rent',
@@ -27,20 +27,21 @@ urlpatterns += patterns('portal.views.charge_rent',
                     'charge_renter_cancel', name='charge_renter_cancel'),
 )
 
+PAYRENT = r'^payrent/([^/]+)/%s/$'
 urlpatterns += patterns('portal.views.pay_rent',
     url(r'^payrent/$',
                 'pay_rent_profile_create', name='pay_rent_profile_create'),
-    url(r'^payrent/(\w+)/$',
+    url(r'^payrent/([^/]+)/$',
                 'pay_rent_profile_update', name='pay_rent_profile_update'),
-    url(r'^payrent/(\w+)/option/',
+    url(PAYRENT % 'option',
                 'pay_rent_option_create', name='pay_rent_option_create'),
-    url(r'^payrent/(\w+)/optionedit/',
+    url(PAYRENT % 'optionedit',
                 'pay_rent_option_update', name='pay_rent_option_update'),
-    url(r'^payrent/(.+)/onlinepay/',
+    url(PAYRENT % 'onlinepay',
                 'pay_rent_payit', name='pay_rent_payit'),
-    url(r'^payrent/(.+)/detail/',
+    url(PAYRENT % 'detail',
                 'pay_rent_detail', name='pay_rent_detail'),
-    url(r'^payrent/(.+)/cancel/',
+    url(PAYRENT % 'cancel',
                 'pay_rent_cancel', name='pay_rent_cancel'),
 )
 
@@ -56,7 +57,7 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/info/$', 'info', name='account_info'),
     url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
     url(r'^account/vip/$', 'vip', name='account_vip'),
-    url(r'^account/vipconfirm/$', 'vipconfirm', name='account_vip_confirm'),  
+    url(r'^account/vipconfirm/$', 'vipconfirm', name='account_vip_confirm'),
 )
 
 urlpatterns += patterns('portal.views.merchantbase',

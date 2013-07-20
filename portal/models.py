@@ -105,8 +105,8 @@ class LandlordRentProfile(Model, BaseModel):
 
     def pretty_name(self):
         """Return a beatifull name like: cellname|1 room| hight| 123m2"""
-        return '|'.join([str(self.loc_cell), str(self.room_count),
-                        str(self.deck), str(self.acreage)])
+        return '|'.join([unicode(self.loc_cell), unicode(self.room_count),
+                         unicode(self.deck), unicode(self.acreage)])
 
     def uncanceled_renters(self):
         return self.landlordrenterinfo_set.filter(state__lt=5)
@@ -195,6 +195,32 @@ class RenterRentProfile(Model, BaseModel):
 
     uuid = CharField(max_length=36, default=uuid4)
 
+    @property
+    def state_str(self):
+        return self.renteroption.state_str()
+
+    @property
+    def pretty_name(self):
+        """Return a beatifull name like: cellname|1 room| hight| 123m2"""
+        return u'|'.join([unicode(self.loc_cell), unicode(self.room_count),
+                          unicode(self.deck), unicode(self.acreage)])
+
+    @property
+    def pay_months(self):
+        return self.renteroption.pay_months
+
+    @property
+    def total_expense(self):
+        return self.renteroption.total_expense
+
+    @property
+    def deposit(self):
+        return self.renteroption.deposit
+
+    @property
+    def service_expense(self):
+        return self.renteroption.service_expense
+
 
 class RenterOption(Model, BaseModel):
     """A RenterRentProfile can only have one RenterOption"""
@@ -215,6 +241,13 @@ class RenterOption(Model, BaseModel):
     state = CharField(max_length=2, choices=STATES.items())
 
     confirmed = BooleanField()
+
+    def state_str(self):
+        return STATES[self.state]
+
+    @property
+    def uuid(self):
+        return self.rent_profile.uuid
 
 
 class Message(Model, BaseModel):

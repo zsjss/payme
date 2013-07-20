@@ -9,6 +9,7 @@
       <p>{% trans 'state' %}: {{renter.state_str }} </p>
       <p>
         <a class="btn" href="{% url 'pay_rent_payit' renter.uuid %}">{% trans 'pay it' %}</a>
+        <a class="btn" href="{% url 'pay_rent_profile_update' renter.uuid %}">{% trans 'edit' %}</a>
         <a class="btn" href="{% url 'pay_rent_cancel' renter.uuid %}">{% trans 'cancel' %}</a>
       </p>
     </div>
@@ -27,8 +28,8 @@
         </thead>
         <tbody>
           <tr>
-            <td>{{ renter.rent.pretty_name }}, {{ renter.pay_months }}{% trans 'months' %}</td>
-            <td>{{ renter.rent.payee_name }}, {{renter.rent.payee_bank_card }}</td>
+            <td>{{ renter.pretty_name }}, {{ renter.pay_months }}{% trans 'months' %}</td>
+            <td>{{ renter.payee_name }}, {{renter.payee_bank_card }}</td>
             <td>{{ renter.total_expense }} {% trans 'Yuan' %}</td>
           </tr>
           <tr>
@@ -63,13 +64,19 @@
         </tr>
         <tr>
           <th>{% trans 'room count' %}</th>
-          <td>{{ renter.rent.room_count }}</td>
+          <td>{{ renter.room_count }}</td>
           <th>{% trans 'deck' %}</th>
-          <td>{{ renter.rent.deck }}</td>
+          <td>{{ renter.deck }}</td>
         </tr>
         <tr>
-          <th>{% trans 'payment type' %}</th>
-          <td>{{ renter.rent_pay_model }}</td>
+          <th>{% trans 'acreage' %}</th>
+          <td>{{ renter.acreage }}</td>
+          <th>{% trans 'rent month detail' %}</th>
+          <td>{% trans 'months' %}:{{ renter.rent_months }}, {% trans 'begin from' %}: {{ renter.rent_begin_date }} </td>
+        </tr>
+        <tr>
+          <th>{% trans 'address information' %}</th>
+          <td>{{ renter.loc_province }} {{ renter.loc_city }} {{ renter.loc_area }} {{ renter.loc_cell }} {{ renter.loc_addr }}</td>
           <td colspan="2"></td>
         </tr>
       </table>
@@ -81,20 +88,24 @@
       <h3>{% trans 'Payee info' %}</h3>
       <table class="table table-striped">
         <tr>
+          <th>{% trans 'payee type' %}</th>
+          <td>{{ renter.payee_type }}</td>
+        </tr>
+        <tr>
           <th>{% trans 'landlord name' %}</th>
-          <td>{{ renter.rent.landlord.username }}</td>
+          <td>{{ renter.payee_name }}</td>
         </tr>
         <tr>
           <th>{% trans 'bank location' %}</th>
-          <td>{{ renter.rent.payee_bank_province }} {{ renter.rent.payee_bank_city }}</td>
+          <td>{{ renter.payee_bank_province }} {{ renter.payee_bank_city }}</td>
         </tr>
         <tr>
           <th>{% trans 'bank name' %}</th>
-          <td>{{ renter.rent.payee_bank}}</td>
+          <td>{{ renter.payee_bank}}</td>
         </tr>
         <tr>
           <th>{% trans 'bank card' %}</th>
-          <td>{{ renter.rent.payee_bank_card }}</td>
+          <td>{{ renter.payee_bank_card }}</td>
         </tr>
       </table>
     </div>
