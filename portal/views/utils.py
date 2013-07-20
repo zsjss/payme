@@ -7,6 +7,7 @@ from django.shortcuts import render_to_response
 
 from portal import models
 
+import urllib2
 import smtplib 
 from email.mime.text import MIMEText
 
@@ -45,3 +46,9 @@ def send_mail(receiver, content):
     smtp.login(username, password)
     smtp.sendmail(sender, receiver, msg.as_string())
     smtp.quit()
+    
+def send_msg(receiver, content):
+    url = 'http://www.uoleem.com.cn/api/uoleemApi?username=suncong&pwd=suncong&mobile=' + str(receiver) + '&content=' + content
+    url2 = 'http://utf8.sms.webchinese.cn/?Uid=smartbrandnew&Key=841092&smsMob=' + str(receiver) + '&smsText=' + content
+    res=urllib2.urlopen(url)
+

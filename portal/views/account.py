@@ -18,14 +18,22 @@ from portal.views.base import check_authentication
 
 from portal.models import User
 
+from PIL import Image
+from DjangoVerifyCode import Code
+
 import random
+
 
 LOG = logging.getLogger(__name__)
 
-
 @check_authentication
-	
-	
+def verifycode(request):
+    code = Code(request)
+    code.worlds = ['hello','world','helloworld']
+    code.type = 'number'
+    return code.display()
+   
+@check_authentication	
 def home(req):
     return utils.render('account_home.html', {})
 
@@ -52,12 +60,6 @@ def info(req):
                          'email': user[0].email})	    
     
 
-'''@check_authentication
-def security_problem(req):
-    usernam = req.session.get('username')
-    user = models.User.objects.filter(username=usernam)
-    return utils.render('security_problem.html',
-                        {'username': user[0].username})'''
 
 @check_authentication
 
@@ -69,6 +71,11 @@ def safe(req):
                         {'local_time': local_time,
 	                     'phone': user[0].phone})
   
+
+
+@check_authentication
+def headimg(req):
+    pass
 
 
 class NameCertification(generic.FormView):
@@ -122,10 +129,11 @@ class PhoneModify(generic.FormView):
     def form_valid(self, form):
 	    user = utils.get_user_obj(self.request)
             data = form.cleaned_data
-	    if user and data['phone'] and data['verification_code'] == '000000':
+	    print user.verifycode
+	    if user and data['phone'] and data['verification_code'] == str(user.verifycode):
                 user.phone = data['phone']
 	        user.save()
-		return info(self.request)
+		return safe(self.request)
 	    else:
             #LOG.debug("%s phone modify failed." % user)
                 return utils.render('phone_modify.html',
@@ -133,6 +141,29 @@ class PhoneModify(generic.FormView):
                                  'form': form})
 
 phonemodify = PhoneModify.as_view()
+
+
+class SendVerifyCode(generic.FormView):
+    
+    form_class = forms.SendVerifyCodeForm
+    template_name = 'portal/send_verifycode.html'
+       
+    def form_valid(self, form):
+	    user = utils.get_user_obj(self.request)
+            data = form.cleaned_data
+            if user and data['phone']:
+		user.verifycode = random.randrange(0,999999)
+		user.save()
+		content = 'verifycode:' + str(user.verifycode)
+		utils.send_msg(data['phone'], content)
+		return phonemodify(self.request)
+	    else:
+            #LOG.debug("%s phone modify failed." % user)
+                return utils.render('send_verifycode.html',
+                                {'errors': 'failed',
+                                 'form': form})
+    
+sendverifycode = SendVerifyCode.as_view()
 
 
 class MailboxModify(generic.FormView):
@@ -144,8 +175,8 @@ class MailboxModify(generic.FormView):
 	    user = utils.get_user_obj(self.request)
             data = form.cleaned_data
 	    if user and data['email']:
-		content = 'click here to active ' + '<a href="http://www.baidu.com">http://www.baidu.com</a>'
-		utils.send_mail(data['email'],content)
+		content = 'click here to active ' + '<a href="http://www.zufangbao.com/chargerent/">http://www.active.com</a>'
+		utils.send_mail(data['email'], content)
                 user.email = data['email']
 	        user.save()
 		return safe(self.request)
@@ -181,6 +212,10 @@ class SecurityProblem(generic.FormView):
 
 
 security_problem = SecurityProblem.as_view()
+
+
+
+
 
 
 @check_authentication

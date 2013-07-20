@@ -40,9 +40,13 @@ urlpatterns += patterns('portal.views.account',
     url(r'^account/info/$', 'info', name='account_info'),
     url(r'^account/certificate/$', 'namecertificate', name='name_certificate'),
     url(r'^account/passwordmodify/$', 'passwordmodify', name='password_modify'),
-    url(r'^account/phone_modify/$', 'phonemodify', name='phone_modify'),
+    #url(r'^account/phone_modify/$', 'phonemodify', name='phone_modify'),
+    url(r'^account/send_verifycode/$', 'sendverifycode', name='send_verifycode'),
     url(r'^account/mailbox_binding/$', 'mailboxbinding', name='mailbox_binding'),
     url(r'^account/security_problem/$', 'security_problem', name='security_problem'),
+    url(r'^account/headimg/$', 'headimg', name='headimg'),
     url(r'^account/cardmanage/$', 'cardmanage', name='account_cardmamage'),
     url(r'^account/vip/$', 'vip', name='account_vip'),
 )
+
+

@@ -62,7 +62,7 @@ class SignUp(generic.FormView):
         data = form.cleaned_data
         user = models.User(**data)
         user.save()
-        content = data['username'] + 'registration succeed!'
+        content = data['username'] + ' registration succeed!'
         print content
         utils.send_mail(data['email'],content)
         return utils.render('portal.html', {})

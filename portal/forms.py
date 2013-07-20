@@ -74,6 +74,9 @@ class PhoneModifyForm(forms.Form):
     phone = forms.CharField()
     verification_code = forms.CharField()
 	
+class SendVerifyCodeForm(forms.Form):
+    phone = forms.CharField()
+
 
 class MailboxBindingForm(forms.Form):
     email = forms.EmailField()
@@ -86,3 +89,7 @@ class SecurityProblemForm(forms.Form):
     problem_one = forms.CharField()
     problem_two = forms.CharField()
     problem_three = forms.CharField()
+    
+
+class HeadImgForm(forms.Form):   
+    front_img = forms.ImageField()

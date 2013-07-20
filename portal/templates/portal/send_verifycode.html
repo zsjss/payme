@@ -79,7 +79,7 @@
     <div class="container">
   <div class="formbox">
     <form class="form-horizontal" action="" method="post">
-      <h3>Phone Modify</h3>
+      <h3>Send VerifyCode</h3>
       <span class="text-error">{{ errors }}</span>
 
       <div class="control-group">
@@ -88,19 +88,13 @@
           {{ form.phone }}
           {{ form.phone.errors }}
 	
-	
       </div>
       
-        <div class="control-group">
-        <label class="control-label">验证码:</label>
-        <div class="controls">
-          {{ form.verification_code }}
-          {{ form.verification_code.errors }}
-        </div>
+      
       </div>
       <div class="controls-group">
         <div class="controls">
-          <input class="btn btn-primary" type="submit"></input>
+          <input class="btn btn-primary" type="submit" value="send verifycode"></input>
         </div>
       </div>
     </form>
