@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-06 18:33-0500\n"
+"POT-Creation-Date: 2013-07-20 09:34-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,21 +18,64 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: models.py:45
+#: models.py:18
+msgid "NoConfirm"
+msgstr "待确认"
+
+#: models.py:19
+msgid "NoPay"
+msgstr "未支付"
+
+#: models.py:20
+msgid "Verify"
+msgstr "审核中"
+
+#: models.py:21
+msgid "VerifyPassed"
+msgstr "审核通过"
+
+#: models.py:22
+msgid "VerifyFailed"
+msgstr "审核失败"
+
+#: models.py:23
+msgid "Canceled"
+msgstr "取消"
+
+#: models.py:84
 msgid "rent_type"
 msgstr "房屋类型"
 
-#: models.py:46
+#: models.py:85
 msgid "house"
 msgstr "住宅"
 
-#: models.py:46
+#: models.py:85
 msgid "shop"
 msgstr "商铺"
 
-#: templates/portal/_base.html:5
+#: models.py:133
+msgid "yuan/month"
+msgstr "元/月"
+
+#: models.py:134 templates/portal/pay/detail_landlord.html:30
+#: templates/portal/pay/detail_renter.html:31
+#: templates/portal/pay/detail_renter.html:75
+msgid "months"
+msgstr "月"
+
+#: models.py:141 templates/portal/pay/detail_landlord.html:32
+#: templates/portal/pay/detail_renter.html:33
+msgid "Yuan"
+msgstr "元"
+
+#: templates/portal/_base.html:5 templates/portal/merchant/m_base.html:5
 msgid "421 forever"
 msgstr "租房包"
+
+#: templates/portal/_base.html:23 templates/portal/merchant/m_base.html:23
+msgid "Merchant"
+msgstr ""
 
 #: templates/portal/_base.html:27
 msgid "charge rent"
@@ -43,14 +86,492 @@ msgstr "收房租"
 msgid "pay rent"
 msgstr "付房租"
 
-#: templates/portal/_base.html:29
+#: templates/portal/_base.html:29 templates/portal/account/_base.html:11
+msgid "Mine"
+msgstr "我的租房宝"
+
+#: templates/portal/_base.html:30
 msgid "SignIn"
 msgstr "登陆"
 
-#: templates/portal/_base.html:30
+#: templates/portal/_base.html:31
 msgid "SignUp"
 msgstr "注册"
 
-#: templates/portal/_base.html:31
+#: templates/portal/_base.html:32
 msgid "Logout"
 msgstr "退出"
+
+#: templates/portal/account/_base.html:9
+#, fuzzy
+msgid "My rents"
+msgstr "付房租"
+
+#: templates/portal/account/_base.html:14
+#, fuzzy
+msgid "pay rent list"
+msgstr "付房租"
+
+#: templates/portal/account/_base.html:17
+#, fuzzy
+msgid "charge rent list"
+msgstr "收房租"
+
+#: templates/portal/account/_base.html:20
+#: templates/portal/account/account_messages.html:20
+msgid "messages"
+msgstr "消息"
+
+#: templates/portal/account/_base.html:23
+#: templates/portal/account/bankcards.html:23
+msgid "Bank cards"
+msgstr "银行卡"
+
+#: templates/portal/account/_base.html:26
+msgid "Vip"
+msgstr ""
+
+#: templates/portal/account/chargerentlist.html:5
+#, fuzzy
+msgid "Charge Rents"
+msgstr "收房租"
+
+#: templates/portal/account/chargerentlist.html:9
+#: templates/portal/account/payrentlist.html:9
+msgid "Create Time"
+msgstr "创建时间"
+
+#: templates/portal/account/chargerentlist.html:10
+#: templates/portal/account/payrentlist.html:10
+msgid "Description"
+msgstr "描述"
+
+#: templates/portal/account/chargerentlist.html:11
+#: templates/portal/account/payrentlist.html:12
+msgid "Renter Pay State"
+msgstr "账单支付状态"
+
+#: templates/portal/account/chargerentlist.html:12
+#: templates/portal/account/payrentlist.html:13
+msgid "Actions"
+msgstr "操作"
+
+#: templates/portal/account/chargerentlist.html:20
+msgid "total"
+msgstr "总计"
+
+#: templates/portal/account/chargerentlist.html:20
+msgid "Paied"
+msgstr "已支付"
+
+#: templates/portal/account/chargerentlist.html:21
+msgid "Detail"
+msgstr "详细信息"
+
+#: templates/portal/account/chargerentlist.html:26
+#: templates/portal/account/payrentlist.html:32
+msgid "No records"
+msgstr "无数据"
+
+#: templates/portal/account/payrentlist.html:5
+msgid "Pay Rents"
+msgstr "付房租"
+
+#: templates/portal/account/payrentlist.html:11
+msgid "Total expense"
+msgstr "总费用 "
+
+#: templates/portal/account/payrentlist.html:24
+msgid "Pay it"
+msgstr "支付"
+
+#: templates/portal/account/payrentlist.html:25
+#: templates/portal/pay/detail_landlord.html:35
+#: templates/portal/pay/detail_renter.html:36
+msgid "detail"
+msgstr "详细信息"
+
+#: templates/portal/account/payrentlist.html:26
+#: templates/portal/charge/detail.html:56
+#: templates/portal/pay/detail_landlord.html:12
+#: templates/portal/pay/detail_renter.html:13
+msgid "cancel"
+msgstr "取消"
+
+#: templates/portal/account/vip.html:29
+#: templates/portal/account/vipconfirm.html:29
+msgid "VIP"
+msgstr ""
+
+#: templates/portal/account/vipconfirm.html:41
+msgid "VIPV Text:"
+msgstr ""
+
+#: templates/portal/charge/create.html:12 templates/portal/pay/create.html:12
+#: templates/portal/pay/create_option.html:12
+msgid "OK"
+msgstr "确认"
+
+#: templates/portal/charge/detail.html:9
+#, fuzzy
+msgid "house info"
+msgstr "房屋信息"
+
+#: templates/portal/charge/detail.html:12
+#, fuzzy
+msgid "Total renter"
+msgstr ""
+
+#: templates/portal/charge/detail.html:15
+#: templates/portal/charge/detail.html:40
+#: templates/portal/charge/renter_confirm.html:6
+#: templates/portal/pay/detail_landlord.html:25
+#: templates/portal/pay/detail_landlord.html:38
+#: templates/portal/pay/detail_renter.html:26
+#: templates/portal/pay/detail_renter.html:39
+msgid "total expense"
+msgstr "总费用"
+
+#: templates/portal/charge/detail.html:18
+msgid "Pay to"
+msgstr "支付"
+
+#: templates/portal/charge/detail.html:21
+msgid "Bank"
+msgstr "银行"
+
+#: templates/portal/charge/detail.html:25
+msgid "Edit rent"
+msgstr "编辑账单"
+
+#: templates/portal/charge/detail.html:26
+#, fuzzy
+msgid "add renter"
+msgstr "付房租"
+
+#: templates/portal/charge/detail.html:37
+msgid "created at"
+msgstr "创建时间"
+
+#: templates/portal/charge/detail.html:38
+#: templates/portal/charge/renter_confirm.html:15
+msgid "renter name"
+msgstr "租客名"
+
+#: templates/portal/charge/detail.html:39
+msgid "payment info"
+msgstr "账单信息"
+
+#: templates/portal/charge/detail.html:41
+#: templates/portal/pay/detail_landlord.html:9
+#: templates/portal/pay/detail_renter.html:9
+msgid "state"
+msgstr "状态"
+
+#: templates/portal/charge/detail.html:42
+msgid "action"
+msgstr "操作"
+
+#: templates/portal/charge/detail.html:50
+msgid "month"
+msgstr "月"
+
+#: templates/portal/charge/detail.html:61
+msgid "No record"
+msgstr "无数据"
+
+#: templates/portal/charge/renter_confirm.html:16
+msgid "renter username"
+msgstr "租客用户名"
+
+#: templates/portal/charge/renter_confirm.html:17
+#: templates/portal/pay/detail_landlord.html:58
+#: templates/portal/pay/detail_renter.html:59
+msgid "month expense"
+msgstr "月租金"
+
+#: templates/portal/charge/renter_confirm.html:18
+msgid "rent date range"
+msgstr "租期"
+
+#: templates/portal/charge/renter_confirm.html:19
+msgid "pay model"
+msgstr "支付类型"
+
+#: templates/portal/charge/renter_confirm.html:20
+msgid "pay date range"
+msgstr "租期"
+
+#: templates/portal/charge/renter_confirm.html:21
+#: templates/portal/pay/detail_landlord.html:40
+#: templates/portal/pay/detail_renter.html:41
+msgid "deposit"
+msgstr "定金"
+
+#: templates/portal/charge/renter_finish.html:6
+msgid "Congratulations, Your charge rent successfull created!"
+msgstr "祝贺，订单创建成功！"
+
+#: templates/portal/merchant/accountconfirm.html:14
+msgid "Account Confirm"
+msgstr "账号确认"
+
+#: templates/portal/merchant/accountconfirm.html:36
+msgid "Go to confirm!"
+msgstr "前往确认"
+
+#: templates/portal/merchant/accountmanage.html:14
+#: templates/portal/merchant/accountmoney.html:14
+#: templates/portal/merchant/merchantmessage.html:14
+#: templates/portal/merchant/rentalaccount.html:14
+msgid "AccountHome"
+msgstr "账号首页"
+
+#: templates/portal/merchant/accountmanage.html:18
+#: templates/portal/merchant/accountmoney.html:18
+#: templates/portal/merchant/merchantmessage.html:18
+#: templates/portal/merchant/rentalaccount.html:18
+msgid "AccountInfo"
+msgstr "账号信息"
+
+#: templates/portal/merchant/accountmanage.html:21
+#: templates/portal/merchant/accountmoney.html:21
+#: templates/portal/merchant/merchantmessage.html:21
+#: templates/portal/merchant/rentalaccount.html:21
+msgid "AccountMoney"
+msgstr ""
+
+#: templates/portal/merchant/accountmanage.html:24
+#: templates/portal/merchant/accountmoney.html:24
+#: templates/portal/merchant/merchantmessage.html:24
+#: templates/portal/merchant/rentalaccount.html:24
+msgid "RentalAccount"
+msgstr ""
+
+#: templates/portal/merchant/accountmanage.html:27
+#: templates/portal/merchant/accountmoney.html:27
+#: templates/portal/merchant/merchantmessage.html:27
+#: templates/portal/merchant/rentalaccount.html:27
+msgid "MessageCenter"
+msgstr ""
+
+#: templates/portal/merchant/accountmoney.html:43
+msgid "Add Money"
+msgstr ""
+
+#: templates/portal/merchant/addmoney.html:13
+msgid "Input Money:"
+msgstr ""
+
+#: templates/portal/merchant/addmoney.html:21
+msgid "OperationName:"
+msgstr ""
+
+#: templates/portal/merchant/addmoney.html:29
+msgid "Paytype:"
+msgstr ""
+
+#: templates/portal/merchant/house.html:14
+msgid "HousesManage"
+msgstr ""
+
+#: templates/portal/merchant/house.html:18
+msgid "Add House"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:22
+msgid "Personal_login"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:27
+#, fuzzy
+msgid "M_SignIn"
+msgstr "登陆"
+
+#: templates/portal/merchant/m_base.html:28
+#, fuzzy
+msgid "M_SignUp"
+msgstr "注册"
+
+#: templates/portal/merchant/m_base.html:29
+#, fuzzy
+msgid "M_Logout"
+msgstr "退出"
+
+#: templates/portal/merchant/m_base.html:43
+msgid "MerchantHome"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:44
+msgid "MerchantOrderCenter"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:45
+msgid "HouseCenter"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:46
+msgid "MerchantAccount"
+msgstr ""
+
+#: templates/portal/merchant/m_base.html:47
+msgid "MerchantConfirm"
+msgstr ""
+
+#: templates/portal/merchant/rentalaccount.html:41
+msgid "Add Rental Account"
+msgstr ""
+
+#: templates/portal/merchant/sendinfo.html:16
+msgid "RealName"
+msgstr ""
+
+#: templates/portal/merchant/sendinfo.html:24
+msgid "Real Num"
+msgstr ""
+
+#: templates/portal/merchant/sendinfo.html:32
+msgid "RealName Picture Face"
+msgstr ""
+
+#: templates/portal/merchant/sendinfo.html:40
+msgid "RealName Picture oppsite"
+msgstr ""
+
+#: templates/portal/pay/create.html:7
+msgid "I want to pay"
+msgstr "我要付房租"
+
+#: templates/portal/pay/create_option.html:7
+msgid "Choice month to pay."
+msgstr "选择支付月份"
+
+#: templates/portal/pay/detail_landlord.html:8
+#: templates/portal/pay/detail_renter.html:8
+msgid "order number"
+msgstr "订单号"
+
+#: templates/portal/pay/detail_landlord.html:11
+#: templates/portal/pay/detail_renter.html:11
+#, fuzzy
+msgid "pay it"
+msgstr "付房租"
+
+#: templates/portal/pay/detail_landlord.html:19
+#: templates/portal/pay/detail_renter.html:20
+msgid "Order Info"
+msgstr "订单信息"
+
+#: templates/portal/pay/detail_landlord.html:23
+#: templates/portal/pay/detail_renter.html:24
+msgid "Name"
+msgstr "名字"
+
+#: templates/portal/pay/detail_landlord.html:24
+#: templates/portal/pay/detail_renter.html:25
+msgid "Payee"
+msgstr "收款人"
+
+#: templates/portal/pay/detail_landlord.html:37
+#: templates/portal/pay/detail_renter.html:38
+msgid "pay"
+msgstr "支付"
+
+#: templates/portal/pay/detail_landlord.html:37
+#: templates/portal/pay/detail_renter.html:38
+msgid "months rent"
+msgstr "租期"
+
+#: templates/portal/pay/detail_landlord.html:39
+#: templates/portal/pay/detail_renter.html:40
+msgid "to"
+msgstr "给"
+
+#: templates/portal/pay/detail_landlord.html:41
+#: templates/portal/pay/detail_renter.html:42
+msgid "service expense"
+msgstr "服务费用"
+
+#: templates/portal/pay/detail_landlord.html:45
+#: templates/portal/pay/detail_renter.html:46
+msgid "Created at"
+msgstr "创建时间"
+
+#: templates/portal/pay/detail_landlord.html:55
+#: templates/portal/pay/detail_renter.html:56
+msgid "House info"
+msgstr "房屋信息"
+
+#: templates/portal/pay/detail_landlord.html:61
+#: templates/portal/pay/detail_renter.html:62
+msgid "landlord deposit"
+msgstr "房东租金"
+
+#: templates/portal/pay/detail_landlord.html:65
+#: templates/portal/pay/detail_renter.html:66
+msgid "room count"
+msgstr "户型"
+
+#: templates/portal/pay/detail_landlord.html:67
+#: templates/portal/pay/detail_renter.html:68
+msgid "deck"
+msgstr "装修程度"
+
+#: templates/portal/pay/detail_landlord.html:71
+#, fuzzy
+msgid "payment type"
+msgstr "房屋类型"
+
+#: templates/portal/pay/detail_landlord.html:81
+#: templates/portal/pay/detail_renter.html:88
+msgid "Payee info"
+msgstr "收款人信息"
+
+#: templates/portal/pay/detail_landlord.html:84
+#: templates/portal/pay/detail_renter.html:95
+msgid "landlord name"
+msgstr "房东姓名"
+
+#: templates/portal/pay/detail_landlord.html:88
+#: templates/portal/pay/detail_renter.html:99
+msgid "bank location"
+msgstr "银行所在地"
+
+#: templates/portal/pay/detail_landlord.html:92
+#: templates/portal/pay/detail_renter.html:103
+msgid "bank name"
+msgstr "银行"
+
+#: templates/portal/pay/detail_landlord.html:96
+#: templates/portal/pay/detail_renter.html:107
+msgid "bank card"
+msgstr "银行卡"
+
+#: templates/portal/pay/detail_landlord.html:104
+#: templates/portal/pay/detail_renter.html:115
+msgid "Back to list"
+msgstr "返回列表"
+
+#: templates/portal/pay/detail_renter.html:12
+msgid "edit"
+msgstr "编辑"
+
+#: templates/portal/pay/detail_renter.html:72
+msgid "acreage"
+msgstr "面积"
+
+#: templates/portal/pay/detail_renter.html:74
+msgid "rent month detail"
+msgstr "月租信息"
+
+#: templates/portal/pay/detail_renter.html:75
+msgid "begin from"
+msgstr "开始"
+
+#: templates/portal/pay/detail_renter.html:78
+msgid "address information"
+msgstr "租房详细地址"
+
+#: templates/portal/pay/detail_renter.html:91
+msgid "payee type"
+msgstr "支付类型"
