@@ -43,6 +43,10 @@ class SignIn(generic.FormView):
         if users and users[0].password == data['password']:
             LOG.debug('%s login success.' % users)
             utils.set_session(self.request, users[0].username)
+            
+            content = 'Welcome to zufangbao! You have successed to sign up!'
+            sendmessage(self.request, content)
+        
             return portal(self.request)
         else:
             LOG.debug("%s login failed." % users)
@@ -94,3 +98,15 @@ def logout(request):
     username = request.session['username']
     utils.unset_session(request, username)
     return portal(request)
+
+
+def sendmessage(request, content):
+    user = utils.get_user_obj(request)
+    if models.Message.objects.filter(owner_id=user.id):
+        message = models.Message.objects.filter(owner_id=user.id)
+        message.content = content
+        message.save()
+    else:
+        message = models.Message(owner_id=user.id, content=content)
+        message.save()
+
