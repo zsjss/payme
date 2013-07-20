@@ -63,7 +63,13 @@ class ChargeRenterForm(forms.ModelForm):
 class PayRentCreateForm(forms.ModelForm):
     class Meta:
         model = models.RenterRentProfile
-        exclude = ('renter',)
+        exclude = ('renter', 'uuid')
+
+
+class PayRentOptionCreateForm(forms.ModelForm):
+    class Meta:
+        model = models.RenterOption
+        exclude = ('rent_profile', 'state', 'confirmed', 'service_expense')
 
 
 class AddHouseForm(forms.ModelForm):

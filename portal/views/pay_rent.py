@@ -13,14 +13,14 @@ from portal.views.base import require_auth
 
 class PayRentCreateView(generic.FormView):
 
-    form_class = forms.ChargeRentForm
-    template_name = 'portal/payrent/create.html'
+    form_class = forms.PayRentCreateForm
+    template_name = 'portal/pay/create.html'
 
     def form_valid(self, form):
         user = utils.get_user_obj(self.request)
         form.instance.renter = user
         form.save()
-        return redirect('charge_renter_add', form.instance.pk)
+        return redirect('pay_rent_option_create', form.instance.pk)
 pay_rent_profile_create = require_auth(PayRentCreateView.as_view())
 
 
@@ -28,8 +28,22 @@ def pay_rent_profile_update(request, profile_id):
     pass
 
 
-def pay_rent_option_create(request, profile_id):
-    pass
+class PayRentOptionCreateView(generic.FormView):
+
+    form_class = forms.PayRentOptionCreateForm
+    template_name = 'portal/pay/create_option.html'
+
+    def form_valid(self, form):
+        profile_id = self.args[0]
+        assert profile_id
+        form.instance.rent_profile_id = profile_id
+        #TODO: fill up all renter_option columns.
+        form.instance.state = '0'
+        form.instance.confirmed = False
+        form.instance.service_expense = 0
+        form.save()
+        return redirect('pay_rent_payit', form.instance.pk)
+pay_rent_option_create = require_auth(PayRentOptionCreateView.as_view())
 
 
 def pay_rent_option_update(request, profile_id):

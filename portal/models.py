@@ -165,10 +165,10 @@ class RenterRentProfile(Model, BaseModel):
     renter = ForeignKey(User)
 
     rent_type = CharField(max_length=2,
-                                 choices=[(1, 'house'), (2, 'shop')])
+                                 choices=[('1', 'house'), ('2', 'shop')])
     room_count = CharField(max_length=2,
-                                  choices=[(1, '1'), (2, '2'),
-                                          (3, '3'), (4, '>=4')])
+                                  choices=[('1', '1'), ('2', '2'),
+                                          ('3', '3'), ('4', '>=4')])
     deck = CharField(max_length=2)
     acreage = IntegerField()
 
@@ -183,7 +183,7 @@ class RenterRentProfile(Model, BaseModel):
     loc_addr = CharField(max_length=50)
 
     payee_type = CharField(max_length=2, choices=[
-        (1, 'person'), (2, 'company')])
+        ('1', 'person'), ('2', 'company')])
     payee_name = CharField(max_length=255)
     payee_bank = CharField(max_length=255)
     payee_bank_card = CharField(max_length=50)
@@ -206,7 +206,7 @@ class RenterOption(Model, BaseModel):
     deposit = IntegerField()
     comment = CharField(max_length=255)
     arrive_type = CharField(max_length=2, choices=[
-        (1, 'next day'), (2, 'two hours')])
+        ('1', 'next day'), ('2', 'two hours')])
     is_installment = BooleanField()
 
     service_expense = IntegerField()
