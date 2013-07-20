@@ -82,7 +82,6 @@ msgid "charge rent"
 msgstr "收房租"
 
 #: templates/portal/_base.html:28
-#, fuzzy
 msgid "pay rent"
 msgstr "付房租"
 
