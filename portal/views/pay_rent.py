@@ -105,4 +105,9 @@ def pay_rent_detail(request, rent_uuid):
 
 
 def pay_rent_cancel(request, rent_uuid):
-    pass
+    try:
+        renter = models.LandlordRenterInfo.objects.get(uuid=rent_uuid)
+    except models.LandlordRenterInfo.DoesNotExist:
+        renter = get_object_or_404(models.RenterRentProfile, uuid=rent_uuid)
+    renter.cancel()
+    return redirect('account_payrent_list')
