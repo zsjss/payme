@@ -8,7 +8,6 @@ For example: signin, signup, homepage , etc.
 import logging
 import functools
 
-from django.shortcuts import redirect
 from django.views import generic
 
 from portal import forms
@@ -43,7 +42,7 @@ class SignIn(generic.FormView):
         if users and users[0].password == data['password']:
             LOG.debug('%s login success.' % users)
             utils.set_session(self.request, users[0].username)
-        
+
             return portal(self.request)
         else:
             LOG.debug("%s login failed." % users)
@@ -65,6 +64,8 @@ class SignUp(generic.FormView):
         user.save()
         content = 'Welcome to zufangbao! You have successed to sign up!'
         sendmessage(self.request, content)
+        content = data['username'] + ' registration succeed!'
+        utils.send_mail(data['email'], content)
         return utils.render('portal.html', {})
 
 signup = SignUp.as_view()
@@ -72,7 +73,7 @@ signup = SignUp.as_view()
 
 @require_auth
 def portal(request):
-    user = utils.get_user_obj(request)
+#    user = utils.get_user_obj(request)
     return utils.render('portal.html', {})
 
 
@@ -103,4 +104,3 @@ def sendmessage(request, content):
     user = utils.get_user_obj(request)
     message = models.Message(owner_id=user.id, content=content)
     message.save()
-

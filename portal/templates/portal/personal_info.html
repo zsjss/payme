@@ -1,0 +1,106 @@
+
+</body>
+</html>
+
+
+<html>
+  <head>
+    <title>421 forever </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/portal/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link href="/static/portal/css/style.css" rel="stylesheet" media="screen">
+    <link href="/static/portal/css/layout.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="/static/portal/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/static/portal/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/portal/js/stupidtable.min.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="/z/">ZuFangBao</a>
+          <ul class="nav">
+            <li class="active"> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+            <li> <a href="#">nothing</a> </li>
+          </ul> <!-- nav -->
+
+          <ul class="nav pull-right">
+            <li><a href="/z/chargerent/">收房租</a></li>
+            <li><a href="/z/payrent/">付房租</a></li>
+            <li><a href="/z/signin/">SignIn</a></li>
+            <li><a href="/z/signup/">SignUp</a></li>
+            <li><a href="/z/logout/">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div> <!-- navbar -->
+
+    <div class="header">
+      <div class="container">
+        <h1>LOGO</h1>
+      </div>
+    </div> <!-- header -->
+    <hr/>
+
+    
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rents</h3>
+        <li>
+          <a class="selected" href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a href="#">messages</a>
+        </li>
+        <li>
+          <a href="#">Bank cards</a>
+        </li>
+		<li>
+          <a href="/z/account/info/">Personal inforsmation</a>
+        </li>
+		<li>
+          <a href="/z/account/safe/">Security certificate</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Personal Information</h3>
+          <table cellspacing="0" class="table table-striped">
+	    
+	    <br>用户名：{{ username }}  
+	    <a href="#">升级VIP    </a>
+	    <a href="#">VIP特权    </a>
+	    <a href="#">显示头像    </a><p>&nbsp;&nbsp</p>
+	  
+	
+	    </br>
+	    <br>真实姓名：{{ real_name }}
+	    <a href="{% url 'name_certificate' %}">实名认证</a>
+	    </br>
+	    <br>电话：{{ phone }}</br>
+	    <br>身份证号：{{ real_id }}</br>
+	    <br>Email邮箱：{{ email }}</br>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div> <!-- graybox -->
+</div> <!-- container -->
+
+  </body>
+</html>

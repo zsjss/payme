@@ -102,10 +102,32 @@ class MerchantConfirmForm(forms.ModelForm):
         exclude = ('owner','state')
 
 
+class PasswordModifyForm(forms.Form):
+    password = forms.CharField()
+    new_password = forms.CharField()
+    confirm_new_password = forms.CharField()
 
 
+class PhoneModifyForm(forms.Form):
+    phone = forms.CharField()
+    verification_code = forms.CharField()
+
+class SendVerifyCodeForm(forms.Form):
+    phone = forms.CharField()
 
 
+class MailboxBindingForm(forms.Form):
+    email = forms.EmailField()
+
+class NameCertificationForm(forms.Form):
+    real_name = forms.CharField()
+    real_id = forms.CharField(validators=[valid_fixed_length])
+
+class SecurityProblemForm(forms.Form):
+    problem_one = forms.CharField()
+    problem_two = forms.CharField()
+    problem_three = forms.CharField()
 
 
-
+class HeadImgForm(forms.Form):
+    front_img = forms.ImageField()

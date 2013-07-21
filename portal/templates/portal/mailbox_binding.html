@@ -1,0 +1,55 @@
+{% extends "portal/_base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rents</h3>
+        <li>
+          <a class="selected" href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a href="#">messages</a>
+        </li>
+        <li>
+          <a href="#">Bank cards</a>
+        </li>
+		<li>
+          <a href="/z/account/info/">Personal inforsmation</a>
+        </li>
+		<li>
+          <a href="/z/account/safe/">Security certificate</a>
+        </li>
+      </ul>
+    </div>
+
+      <div class="container">
+  <div class="formbox">
+    <form class="form-horizontal" action="" method="post">
+      <h3>MailBox Modify</h3>
+      <span class="text-error">{{ errors }}</span>
+
+      <div class="control-group">
+        <label class="control-label">new mailbox:</label>
+        <div class="controls">
+          {{ form.email }}
+          {{ form.email.errors }}
+	
+      </div>
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+  </div> <!-- formbox -->
+</div> <!-- container -->
+
+{% endblock %}
