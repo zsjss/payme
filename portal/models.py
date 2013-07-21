@@ -47,6 +47,7 @@ class BaseModel(object):
 
 
 class User(Model, BaseModel):
+    
     username = CharField(_('username'), max_length=255,
                          db_index=True, unique=True)
     password = CharField(_('password'), max_length=255)
@@ -58,9 +59,16 @@ class User(Model, BaseModel):
     avater = CharField(_('avater'), max_length=255)
     location_province = CharField(_('loc province'), max_length=255)
     location_city = CharField(_('loc city'), max_length=255)
+    front_image = ImageField(upload_to='upload')
+    back_image = ImageField(upload_to='upload')
+    problem_one = CharField(max_length=255)
+    problem_two = CharField(max_length=255)
+    problem_three = CharField(max_length=255)
+    verifycode = CharField(max_length=255)
     is_vip = BooleanField(_('is vip'))
 
     created_at = DateTimeField(_('created at'), auto_now_add=True)
+
 
     def __unicode__(self):
         return self.username
@@ -75,19 +83,9 @@ class Merchant(Model, BaseModel):
     password = CharField(max_length=255)
     real_name = CharField(max_length=255)
     phone = CharField(max_length=20, db_index=True)
-    real_name = CharField(max_length=255)
-    real_id = CharField(max_length=40)
     email = EmailField()
-    signup_at = DateTimeField(auto_now=True)
-    avater = CharField(max_length=255)
-    location_province = CharField(max_length=255)
-    location_city = CharField(max_length=255)
-    front_image = ImageField(upload_to='upload')
-    back_image = ImageField(upload_to='upload')
-    problem_one = CharField(max_length=255)
-    problem_two = CharField(max_length=255)
-    problem_three = CharField(max_length=255)
-    verifycode = CharField(max_length=255)
+
+
 
 
 class MerchantAdmin(admin.ModelAdmin):

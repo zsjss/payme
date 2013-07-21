@@ -13,7 +13,6 @@ from portal import forms
 from portal import models
 from portal.alipay import alipay
 import random
-import ImageFile
 
 LOG = logging.getLogger(__name__)
 
