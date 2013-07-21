@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-20 10:21-0500\n"
+"POT-Creation-Date: 2013-07-20 21:39-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -74,187 +74,203 @@ msgstr "明天"
 msgid "two hours"
 msgstr "两小时内"
 
-#: models.py:44
+#: models.py:33
+msgid "lowest"
+msgstr "毛培"
+
+#: models.py:34
+msgid "basic"
+msgstr "简装"
+
+#: models.py:35
+msgid "normal"
+msgstr "中装"
+
+#: models.py:36
+msgid "higest"
+msgstr "精装"
+
+#: models.py:50
 #, fuzzy
 msgid "username"
 msgstr "租客用户名"
 
-#: models.py:46
+#: models.py:52
 msgid "password"
 msgstr "用户名"
 
-#: models.py:47
+#: models.py:53
 msgid "phone"
 msgstr "手机号"
 
-#: models.py:48
+#: models.py:54
 #, fuzzy
 msgid "real name"
 msgstr "租客名"
 
-#: models.py:49
+#: models.py:55
 msgid "real id"
 msgstr "身份证"
 
-#: models.py:50
+#: models.py:56
 msgid "email"
 msgstr "电子邮件"
 
-#: models.py:51
+#: models.py:57
 msgid "signup at"
 msgstr "注册时间"
 
-#: models.py:52
+#: models.py:58
 msgid "avater"
 msgstr "头像"
 
-#: models.py:53 models.py:96 models.py:181
+#: models.py:59 models.py:102 models.py:200
 msgid "loc province"
 msgstr "省"
 
-#: models.py:54 models.py:97 models.py:182
+#: models.py:60 models.py:103 models.py:201
 msgid "loc city"
 msgstr "市"
 
-#: models.py:55
+#: models.py:61
 msgid "is vip"
 msgstr "是否是VIP"
 
-#: models.py:57 models.py:109 models.py:153 models.py:196 models.py:241
-#: models.py:259 models.py:273 templates/portal/charge/detail.html:37
+#: models.py:63 models.py:115 models.py:164 models.py:215 models.py:268
+#: models.py:286 models.py:300 templates/portal/charge/detail.html:37
 msgid "created at"
 msgstr "创建时间"
 
-#: models.py:92
+#: models.py:98
 msgid "rent_type"
 msgstr "房屋类型"
 
-#: models.py:93 models.py:173 templates/portal/pay/detail_landlord.html:65
+#: models.py:99 models.py:192 templates/portal/pay/detail_landlord.html:65
 #: templates/portal/pay/detail_renter.html:66
 msgid "room count"
 msgstr "户型"
 
-#: models.py:94 models.py:174 templates/portal/pay/detail_landlord.html:67
+#: models.py:100 models.py:193 templates/portal/pay/detail_landlord.html:67
 #: templates/portal/pay/detail_renter.html:68
 msgid "deck"
 msgstr "装修程度"
 
-#: models.py:95 models.py:175 templates/portal/pay/detail_renter.html:72
+#: models.py:101 models.py:194 templates/portal/pay/detail_renter.html:72
 msgid "acreage"
 msgstr "面积"
 
-#: models.py:98
+#: models.py:104
 msgid "loc are"
 msgstr "地址"
 
-#: models.py:99 models.py:184
+#: models.py:105 models.py:203
 msgid "loc cell"
 msgstr "区域"
 
-#: models.py:100 models.py:185
+#: models.py:106 models.py:204
 msgid "loc addr"
 msgstr "详细地址"
 
-#: models.py:102 models.py:189
+#: models.py:108 models.py:208
 #, fuzzy
 msgid "payee name"
 msgstr "支付类型"
 
-#: models.py:103
+#: models.py:109
 msgid "payee id card"
 msgstr "收款人银行卡号"
 
-#: models.py:104 models.py:190
+#: models.py:110 models.py:209
 #, fuzzy
 msgid "payee bank"
 msgstr "支付类型"
 
-#: models.py:105 models.py:191
+#: models.py:111 models.py:210
 #, fuzzy
 msgid "payee bank card"
 msgstr "银行卡"
 
-#: models.py:106 models.py:192
+#: models.py:112 models.py:211
 msgid "payee bank province"
 msgstr "银行卡省"
 
-#: models.py:107 models.py:193
+#: models.py:113 models.py:212
 #, fuzzy
 msgid "payee bank city"
 msgstr "支付类型"
 
-#: models.py:137 templates/portal/charge/detail.html:38
+#: models.py:148 templates/portal/charge/detail.html:38
 #: templates/portal/charge/renter_confirm.html:15
 msgid "renter name"
 msgstr "租客名"
 
-#: models.py:138 models.py:177
+#: models.py:149 models.py:196
 #, fuzzy
 msgid "rent expense"
 msgstr "月租金"
 
-#: models.py:138
+#: models.py:149
 msgid "yuan/month"
 msgstr "元/月"
 
-#: models.py:139
+#: models.py:150
 #, fuzzy
 msgid "rent month"
 msgstr "月租信息"
 
-#: models.py:139 templates/portal/pay/detail_landlord.html:30
+#: models.py:150 templates/portal/pay/detail_landlord.html:30
 #: templates/portal/pay/detail_renter.html:31
 #: templates/portal/pay/detail_renter.html:75
 msgid "months"
 msgstr "月"
 
-#: models.py:140 models.py:179
+#: models.py:151 models.py:198
 #, fuzzy
 msgid "rent begin date"
 msgstr "租客名"
 
-#: models.py:141
+#: models.py:152
 #, fuzzy
 msgid "rent pay model"
 msgstr "支付类型"
 
-#: models.py:144 models.py:231
+#: models.py:155 models.py:258
 #, fuzzy
 msgid "pay months"
 msgstr "月"
 
-#: models.py:145 models.py:232
+#: models.py:156 models.py:259
 #, fuzzy
 msgid "pay begin date"
 msgstr "付房租"
 
-#: models.py:146 models.py:234 templates/portal/charge/renter_confirm.html:21
+#: models.py:157 models.py:261 templates/portal/charge/renter_confirm.html:21
 #: templates/portal/pay/detail_landlord.html:40
 #: templates/portal/pay/detail_renter.html:41
 msgid "deposit"
 msgstr "定金"
 
-#: models.py:146 templates/portal/pay/detail_landlord.html:32
+#: models.py:157 templates/portal/pay/detail_landlord.html:32
 #: templates/portal/pay/detail_renter.html:33
 msgid "Yuan"
 msgstr "元"
 
-#: models.py:147 models.py:236
+#: models.py:158 models.py:263
 #, fuzzy
 msgid "arrive type"
 msgstr "支付类型"
 
-#: models.py:149
+#: models.py:160
 #, fuzzy
 msgid "i pay it"
 msgstr "付房租"
 
-#: models.py:151 models.py:240 templates/portal/pay/detail_landlord.html:41
+#: models.py:162 models.py:267 templates/portal/pay/detail_landlord.html:41
 #: templates/portal/pay/detail_renter.html:42
 msgid "service expense"
 msgstr "服务费用"
 
-#: models.py:152 models.py:233 templates/portal/charge/detail.html:15
+#: models.py:163 models.py:260 templates/portal/charge/detail.html:15
 #: templates/portal/charge/detail.html:40
 #: templates/portal/charge/renter_confirm.html:6
 #: templates/portal/pay/detail_landlord.html:25
@@ -264,76 +280,76 @@ msgstr "服务费用"
 msgid "total expense"
 msgstr "总费用"
 
-#: models.py:155 models.py:243 templates/portal/charge/detail.html:41
+#: models.py:166 models.py:270 templates/portal/charge/detail.html:41
 #: templates/portal/pay/detail_landlord.html:9
 #: templates/portal/pay/detail_renter.html:9
 msgid "state"
 msgstr "状态"
 
-#: models.py:156 models.py:198
+#: models.py:167 models.py:217
 msgid "uuid"
 msgstr ""
 
-#: models.py:172
+#: models.py:191
 #, fuzzy
 msgid "rent type"
 msgstr "房屋类型"
 
-#: models.py:178
+#: models.py:197
 #, fuzzy
 msgid "rent months"
 msgstr "月租信息"
 
-#: models.py:183
+#: models.py:202
 msgid "loc area"
 msgstr "区域"
 
-#: models.py:187 templates/portal/pay/detail_renter.html:91
+#: models.py:206 templates/portal/pay/detail_renter.html:91
 msgid "payee type"
 msgstr "支付类型"
 
-#: models.py:194
+#: models.py:213
 #, fuzzy
 msgid "payee phone"
 msgstr "支付类型"
 
-#: models.py:235
+#: models.py:262
 msgid "comment"
 msgstr "注释"
 
-#: models.py:238
+#: models.py:265
 msgid "is installment"
 msgstr "是否分期付款"
 
-#: models.py:245
+#: models.py:272
 #, fuzzy
 msgid "confirmed"
 msgstr "待确认"
 
-#: models.py:258
+#: models.py:285
 msgid "content"
 msgstr "内容"
 
-#: models.py:260
+#: models.py:287
 msgid "is readed"
 msgstr "是否阅读"
 
-#: models.py:266 templates/portal/pay/detail_landlord.html:92
+#: models.py:293 templates/portal/pay/detail_landlord.html:92
 #: templates/portal/pay/detail_renter.html:103
 msgid "bank name"
 msgstr "银行"
 
-#: models.py:267
+#: models.py:294
 #, fuzzy
 msgid "card user name"
 msgstr "租客用户名"
 
-#: models.py:268
+#: models.py:295
 #, fuzzy
 msgid "card number"
 msgstr "订单号"
 
-#: models.py:269
+#: models.py:296
 msgid "card loc"
 msgstr "银行卡地址"
 
@@ -376,12 +392,12 @@ msgstr "付房租"
 
 #: templates/portal/account/_base.html:14
 #, fuzzy
-msgid "pay rent list"
+msgid "pay rent records"
 msgstr "付房租"
 
 #: templates/portal/account/_base.html:17
 #, fuzzy
-msgid "charge rent list"
+msgid "charge rent records"
 msgstr "收房租"
 
 #: templates/portal/account/_base.html:20
@@ -394,8 +410,9 @@ msgstr "消息"
 msgid "Bank cards"
 msgstr "银行卡"
 
-#: templates/portal/account/_base.html:26
-msgid "Vip"
+#: templates/portal/account/_base.html:26 templates/portal/account/vip.html:29
+#: templates/portal/account/vipconfirm.html:29
+msgid "VIP"
 msgstr ""
 
 #: templates/portal/account/chargerentlist.html:5
@@ -464,11 +481,6 @@ msgstr "详细信息"
 #: templates/portal/pay/detail_renter.html:13
 msgid "cancel"
 msgstr "取消"
-
-#: templates/portal/account/vip.html:29
-#: templates/portal/account/vipconfirm.html:29
-msgid "VIP"
-msgstr ""
 
 #: templates/portal/account/vipconfirm.html:41
 msgid "VIPV Text:"
