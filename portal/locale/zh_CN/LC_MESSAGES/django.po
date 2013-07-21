@@ -288,7 +288,7 @@ msgstr "状态"
 
 #: models.py:167 models.py:217
 msgid "uuid"
-msgstr ""
+msgstr "用户ID号"
 
 #: models.py:191
 #, fuzzy
@@ -359,7 +359,7 @@ msgstr "租房包"
 
 #: templates/portal/_base.html:23 templates/portal/merchant/m_base.html:23
 msgid "Merchant"
-msgstr ""
+msgstr "商户"
 
 #: templates/portal/_base.html:27
 msgid "charge rent"
@@ -413,7 +413,7 @@ msgstr "银行卡"
 #: templates/portal/account/_base.html:26 templates/portal/account/vip.html:29
 #: templates/portal/account/vipconfirm.html:29
 msgid "VIP"
-msgstr ""
+msgstr "VIP用户"
 
 #: templates/portal/account/chargerentlist.html:5
 #, fuzzy
@@ -484,7 +484,7 @@ msgstr "取消"
 
 #: templates/portal/account/vipconfirm.html:41
 msgid "VIPV Text:"
-msgstr ""
+msgstr "VIP激活"
 
 #: templates/portal/charge/create.html:7
 #, fuzzy
@@ -503,7 +503,7 @@ msgstr "房屋信息"
 
 #: templates/portal/charge/detail.html:12
 msgid "Total renter"
-msgstr ""
+msgstr "全部房租"
 
 #: templates/portal/charge/detail.html:18
 msgid "Pay to"
@@ -591,49 +591,49 @@ msgstr "账号信息"
 #: templates/portal/merchant/merchantmessage.html:21
 #: templates/portal/merchant/rentalaccount.html:21
 msgid "AccountMoney"
-msgstr ""
+msgstr "账户金额"
 
 #: templates/portal/merchant/accountmanage.html:24
 #: templates/portal/merchant/accountmoney.html:24
 #: templates/portal/merchant/merchantmessage.html:24
 #: templates/portal/merchant/rentalaccount.html:24
 msgid "RentalAccount"
-msgstr ""
+msgstr "租房宝账户"
 
 #: templates/portal/merchant/accountmanage.html:27
 #: templates/portal/merchant/accountmoney.html:27
 #: templates/portal/merchant/merchantmessage.html:27
 #: templates/portal/merchant/rentalaccount.html:27
 msgid "MessageCenter"
-msgstr ""
+msgstr "消息中心"
 
 #: templates/portal/merchant/accountmoney.html:43
 msgid "Add Money"
-msgstr ""
+msgstr "充值金额"
 
 #: templates/portal/merchant/addmoney.html:13
 msgid "Input Money:"
-msgstr ""
+msgstr "输入金额"
 
 #: templates/portal/merchant/addmoney.html:21
 msgid "OperationName:"
-msgstr ""
+msgstr "操作名"
 
 #: templates/portal/merchant/addmoney.html:29
 msgid "Paytype:"
-msgstr ""
+msgstr "支付类型"
 
 #: templates/portal/merchant/house.html:14
 msgid "HousesManage"
-msgstr ""
+msgstr "房屋管理"
 
 #: templates/portal/merchant/house.html:18
 msgid "Add House"
-msgstr ""
+msgstr "添加房屋"
 
 #: templates/portal/merchant/m_base.html:22
 msgid "Personal_login"
-msgstr ""
+msgstr "个人登录"
 
 #: templates/portal/merchant/m_base.html:27
 #, fuzzy
@@ -652,43 +652,43 @@ msgstr "退出"
 
 #: templates/portal/merchant/m_base.html:43
 msgid "MerchantHome"
-msgstr ""
+msgstr "商户主页"
 
 #: templates/portal/merchant/m_base.html:44
 msgid "MerchantOrderCenter"
-msgstr ""
+msgstr "商户中心"
 
 #: templates/portal/merchant/m_base.html:45
 msgid "HouseCenter"
-msgstr ""
+msgstr "房源中心"
 
 #: templates/portal/merchant/m_base.html:46
 msgid "MerchantAccount"
-msgstr ""
+msgstr "商户账号"
 
 #: templates/portal/merchant/m_base.html:47
 msgid "MerchantConfirm"
-msgstr ""
+msgstr "商户账号确认"
 
 #: templates/portal/merchant/rentalaccount.html:41
 msgid "Add Rental Account"
-msgstr ""
+msgstr "添加支付宝账户"
 
 #: templates/portal/merchant/sendinfo.html:16
 msgid "RealName"
-msgstr ""
+msgstr "真实姓名"
 
 #: templates/portal/merchant/sendinfo.html:24
 msgid "Real Num"
-msgstr ""
+msgstr "真实身份证号"
 
 #: templates/portal/merchant/sendinfo.html:32
 msgid "RealName Picture Face"
-msgstr ""
+msgstr "真实身份证照片正面"
 
 #: templates/portal/merchant/sendinfo.html:40
 msgid "RealName Picture oppsite"
-msgstr ""
+msgstr "真实身份证照片反面"
 
 #: templates/portal/pay/create.html:7
 msgid "I want to pay"
