@@ -17,7 +17,7 @@
     {% for renter in renters %}
     <tr>
       <td> {{ renter.created_at }} </td>
-      <td> {{ renter.rent.pretty_name }}.{{ renter.rent.id }}. {{ renter.pay_months }} </td>
+      <td> {{ renter.pretty_name }}. {{ renter.pay_months }} </td>
       <td> {{ renter.total_expense }} </td>
       <td> {{ renter.state_str }} </td>
       <td> 

@@ -114,20 +114,25 @@ class LandlordRentProfile(Model, BaseModel):
 
     created_at = DateTimeField(_('created at'), auto_now=True)
 
+    @property
     def pretty_name(self):
         """Return a beatifull name like: cellname|1 room| hight| 123m2"""
         return '|'.join([unicode(self.loc_cell), unicode(self.room_count),
                          unicode(self.deck), unicode(self.acreage)])
 
+    @property
     def uncanceled_renters(self):
         return self.landlordrenterinfo_set.filter(state__lt=5)
 
+    @property
     def renter_count(self):
         return self.uncanceled_renters().count()
 
+    @property
     def renter_paied_count(self):
         return self.landlordrenterinfo_set.filter(state__gt=2).count()
 
+    @property
     def total_expense(self):
         total = 0
         for renter in self.uncanceled_renters():
@@ -169,6 +174,10 @@ class LandlordRenterInfo(Model, BaseModel):
 
     def pay_end_date(self):
         return self.pay_begin_date + datetime.timedelta(3 * 365 / 12)
+
+    @property
+    def pretty_name(self):
+        return self.rent.pretty_name
 
 
 class RenterRentProfile(Model, BaseModel):
