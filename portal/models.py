@@ -54,13 +54,13 @@ class User(Model, BaseModel):
     real_name = CharField(_('real name'), max_length=255)
     real_id = CharField(_('real id'), max_length=40)
     email = EmailField(_('email'))
-    signup_at = DateTimeField(_('signup at'), auto_now=True)
+    signup_at = DateTimeField(_('signup at'), auto_now_add=True)
     avater = CharField(_('avater'), max_length=255)
     location_province = CharField(_('loc province'), max_length=255)
     location_city = CharField(_('loc city'), max_length=255)
     is_vip = BooleanField(_('is vip'))
 
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
     def __unicode__(self):
         return self.username
@@ -112,7 +112,7 @@ class LandlordRentProfile(Model, BaseModel):
     payee_bank_province = CharField(_('payee bank province'), max_length=50)
     payee_bank_city = CharField(_('payee bank city'), max_length=50)
 
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
     @property
     def pretty_name(self):
@@ -161,13 +161,17 @@ class LandlordRenterInfo(Model, BaseModel):
 
     service_expense = IntegerField(_('service expense'))
     total_expense = IntegerField(_('total expense'))
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
     state = CharField(_('state'), max_length=2, choices=STATES.items())
     uuid = CharField(_('uuid'), max_length=36, default=uuid4)
 
     def canceled(self):
         return self.state == '5'
+
+    def cancel(self):
+        self.state = '5'
+        self.save()
 
     def state_str(self):
         return STATES[self.state]
@@ -208,7 +212,7 @@ class RenterRentProfile(Model, BaseModel):
     payee_bank_city = CharField(_('payee bank city'), max_length=50)
     payee_phone = CharField(_('payee phone'), max_length=30)
 
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
     uuid = CharField(_('uuid'), max_length=36, default=uuid4)
 
@@ -238,6 +242,14 @@ class RenterRentProfile(Model, BaseModel):
     def service_expense(self):
         return self.renteroption.service_expense
 
+    @property
+    def canceled(self):
+        return self.renteroption.state == '5'
+
+    def cancel(self):
+        self.renteroption.state = '5'
+        self.renteroption.save()
+
 
 class RenterOption(Model, BaseModel):
     """A RenterRentProfile can only have one RenterOption"""
@@ -253,7 +265,7 @@ class RenterOption(Model, BaseModel):
     is_installment = BooleanField(_('is installment'))
 
     service_expense = IntegerField(_('service expense'))
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
     state = CharField(_('state'), max_length=2, choices=STATES.items())
 
@@ -271,7 +283,7 @@ class Message(Model, BaseModel):
     """User messages. A User will have many message to him"""
     owner = ForeignKey(User)
     content = CharField(_('content'), max_length=255)
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
     is_readed = BooleanField(_('is readed'))
 
 
@@ -285,7 +297,7 @@ class BankCard(Model, BaseModel):
 
     deleted = BooleanField()
 
-    created_at = DateTimeField(_('created at'), auto_now=True)
+    created_at = DateTimeField(_('created at'), auto_now_add=True)
 
 
 ####################################
@@ -307,7 +319,7 @@ class House(Model, BaseModel):
     pay_type = CharField(max_length=255)
     house_deposit = CharField(max_length=255)
     rent_time = CharField(max_length=255)
-    created_at = DateTimeField(auto_now=True)
+    created_at = DateTimeField(auto_now_add=True)
 
 
 class RentalAccount(Model, BaseModel):
@@ -326,14 +338,14 @@ class AccountMoney(Model, BaseModel):
     in_out_money = FloatField()
     operation_name = CharField(max_length=255)
     pay_type = CharField(max_length=255)
-    created_at = DateTimeField(auto_now=True)
+    created_at = DateTimeField(auto_now_add=True)
 
 
 class MerhantMessage(Model, BaseModel):
     """Merchant messages. A Merchant will have many message to him"""
     owner = ForeignKey(Merchant)
     content = CharField(max_length=255)
-    created_at = DateTimeField(auto_now=True)
+    created_at = DateTimeField(auto_now_add=True)
     is_readed = BooleanField()
 
 
