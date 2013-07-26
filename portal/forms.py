@@ -94,7 +94,13 @@ class AddAccountMoneyForm(forms.ModelForm):
     class Meta:
         model = models.AccountMoney
         exclude = ('owner','created_at')
-
+        
+        
+class AccountBankCardsForm(forms.ModelForm):
+    class Meta:
+        model = models.BankCard
+        exclude = ('owner','deleted','created_at')
+    
 
 class MerchantConfirmForm(forms.ModelForm):
     class Meta:
@@ -119,9 +125,13 @@ class SendVerifyCodeForm(forms.Form):
 class MailboxBindingForm(forms.Form):
     email = forms.EmailField()
 
+
 class NameCertificationForm(forms.Form):
     real_name = forms.CharField()
-    real_id = forms.CharField(validators=[valid_fixed_length])
+    real_id = forms.CharField()
+    front_image = forms.ImageField()
+    back_image = forms.ImageField()
+    
 
 class SecurityProblemForm(forms.Form):
     problem_one = forms.CharField()
@@ -130,4 +140,4 @@ class SecurityProblemForm(forms.Form):
 
 
 class HeadImgForm(forms.Form):
-    front_img = forms.ImageField()
+    photo = forms.ImageField()

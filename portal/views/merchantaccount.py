@@ -85,8 +85,6 @@ def merchantconfirm(request):
     return utils.render('merchant/accountconfirm.html',
                             {'confirm': confirm})
 
-        
-
 
 class AccountConfirm(generic.FormView):
     template_name = 'portal/merchant/sendinfo.html'
@@ -160,3 +158,7 @@ def merchantmessage(request):
     return utils.render('merchant/merchantmessage.html',{'message': message})
 
 
+def sendmessage(request, content):
+    user = utils.get_merchant_obj(request)
+    message = models.Message(owner_id=user.id, content=content)
+    message.save()

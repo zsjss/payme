@@ -63,6 +63,8 @@ class MerchSignUp(generic.FormView):
         data = form.cleaned_data
         user = models.Merchant(**data)
         user.save()
+        content = 'Welcome Merchant! You have successed to sign up!'
+        mersendmessage(self.request, content)
         return utils.render('merchant/home.html', {'welcome': 'Welcome'})
     
 merchsignup = MerchSignUp.as_view()
@@ -74,7 +76,12 @@ def merlogout(request):
     utils.unset_session(request, username)
     return merchsignin(request)
 
-    
+
+def mersendmessage(request, content):
+    """send message in the website"""
+    user = utils.get_merchant_obj(request)
+    message = models.Message(owner_id=user.id, content=content)
+    message.save()    
 
 
     

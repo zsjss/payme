@@ -1,4 +1,4 @@
-{% extends "portal/_base_account.html" %}
+{% extends "portal/account/_base.html" %}
 {% load i18n %}
 
 {% block content %} 
@@ -31,7 +31,11 @@
     <div class="span10" id="content">
       <div class="graybox">
         <div class="graybox-inner">
-          <h3>Bank Cards</h3>
+          <table>
+            <tr><td>Bank Cards</td>
+                <td><a href="{% url 'account_addbankcards' %}">Add Bank Cards</a></td>
+            </tr>
+          </table>
           <table cellspacing="0" class="table table-striped">
             <thead>
               <tr>

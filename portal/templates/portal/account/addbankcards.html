@@ -1,0 +1,84 @@
+{% extends "portal/account/_base.html" %}
+{% load i18n %}
+
+{% block content %} 
+<div class="container">
+  <div class="row">
+    <div class="span2 graybox" id="sidebar">
+      <ul class="nav graybox-inner">
+        <h3>My rent</h3>
+        <li>
+          <a  href="#">home</a>
+        </li>
+        <li>
+          <a href="#">pay order</a>
+        </li>
+        <li>
+          <a href="#">charge order</a>
+        </li>
+        <li>
+          <a  href="#">messages</a>
+        </li>
+        <li>
+          <a class="selected" href="{% url 'account_cardmamage' %}">{% trans 'Bank cards' %}</a>
+        </li>
+        <li>
+          <a href="#">info</a>
+        </li>
+      </ul>
+    </div>
+           
+    <div class="span10" id="content">
+      <div class="graybox">
+        <div class="graybox-inner">
+          <h3>Add Bank Cards</h3>
+          <table cellspacing="0" class="table table-striped">
+    <form class="form-horizontal" action="" method="post">
+      <span class="text-error">{{ errors }}</span>
+
+      <div class="control-group">
+        <label class="control-label">UserName:</label>
+        <div class="controls">
+          {{ form.card_user_name }}
+          {{ form.card_user_name.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">BankName:</label>
+        <div class="controls">
+          {{ form.bank_name}}
+          {{ form.bank_name.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Bank Card Number:</label>
+        <div class="controls">
+          {{ form.card_no }}
+          {{ form.card_no.errors }}
+        </div>
+      </div>
+      
+      <div class="control-group">
+        <label class="control-label">Bank Card Location:</label>
+        <div class="controls">
+          {{ form.card_loc }}
+          {{ form.card_loc.errors }}
+        </div>
+      </div>
+      </div>
+  
+      <div class="controls-group">
+        <div class="controls">
+          <input class="btn btn-primary" type="submit"></input>
+        </div>
+      </div>
+    </form>
+      </div>
+    </div>
+    </div>
+  
+    </div>
+</div>
+{% endblock %}

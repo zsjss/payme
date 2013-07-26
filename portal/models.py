@@ -59,6 +59,7 @@ class User(Model, BaseModel):
     avater = CharField(_('avater'), max_length=255)
     location_province = CharField(_('loc province'), max_length=255)
     location_city = CharField(_('loc city'), max_length=255)
+    photo = ImageField(upload_to='upload')
     front_image = ImageField(upload_to='upload')
     back_image = ImageField(upload_to='upload')
     problem_one = CharField(max_length=255)
@@ -66,6 +67,7 @@ class User(Model, BaseModel):
     problem_three = CharField(max_length=255)
     verifycode = CharField(max_length=255)
     is_vip = BooleanField(_('is vip'))
+    confirm_state = BooleanField(_('confirm_state'))
 
     created_at = DateTimeField(_('created at'), auto_now_add=True)
 
@@ -84,8 +86,6 @@ class Merchant(Model, BaseModel):
     real_name = CharField(max_length=255)
     phone = CharField(max_length=20, db_index=True)
     email = EmailField()
-
-
 
 
 class MerchantAdmin(admin.ModelAdmin):

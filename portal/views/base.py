@@ -101,6 +101,7 @@ def logout(request):
 
 
 def sendmessage(request, content):
+    """send message in the website"""
     user = utils.get_user_obj(request)
     message = models.Message(owner_id=user.id, content=content)
     message.save()
